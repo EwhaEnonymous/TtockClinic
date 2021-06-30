@@ -5,10 +5,10 @@ import CurLoc from "./currentLocation";
 import Clinic from "./clinicInfo";
 import Patient from "./patientInfo";
 import Location from "./Location";
+import After from "./after";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
 const Stack = createStackNavigator(); //Stack 형태의 네비게이션을 만들기 위해 Navigator 와 Screen 을 값으로 갖는 객체를 반환한다.
 
 const App = () => {
@@ -46,6 +46,11 @@ const App = () => {
         <Stack.Screen
           name="Location"
           component={Location}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="After"
+          component={After}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

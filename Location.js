@@ -65,10 +65,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  text2: {
-    color: "white",
-    fontSize: 30,
-  },
   footer: {
     flex: 0.8,
     color: "white",
