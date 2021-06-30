@@ -4,7 +4,7 @@
     "slug": "ttclinic",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon":"./assets/ttockIcon-square.png",
+    "icon": "./assets/ttockIcon-square.png",
     "splash": {
       "image": "./assets/ttockIcon-square.png",
       "resizeMode": "contain",
@@ -17,12 +17,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ewha_enonymous.ttclinic",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "package": "com.ewha_enonymous.ttclinic",
+        "versionCode": 1
       }
     },
     "web": {
