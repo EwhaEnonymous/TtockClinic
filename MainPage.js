@@ -27,7 +27,7 @@ const MainPage = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menu}
-          onPress={() => navigation.navigate("CurLoc")}
+          onPress={() => navigation.navigate("Location")}
         >
           <Icon name="map-outline" size={50}></Icon>
           <Text style={styles.text}>지역별 선별진료소</Text>

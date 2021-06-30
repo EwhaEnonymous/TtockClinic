@@ -4,7 +4,7 @@ import QR from "./myQR";
 import CurLoc from "./currentLocation";
 import Clinic from "./clinicInfo";
 import Patient from "./patientInfo";
-
+import Location from "./Location";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -41,6 +41,11 @@ const App = () => {
         <Stack.Screen
           name="CurLoc"
           component={CurLoc}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Location"
+          component={Location}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
