@@ -17,13 +17,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.enonymousewha.ttclinic",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#FFFFFF",
+        "package": "com.enonymousewha.ttclinic",
+        "versionCode": 1
+      },
+      "package": "com.enonymousewha.ttclinic"
     },
     "web": {
       "favicon": "./assets/favicon.png"
