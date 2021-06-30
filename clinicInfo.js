@@ -3,7 +3,7 @@ import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 
-export default function clinicInfo() {
+const clinicInfo = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <View style={styles.container1}>
@@ -40,12 +40,20 @@ export default function clinicInfo() {
           <Text style={styles.waitTextLast}>00명</Text>
         </View>
       </View>
+      <View>
+        <TouchableOpacity
+          style={styles.menu}
+          onPress={() => navigation.navigate("After")}
+        >
+          <Text style={styles.text2}>다음 화면으로 넘어감</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.footer}>
         <Text style={styles.footer}>Enonymous</Text>
       </View>
     </View>
   );
-}
+};
 const styles = StyleSheet.create({
   body: {
     flex: 1,
@@ -139,6 +147,23 @@ const styles = StyleSheet.create({
     color: "gray",
     fontSize: 30,
   },
+  text2: {
+    color: "white",
+    fontSize: 30,
+  },
+  menu: {
+    marginTop: 50,
+    fontSize: 30,
+    borderColor: "#00462a",
+    backgroundColor: "#00462a",
+    margin: 10,
+    borderWidth: 2,
+    borderRadius: 15,
+    width: "70%",
+    height: "10%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   footer: {
     flex: 0.8,
     color: "white",
@@ -149,3 +174,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#00462a",
   },
 });
+export default clinicInfo;
