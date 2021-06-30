@@ -1,7 +1,8 @@
 import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import "react-native-gesture-handler";
 
-export default function MainPage() {
+export default function patientInfo() {
   return (
     <View style={styles.body}>
       <View style={styles.container1}>

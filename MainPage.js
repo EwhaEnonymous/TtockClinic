@@ -2,12 +2,9 @@ import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 // import QR from "./myQR";
+import "react-native-gesture-handler";
 
-export default function MainPage() {
-  const routeChange = () => {
-    let path = `/qr`;
-    history.pushState(path);
-  };
+const MainPage = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <View style={styles.container1}>
@@ -16,28 +13,28 @@ export default function MainPage() {
       <View style={styles.container2}>
         <TouchableOpacity
           style={styles.menu}
-          onPress={() => Alert.alert("버튼눌림")}
+          onPress={() => navigation.navigate("Patient")}
         >
           <Icon name="analytics-outline" size={50}></Icon>
           <Text style={styles.text}>확진자 추이</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menu}
-          onPress={() => Alert.alert("버튼눌림")}
+          onPress={() => navigation.navigate("CurLoc")}
         >
           <Icon name="navigate-outline" size={50}></Icon>
           <Text style={styles.text}>가까운 선별진료소</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menu}
-          onPress={() => Alert.alert("버튼눌림")}
+          onPress={() => navigation.navigate("CurLoc")}
         >
           <Icon name="map-outline" size={50}></Icon>
           <Text style={styles.text}>지역별 선별진료소</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menu}
-          onPress={() => Alert.alert("버튼눌림")}
+          onPress={() => navigation.navigate("QR")}
         >
           <Icon name="qr-code-outline" size={50}></Icon>
           <Text style={styles.text}>나의 QR</Text>
@@ -48,7 +45,7 @@ export default function MainPage() {
       </View>
     </View>
   );
-}
+};
 const styles = StyleSheet.create({
   body: {
     flex: 1,
@@ -103,3 +100,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#00462a",
   },
 });
+export default MainPage;

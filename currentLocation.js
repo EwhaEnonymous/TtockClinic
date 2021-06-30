@@ -1,12 +1,9 @@
 import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+// import Icon from "react-native-vector-icons/Ionicons";
+import "react-native-gesture-handler";
 
-export default function MainPage() {
-  const routeChange = () => {
-    let path = `/qr`;
-    history.pushState(path);
-  };
+const currentLocation = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <View style={styles.container1}>
@@ -17,7 +14,7 @@ export default function MainPage() {
         <Text style={styles.text}>지도 API 들어갈 화면</Text>
         <TouchableOpacity
           style={styles.menu}
-          onPress={() => Alert.alert("다음 화면으로")}
+          onPress={() => navigation.navigate("Clinic")}
         >
           <Text style={styles.text2}>다음 화면으로 넘어감</Text>
         </TouchableOpacity>
@@ -27,7 +24,7 @@ export default function MainPage() {
       </View>
     </View>
   );
-}
+};
 const styles = StyleSheet.create({
   body: {
     flex: 1,
@@ -87,3 +84,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#00462a",
   },
 });
+export default currentLocation;
