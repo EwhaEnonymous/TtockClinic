@@ -17,9 +17,9 @@ const currentLocation = ({ navigation }) => {
         <MapView
           style={styles.map}
           initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
+            latitude: 37.5326,
+            longitude: 127.024612,
+            latitudeDelta: 0.05,
             longitudeDelta: 0.0421,
           }}
         >
