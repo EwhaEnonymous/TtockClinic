@@ -4,9 +4,9 @@
     "slug": "ttclinic",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ttockIcon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/ttockIcon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -24,11 +24,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF",
-        "package": "com.enonymousewha.ttclinic",
-        "versionCode": 1
+        "backgroundColor": "#FFFFFF"
       },
-      "package": "com.enonymousewha.ttclinic"
+      "package": "com.ewha_enonymous.ttclinic"
     },
     "web": {
       "favicon": "./assets/favicon.png"
