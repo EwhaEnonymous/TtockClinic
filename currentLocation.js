@@ -2,6 +2,8 @@ import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 // import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
+import { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView from "react-native-maps";
 
 const currentLocation = ({ navigation }) => {
   return (
@@ -10,8 +12,22 @@ const currentLocation = ({ navigation }) => {
         <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
       </View>
       {/* 임시 */}
+
       <View style={styles.container2}>
-        <Text style={styles.text}>지도 API 들어갈 화면</Text>
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        >
+          <MapView.Marker
+            coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
+          />
+        </MapView>
+
         <TouchableOpacity
           style={styles.menu}
           onPress={() => navigation.navigate("Clinic")}
@@ -52,6 +68,13 @@ const styles = StyleSheet.create({
     margin: 55,
     justifyContent: "center",
     alignItems: "center",
+  },
+  map: {
+    flex: 1,
+    width: "100%",
+    borderColor: "black",
+    borderWidth: 2,
+    backgroundColor: "red",
   },
   text: {
     color: "gray",
