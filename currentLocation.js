@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 // import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import { PROVIDER_GOOGLE } from "react-native-maps";
 import MapView from "react-native-maps";
+import * as Location from "expo-location";
 
-const currentLocation = ({ navigation }) => {
+function currentLocation({ navigation }) {
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      });
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  // let lat = 0;
+  // let long = 0;
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+    console.log(location.latitude);
+
+    console.log(location.longitude);
+  }
   return (
     <View style={styles.body}>
       <View style={styles.container1}>
@@ -14,19 +45,30 @@ const currentLocation = ({ navigation }) => {
       {/* 임시 */}
 
       <View style={styles.container2}>
-        <MapView
-          style={styles.map}
-          initialRegion={{
-            latitude: 37.5326,
-            longitude: 127.024612,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.0421,
-          }}
-        >
-          <MapView.Marker
-            coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
-          />
-        </MapView>
+        <Text>{text}</Text>
+        {location && (
+          <MapView
+            provider={PROVIDER_GOOGLE}
+            style={styles.map}
+            initialRegion={{
+              latitude: location.latitude,
+              longitude: location.longitude,
+              latitudeDelta: 0.05,
+              longitudeDelta: 0.0421,
+              // latitude: Location.geocodeAsync(latitude),
+              // longitude: location.longitude,
+              // latitudeDelta: 0.05,
+              // longitudeDelta: 0.0421,
+            }}
+          >
+            <MapView.Marker
+              coordinate={{
+                latitude: location.latitude,
+                longitude: location.longitude,
+              }}
+            />
+          </MapView>
+        )}
 
         <TouchableOpacity
           style={styles.menu}
@@ -40,7 +82,7 @@ const currentLocation = ({ navigation }) => {
       </View>
     </View>
   );
-};
+}
 const styles = StyleSheet.create({
   body: {
     flex: 1,
