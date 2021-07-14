@@ -5,6 +5,8 @@ import "react-native-gesture-handler";
 import { PROVIDER_GOOGLE } from "react-native-maps";
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
+//search
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 function currentLocation({ navigation }) {
   const [location, setLocation] = useState(null);
@@ -43,7 +45,6 @@ function currentLocation({ navigation }) {
         <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
       </View>
       {/* 임시 */}
-
       <View style={styles.container2}>
         <Text>{text}</Text>
         {location && (
@@ -65,6 +66,18 @@ function currentLocation({ navigation }) {
               coordinate={{
                 latitude: location.latitude,
                 longitude: location.longitude,
+              }}
+            />
+            <GooglePlacesAutocomplete
+              placeholder='Search'
+              onPress={(data, details = null) => {
+                // 'details' is provided when fetchDetails = true
+                console.log(data, details);
+              }}
+              query={{
+                key: "AIzaSyBbTEHujkplPpDLpPwyhAGC-9yywmDuaCo",
+                language: 'ko',
+                components: 'country:ko',
               }}
             />
           </MapView>

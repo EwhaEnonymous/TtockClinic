@@ -2,6 +2,7 @@ import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
+import constants from "./constants"
 
 const clinicInfo = ({ navigation }) => {
   return (
