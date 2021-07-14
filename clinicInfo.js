@@ -79,11 +79,13 @@ const styles = StyleSheet.create({
   },
   header: {
     color: "white",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     fontWeight: "bold",
-    height: 50,
-    margin: 55,
+    height: "50%",
+    // height: constants.height > 800 ? "80%" : "50%",
+    margin: constants.height > 800 ? "15%" : "9%",
+
     justifyContent: "center",
     alignItems: "center",
   },
@@ -165,9 +167,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   footer: {
-    flex: 0.8,
+    flex: 0.7,
     color: "white",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     justifyContent: "center",
     alignItems: "center",
