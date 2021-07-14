@@ -5,8 +5,12 @@ import "react-native-gesture-handler";
 import { PROVIDER_GOOGLE } from "react-native-maps";
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
+<<<<<<< HEAD
 //search
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+=======
+import constants from "./constants";
+>>>>>>> 53c29e9638919ce48c5e65513389b06b78d48979
 
 function currentLocation({ navigation }) {
   const [location, setLocation] = useState(null);
@@ -111,16 +115,18 @@ const styles = StyleSheet.create({
   container2: {
     flex: 6,
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: "2%",
+    marginBottom: "2%",
   },
   header: {
     color: "white",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     fontWeight: "bold",
-    height: 50,
-    margin: 55,
+    height: "50%",
+    // height: constants.height > 800 ? "80%" : "50%",
+    margin: constants.height > 800 ? "15%" : "9%",
+
     justifyContent: "center",
     alignItems: "center",
   },
@@ -133,18 +139,18 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "gray",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 18,
   },
   text2: {
     color: "white",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 18,
   },
   menu: {
     marginTop: 50,
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 18,
     borderColor: "#00462a",
     backgroundColor: "#00462a",
-    margin: 10,
+    fontSize: constants.width > 370 ? 10 : 5,
     borderWidth: 2,
     borderRadius: 15,
     width: "70%",
@@ -153,9 +159,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   footer: {
-    flex: 0.8,
+    flex: 0.7,
     color: "white",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     justifyContent: "center",
     alignItems: "center",

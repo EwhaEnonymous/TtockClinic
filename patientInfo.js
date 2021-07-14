@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import "react-native-gesture-handler";
+import constants from "./constants";
 
 export default function patientInfo() {
   return (
@@ -88,17 +89,19 @@ const styles = StyleSheet.create({
   container2: {
     flex: 6,
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: "2%",
+    marginBottom: "2%",
   },
 
   header: {
     color: "white",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     fontWeight: "bold",
-    height: 50,
-    margin: 55,
+    height: "50%",
+    // height: constants.height > 800 ? "80%" : "50%",
+    margin: constants.height > 800 ? "15%" : "9%",
+
     justifyContent: "center",
     alignItems: "center",
   },
@@ -107,7 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  up0text: { fontSize: 50, color: "red" },
+  up0text: { fontSize: constants.width > 370 ? 30 : 18, color: "red" },
   container3: {
     flex: 1,
     width: "96%",
@@ -174,7 +177,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black",
-    fontSize: 15,
+    fontSize: constants.width > 370 ? 15 : 9,
   },
   btn: {
     margin: 5,
@@ -193,13 +196,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   graph: {
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 18,
     fontWeight: "900",
   },
   footer: {
-    flex: 0.8,
+    flex: 0.7,
     color: "white",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     justifyContent: "center",
     alignItems: "center",
