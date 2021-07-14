@@ -1,8 +1,9 @@
 import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-// import QR from "./myQR";
+import QR from "./myQR";
 import "react-native-gesture-handler";
+import constants from "./constants";
 
 const MainPage = ({ navigation }) => {
   return (
@@ -16,14 +17,14 @@ const MainPage = ({ navigation }) => {
           onPress={() => navigation.navigate("Patient")}
         >
           <Icon name="analytics-outline" size={50}></Icon>
-          <Text style={styles.text}>확진자 추이</Text>
+          <Text style={styles.text}>확진자 추이{constants.width}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menu}
           onPress={() => navigation.navigate("CurLoc")}
         >
           <Icon name="navigate-outline" size={50}></Icon>
-          <Text style={styles.text}>가까운 선별진료소</Text>
+          <Text style={styles.text}>가까운 선별진료소{constants.height}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menu}
@@ -55,45 +56,51 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#00462a",
     alignItems: "center",
-    marginTop: 0,
-    height: 5,
+    // height: constants.height * 0.5,
   },
   container2: {
     flex: 6,
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: "2%",
+    marginBottom: "2%",
+
+    // marginTop: constants.height > 800 ? "2%" : "2%",
+    // marginBottom: constants.height > 800 ? "2%" : "2%",
   },
   header: {
     color: "white",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     fontWeight: "bold",
-    height: 50,
-    margin: 55,
+    height: "50%",
+    // height: constants.height > 800 ? "80%" : "50%",
+    margin: constants.height > 800 ? "15%" : "9%",
+
     justifyContent: "center",
     alignItems: "center",
   },
   menu: {
     flex: 1,
     backgroundColor: "white",
-    margin: 10,
+    // margin: constants.height > 800 ? 10 : 5,
+    margin: "2%",
     borderWidth: 2,
     borderRadius: 15,
     width: "90%",
     borderColor: "#00462a",
-    height: "20%",
+    // height: "20%",
     justifyContent: "center",
     alignItems: "center",
   },
   text: {
     color: "gray",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 18,
+    marginTop: constants.height > 800 ? "2%" : "0.3%",
   },
   footer: {
-    flex: 0.8,
+    flex: 0.7,
     color: "white",
-    fontSize: 30,
+    fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     justifyContent: "center",
     alignItems: "center",
