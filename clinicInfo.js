@@ -2,12 +2,8 @@ import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
-<<<<<<< HEAD
-import constants from "./constants"
-
-=======
 import constants from "./constants";
->>>>>>> 53c29e9638919ce48c5e65513389b06b78d48979
+
 const clinicInfo = ({ navigation }) => {
   return (
     <View style={styles.body}>
