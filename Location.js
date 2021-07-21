@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import constants from "./constants";
-
+import Sido from "./Sido";
+import Sigungu from "./Sigungu";
 const Location = ({ navigation }) => {
   return (
     <View style={styles.body}>
@@ -11,7 +12,8 @@ const Location = ({ navigation }) => {
         <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
       </View>
       <View style={styles.container2}>
-        <Text>주소 검색 창</Text>
+        <Sido />
+        <Sigungu />
         <TouchableOpacity
           style={styles.menu}
           onPress={() => navigation.navigate("Clinic")}
