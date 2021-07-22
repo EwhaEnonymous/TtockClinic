@@ -4,7 +4,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import constants from "./constants";
 import Sido from "./Sido";
-import Sigungu from "./Sigungu";
 const Location = ({ navigation }) => {
   return (
     <View style={styles.body}>
@@ -13,7 +12,6 @@ const Location = ({ navigation }) => {
       </View>
       <View style={styles.container2}>
         <Sido />
-        <Sigungu />
         <TouchableOpacity
           style={styles.menu}
           onPress={() => navigation.navigate("Clinic")}
