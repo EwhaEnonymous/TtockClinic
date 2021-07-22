@@ -5,10 +5,10 @@ import { Keyboard } from "react-native";
 function Dropdown() {
   // const [open, setOpen] = useState(false);
   // const [value, setValue] = useState(null);
-  const [sido, setSido] = useState([]);
-  const [seoul, setSeoul] = useState([]);
-  const [gyeonggi, setGyeonggi] = useState([]);
-  const sidoArr = [
+  const [Sido, setSido] = useState([]);
+  const [Seoul, setSeoul] = useState([]);
+  const [Gyeonggi, setGyeonggi] = useState([]);
+  const SidoArr = [
     { label: "서울", value: "seoul" },
     { label: "경기", value: "gyeonggi" },
     { label: "인천", value: "incheon" },
@@ -27,7 +27,7 @@ function Dropdown() {
     { label: "경상북도", value: "geongbuk" },
     { label: "경상남도", value: "geongnam" },
   ]; //시도 data
-  const seoulArr = [
+  const SeoulArr = [
     { label: "강남구", value: "gangnam" },
     { label: "강동구", value: "gangdong" },
     { label: "강북구", value: "gangbuk" },
@@ -54,7 +54,7 @@ function Dropdown() {
     { label: "중구", value: "joongu" },
     { label: "중랑구", value: "joonglang" },
   ]; //서울시 구 data
-  const gyeonggiArr = [
+  const GyeonggiArr = [
     { label: "가평군", value: "gapyeong" },
     { label: "고양시", value: "goyang" },
     { label: "과천시", value: "gwacheon" },
@@ -87,44 +87,48 @@ function Dropdown() {
     { label: "하남시", value: "hanam" },
     { label: "화성시", value: "hwaseong" },
   ]; //경기도 시군구 data
+  const placeholderText = "선택하세요";
   return (
-    <div>
+    <>
       <Text>시/도</Text>
       <RNPickerSelect
-        onValueChange={(sido) => setSido(sido)}
-        items={sidoArr}
+        placeholder={{ label: placeholderText }}
+        onValueChange={(Sido) => setSido(Sido)}
+        items={SidoArr}
         onOpen={() => {
           Keyboard.dismiss();
         }}
       />
-      {console.log("sido", sido)}
-      {sido === "seoul" ? (
-        <div>
+      {console.log("sido", Sido)}
+      {Sido === "seoul" ? (
+        <>
           <Text>시/군/구</Text>
           <RNPickerSelect
-            onValueChange={(seoul) => setSeoul(seoul)}
-            items={seoulArr}
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Seoul) => setSeoul(Seoul)}
+            items={SeoulArr}
             onOpen={() => {
               Keyboard.dismiss();
             }}
           />
-        </div>
-      ) : sido === "gyeonggi" ? (
-        <div>
+        </>
+      ) : Sido === "gyeonggi" ? (
+        <>
           <Text>시/군/구</Text>
           <RNPickerSelect
-            onValueChange={(gyeonggi) => setGyeonggi(gyeonggi)}
-            items={gyeonggiArr}
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Gyeonggi) => setGyeonggi(Gyeonggi)}
+            items={GyeonggiArr}
             onOpen={() => {
               Keyboard.dismiss();
             }}
           />
-        </div>
+        </>
       ) : (
         console.log("not seoul, not gyeonggi")
       )}
-      {console.log("sigungu", seoul)} {console.log("sigungu", gyeonggi)}
-    </div>
+      {/* {console.log("sigungu", Seoul)} {console.log("sigungu", Gyeonggi)} */}
+    </>
   );
 }
 

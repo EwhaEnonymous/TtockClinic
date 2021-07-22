@@ -3,7 +3,7 @@ import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import constants from "./constants";
-import Sido from "./Sido";
+import Dropdown from "./Dropdown";
 const Location = ({ navigation }) => {
   return (
     <View style={styles.body}>
@@ -11,12 +11,12 @@ const Location = ({ navigation }) => {
         <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
       </View>
       <View style={styles.container2}>
-        <Sido />
+        <Dropdown />
         <TouchableOpacity
           style={styles.menu}
           onPress={() => navigation.navigate("Clinic")}
         >
-          <Text style={styles.text2}>다음 화면으로 넘어감</Text>
+          <Text style={styles.text2}>선별진료소 찾기!</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.footer}>
