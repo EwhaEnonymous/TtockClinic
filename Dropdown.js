@@ -87,6 +87,80 @@ function Dropdown() {
     { label: "하남시", value: "hanam" },
     { label: "화성시", value: "hwaseong" },
   ]; //경기도 시군구 data
+  const IncheonArr = [
+    { label: "동구", value: "dong"},
+    { label: "미추홀구", value: "michuhol"},
+    { label: "연수구", value: "yeonsoo"},
+    { label: "남동구", value: "namdong"},
+    { label: "부평구", value: "boopyeong"},
+    { label: "계양구", value: "gyeyang"},
+    { label: "서구", value: "seo"},
+    { label: "강화군", value: "ganhwa"},
+    { label: "옹진군", value: "ongjin"},    
+  ];
+  const BoosanArr = [
+    { label: "중구", value: "joong"},
+    { label: "서구", value: "seo"},
+    { label: "동구", value: "dong"},
+    { label: "영도구", value: "youngdo"},
+    { label: "부산진구", value: "boosanjin"},
+    { label: "동래구", value: "dongrae"},
+    { label: "남구", value: "nam"},
+    { label: "북구", value: "book"},
+    { label: "해운대구", value: "haewoondae"},
+    { label: "사하구", value: "saha"},
+    { label: "금정구", value: "geumjeong"},
+    { label: "강서구", value: "kangseo"},
+    { label: "연제구", value: "yeonjae"},
+    { label: "수영구", value: "sooyoung"},
+    { label: "사상구", value: "sasang"},
+    { label: "기장군", value: "kijang"},
+  ];
+  const GwangjooArr = [
+    { label: "광산구", value: "gwangsan"},
+    { label: "동구", value: "dong"},
+    { label: "서구", value: "seo"},
+    { label: "남구", value: "nam"},
+    { label: "북구", value: "book"},
+  ];
+  const UlsanArr = [
+    { label: "중구", value: "joong"},
+    { label: "남구", value: "nam"},
+    { label: "동구", value: "dong"},
+    { label: "북구", value: "book"},
+    { label: "울주구", value: "ulzoo"},
+  ];
+  const GangwonArr = [
+    { label: "춘천시", value: "chooncheon"},
+    { label: "원주시", value: "wonjoo"},
+    { label: "강릉시", value: "gangreung"},
+    { label: "동해시", value: "donghae"},
+    { label: "태백시", value: "taebaek"},
+    { label: "속초시", value: "sokcho"},
+    { label: "삼척시", value: "samcheok"},
+    { label: "홍천군", value: "hongcheon"},
+    { label: "횡성군", value: "hoengseong"},
+    { label: "영월군", value: "yeongwol"},
+    { label: "평창군", value: "pyeonchang"},
+    { label: "정선군", value: "jeongseon"},
+    { label: "철원군", value: "chulwon"},
+    { label: "화천군", value: "hwacheon"},
+    { label: "양구군", value: "yanggoo"},
+    { label: "인제군", value: "injae"},
+    { label: "고성군", value: "goseong"},
+    { label: "양양군", value: "yangyang"},
+  ];
+  const JejuArr = [
+    { label: "", value: ""},
+    { label: "", value: ""},
+    { label: "", value: ""},
+    { label: "", value: ""},
+    { label: "", value: ""},
+    { label: "", value: ""},
+    { label: "", value: ""},
+
+  ];
+
   const placeholderText = "선택하세요";
   return (
     <>
