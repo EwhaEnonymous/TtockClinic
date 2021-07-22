@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   text2: {
-    fontSize: constants.width > 370 ? 25 : 20,
+    fontSize: constants.width > 370 ? 30 : 24,
     alignItems: "center",
     color: "white",
     justifyContent: "center",

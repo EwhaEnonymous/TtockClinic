@@ -5,8 +5,7 @@ import { Keyboard, StyleSheet } from "react-native";
 import constants from "./constants";
 
 function Dropdown() {
-  // const [open, setOpen] = useState(false);
-  // const [value, setValue] = useState(null);
+  const [init, setInit] = useState(null);
   const [Sido, setSido] = useState([]);
   const [Seoul, setSeoul] = useState([]);
   const [Gyeonggi, setGyeonggi] = useState([]);
@@ -16,6 +15,15 @@ function Dropdown() {
   const [Ulsan, setUlsan] = useState([]);
   const [Gangwon, setGangwon] = useState([]);
   const [Jeju, setJeju] = useState([]);
+  const [Daejeon, setDaejeon] = useState([]);
+  const [Daegu, setDaegu] = useState([]);
+  const [Choongbuk, setChoongbuk] = useState([]);
+  const [Choongnam, setChoongnam] = useState([]);
+  const [Jeonbuk, setJeonbuk] = useState([]);
+  const [Jeonnam, setJeonnam] = useState([]);
+  const [Gyeongbuk, setGyeongbuk] = useState([]);
+  const [Gyeongnam, setGyeongnam] = useState([]);
+  const [Sejong, setSejong] = useState([]);
 
   const SidoArr = [
     { label: "서울", value: "seoul" },
@@ -33,8 +41,8 @@ function Dropdown() {
     { label: "충청남도", value: "choongnam" },
     { label: "전라북도", value: "jeonbuk" },
     { label: "전라남도", value: "jeonnam" },
-    { label: "경상북도", value: "geongbuk" },
-    { label: "경상남도", value: "geongnam" },
+    { label: "경상북도", value: "gyeongbuk" },
+    { label: "경상남도", value: "gyeongnam" },
   ]; //시도 data
   const SeoulArr = [
     { label: "강남구", value: "gangnam" },
@@ -163,7 +171,7 @@ function Dropdown() {
     { label: "제주시", value: "jeju" },
     { label: "서귀포시", value: "seogwipo" },
   ];
-  const SejongArr = [];
+  // const SejongArr = [];
   const DaejeonArr = [
     { label: "동구", value: "dong" },
     { label: "중구", value: "joong" },
@@ -408,15 +416,134 @@ function Dropdown() {
           <RNPickerSelect
             placeholder={{ label: placeholderText }}
             onValueChange={(Jeju) => setJeju(Jeju)}
-            items={GwangjuArr}
+            items={JejuArr}
             onOpen={() => {
               Keyboard.dismiss();
             }}
             style={pickerStyle}
           />
         </>
+      ) : Sido === "daejeon" ? (
+        <>
+          <Text style={styles.title}>시/군/구</Text>
+          <RNPickerSelect
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Daejeon) => setDaejeon(Daejeon)}
+            items={DaejeonArr}
+            onOpen={() => {
+              Keyboard.dismiss();
+            }}
+            style={pickerStyle}
+          />
+        </>
+      ) : Sido === "daegu" ? (
+        <>
+          <Text style={styles.title}>시/군/구</Text>
+          <RNPickerSelect
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Daegu) => setDaegu(Daegu)}
+            items={DaeguArr}
+            onOpen={() => {
+              Keyboard.dismiss();
+            }}
+            style={pickerStyle}
+          />
+        </>
+      ) : Sido === "choongbuk" ? (
+        <>
+          <Text style={styles.title}>시/군/구</Text>
+          <RNPickerSelect
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Choongbuk) => setChoongbuk(Choongbuk)}
+            items={ChoongbukArr}
+            onOpen={() => {
+              Keyboard.dismiss();
+            }}
+            style={pickerStyle}
+          />
+        </>
+      ) : Sido === "choongnam" ? (
+        <>
+          <Text style={styles.title}>시/군/구</Text>
+          <RNPickerSelect
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Choongnam) => setChoongnam(Choongnam)}
+            items={ChoongnamArr}
+            onOpen={() => {
+              Keyboard.dismiss();
+            }}
+            style={pickerStyle}
+          />
+        </>
+      ) : Sido === "jeonbuk" ? (
+        <>
+          <Text style={styles.title}>시/군/구</Text>
+          <RNPickerSelect
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Jeonbuk) => setJeonbuk(Jeonbuk)}
+            items={JeonbukArr}
+            onOpen={() => {
+              Keyboard.dismiss();
+            }}
+            style={pickerStyle}
+          />
+        </>
+      ) : Sido === "jeonbuk" ? (
+        <>
+          <Text style={styles.title}>시/군/구</Text>
+          <RNPickerSelect
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Jeonbuk) => setJeonbuk(Jeonbuk)}
+            items={JeonbukArr}
+            onOpen={() => {
+              Keyboard.dismiss();
+            }}
+            style={pickerStyle}
+          />
+        </>
+      ) : Sido === "jeonnam" ? (
+        <>
+          <Text style={styles.title}>시/군/구</Text>
+          <RNPickerSelect
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Jeonnam) => setJeonnam(Jeonnam)}
+            items={JeonnamArr}
+            onOpen={() => {
+              Keyboard.dismiss();
+            }}
+            style={pickerStyle}
+          />
+        </>
+      ) : Sido === "gyeongbuk" ? (
+        <>
+          <Text style={styles.title}>시/군/구</Text>
+          <RNPickerSelect
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Gyeongbuk) => setGyeongbuk(Gyeongbuk)}
+            items={GyeongbukArr}
+            onOpen={() => {
+              Keyboard.dismiss();
+            }}
+            style={pickerStyle}
+          />
+        </>
+      ) : Sido === "gyeongnam" ? (
+        <>
+          <Text style={styles.title}>시/군/구</Text>
+          <RNPickerSelect
+            placeholder={{ label: placeholderText }}
+            onValueChange={(Gyeongnam) => setGyeongnam(Gyeongnam)}
+            items={GyeongnamArr}
+            onOpen={() => {
+              Keyboard.dismiss();
+            }}
+            style={pickerStyle}
+          />
+        </>
+      ) : Sido === "sejong" ? (
+        console.log("sejong")
       ) : (
-        console.log("나머지")
+        console.log("none")
       )}
       {/* {console.log("sigungu", Seoul)} {console.log("sigungu", Gyeonggi)} */}
     </>
@@ -438,6 +565,7 @@ const pickerStyle = {
     color: "black",
     borderColor: "#00462a",
     borderWidth: "1.5px",
+    borderRadius: "5px",
     margin: 12,
   },
   inputAndroid: {
@@ -447,6 +575,7 @@ const pickerStyle = {
     color: "black",
     borderColor: "#00462a",
     borderWidth: "1.5px",
+    borderRadius: "5px",
     margin: 12,
   },
   placeholderColor: { color: "red" },
