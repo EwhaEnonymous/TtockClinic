@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Text } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-import { Keyboard } from "react-native";
+import { Keyboard, StyleSheet } from "react-native";
+import constants from "./constants";
+
 function Dropdown() {
   // const [open, setOpen] = useState(false);
   // const [value, setValue] = useState(null);
@@ -90,7 +92,7 @@ function Dropdown() {
   const placeholderText = "선택하세요";
   return (
     <>
-      <Text>시/도</Text>
+      <Text style={styles.title}>시/도</Text>
       <RNPickerSelect
         placeholder={{ label: placeholderText }}
         onValueChange={(Sido) => setSido(Sido)}
@@ -98,11 +100,12 @@ function Dropdown() {
         onOpen={() => {
           Keyboard.dismiss();
         }}
+        style={pickerStyle}
       />
       {console.log("sido", Sido)}
       {Sido === "seoul" ? (
         <>
-          <Text>시/군/구</Text>
+          <Text style={styles.title}>시/군/구</Text>
           <RNPickerSelect
             placeholder={{ label: placeholderText }}
             onValueChange={(Seoul) => setSeoul(Seoul)}
@@ -110,11 +113,12 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
+            style={pickerStyle}
           />
         </>
       ) : Sido === "gyeonggi" ? (
         <>
-          <Text>시/군/구</Text>
+          <Text style={styles.title}>시/군/구</Text>
           <RNPickerSelect
             placeholder={{ label: placeholderText }}
             onValueChange={(Gyeonggi) => setGyeonggi(Gyeonggi)}
@@ -122,6 +126,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
+            style={pickerStyle}
           />
         </>
       ) : (
@@ -131,5 +136,34 @@ function Dropdown() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: constants.width > 370 ? 30 : 18,
+    marginTop: "8%",
+    fontWeight: "bold",
+  },
+});
+const pickerStyle = {
+  inputIOS: {
+    height: 60,
+    fontSize: constants.width > 370 ? 25 : 20,
+    paddingLeft: 30,
+    color: "black",
+    borderColor: "#00462a",
+    borderWidth: "1.5px",
+    margin: 12,
+  },
+  inputAndroid: {
+    height: 60,
+    fontSize: constants.width > 370 ? 25 : 20,
+    paddingLeft: 30,
+    color: "black",
+    borderColor: "#00462a",
+    borderWidth: "1.5px",
+    margin: 12,
+  },
+  placeholderColor: { color: "red" },
+};
 
 export default Dropdown;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import Icon from "react-native-vector-icons/FontAwesome";
+import Icon2 from "react-native-vector-icons/AntDesign";
 import "react-native-gesture-handler";
 import constants from "./constants";
 import Dropdown from "./Dropdown";
@@ -11,12 +12,24 @@ const Location = ({ navigation }) => {
         <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
       </View>
       <View style={styles.container2}>
+        <View style={{ marginTop: 30 }}>
+          <Icon name="hospital-o" size={60}></Icon>
+        </View>
+
+        <Text style={styles.text1}>
+          찾고 싶은 선별진료소의 위치를 입력해주세요.
+        </Text>
         <Dropdown />
         <TouchableOpacity
           style={styles.menu}
           onPress={() => navigation.navigate("Clinic")}
         >
-          <Text style={styles.text2}>선별진료소 찾기!</Text>
+          <View>
+            <Text style={styles.text2}>
+              <Icon2 name="arrowright" size={30} color={"white"} />
+              &nbsp; 선별진료소 찾기!
+            </Text>
+          </View>
         </TouchableOpacity>
       </View>
       <View style={styles.footer}>
@@ -51,7 +64,6 @@ const styles = StyleSheet.create({
     height: "50%",
     // height: constants.height > 800 ? "80%" : "50%",
     margin: constants.height > 800 ? "15%" : "9%",
-
     justifyContent: "center",
     alignItems: "center",
   },
@@ -63,11 +75,29 @@ const styles = StyleSheet.create({
     fontSize: constants.width > 370 ? 10 : 8,
     borderWidth: 2,
     borderRadius: 15,
-    width: "70%",
+    width: "78%",
     height: "10%",
     justifyContent: "center",
     alignItems: "center",
+    position: "absolute",
+    top: "70%",
   },
+  text1: {
+    marginTop: "8%",
+    fontSize: constants.width > 370 ? 20 : 16,
+    alignItems: "center",
+    color: "#00462a",
+    fontWeight: "bold",
+  },
+  text2: {
+    fontSize: constants.width > 370 ? 25 : 20,
+    alignItems: "center",
+    color: "white",
+    justifyContent: "center",
+    fontWeight: "bold",
+    letterSpacing: 3,
+  },
+
   footer: {
     flex: 0.7,
     color: "white",
