@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
-
+import QrGenerator from "./qrGenerator";
 export default function myQR() {
   return (
     <View style={styles.body}>
@@ -21,7 +21,8 @@ export default function myQR() {
         <Text style={styles.title}>나의 QR</Text>
       </View>
       <View style={styles.container3}>
-        <Icon name="qr-code-outline" size={300}></Icon>
+        {/* <Icon name="qr-code-outline" size={300}></Icon> */}
+        <QrGenerator />
       </View>
       <View style={styles.footer}>
         <Text style={styles.footer}>Enonymous</Text>
