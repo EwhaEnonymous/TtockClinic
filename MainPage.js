@@ -24,11 +24,13 @@ const MainPage = ({ navigation }) => {
             color: "#fff",
             letterSpacing: 3,
             fontWeight: "bold",
+            fontSize: screenwidth > 365 ? 20 : 15,
           },
         }}
         placement="center"
         rightComponent={{ icon: "home", color: "#fff" }}
         backgroundColor={"#00462a"}
+        onPress={() => navigation.navigate("Main")}
       />
       <View style={{ flex: 1, marginTop: "8%", marginBottom: "8%" }}>
         <TouchableOpacity
