@@ -52,7 +52,7 @@ const MainPage = ({ navigation }) => {
               <Icon name="analytics-outline" size={50}></Icon>
               <Card.Title
                 style={{
-                  fontSize: screenwidth > 500 ? 22 : 18,
+                  fontSize: screenwidth > 500 ? 30 : 20,
                   paddingTop: 8,
                 }}
               >
