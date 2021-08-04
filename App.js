@@ -1,6 +1,5 @@
 import React from "react";
-// import MainPage from "./MainPage";
-import MainPage from "./Temp/MainPage";
+import MainPage from "./MainPage";
 import QR from "./myQR";
 import CurLoc from "./currentLocation";
 import Clinic from "./clinicInfo";

@@ -1,49 +1,151 @@
 import React from "react";
-import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import QR from "./myQR";
-import inspect from "./inspection";
 import "react-native-gesture-handler";
-import constants from "./constants";
-
+import { Header, Card } from "react-native-elements";
 const MainPage = ({ navigation }) => {
   return (
     <View style={styles.body}>
-      <View style={styles.container1}>
-        <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
-      </View>
-      <View style={styles.container2}>
+      <Header
+        placement="left"
+        leftComponent={{ icon: "menu", color: "#fff" }}
+        centerComponent={{
+          text: "💉똑똑 선별진료소💉",
+          style: {
+            color: "#fff",
+            letterSpacing: 3,
+            fontWeight: "bold",
+          },
+        }}
+        placement="center"
+        rightComponent={{ icon: "home", color: "#fff" }}
+        backgroundColor={"#00462a"}
+      />
+      <View style={{ flex: 1 }}>
         <TouchableOpacity
-          style={styles.menu}
+          style={{ flex: 1 }}
           onPress={() => navigation.navigate("Patient")}
         >
-          <Icon name="analytics-outline" size={50}></Icon>
-          <Text style={styles.text}>확진자 추이{constants.width}</Text>
+          <Card
+            containerStyle={{
+              borderColor: "#00462a",
+              borderWidth: 2,
+              borderRadius: 20,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginLeft: 30,
+                marginRight: 80,
+              }}
+            >
+              <Icon name="analytics-outline" size={50}></Icon>
+              <Card.Title style={{ fontSize: 30, paddingTop: 8 }}>
+                코로나 정보
+              </Card.Title>
+            </View>
+            <Card.Divider />
+            <Text style={{ fontSize: 18, textAlign: "center" }}>
+              오늘의 코로나 확진자 정보를 알아보세요
+            </Text>
+          </Card>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.menu}
+          style={{ flex: 1 }}
           onPress={() => navigation.navigate("CurLoc")}
         >
-          <Icon name="navigate-outline" size={50}></Icon>
-          <Text style={styles.text}>가까운 선별진료소{constants.height}</Text>
+          <Card
+            containerStyle={{
+              borderColor: "#00462a",
+              borderWidth: 2,
+              borderRadius: 20,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginLeft: 30,
+                marginRight: 80,
+              }}
+            >
+              <Icon name="navigate-outline" size={40}></Icon>
+              <Card.Title style={{ fontSize: 30, paddingTop: 8 }}>
+                가까운 선별진료소
+              </Card.Title>
+            </View>
+            <Card.Divider />
+            <Text style={{ fontSize: 18, textAlign: "center" }}>
+              현위치에서 가장 가까운 선별진료소를 찾아보세요
+            </Text>
+          </Card>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.menu}
+          style={{ flex: 1 }}
           onPress={() => navigation.navigate("Location")}
         >
-          <Icon name="map-outline" size={50}></Icon>
-          <Text style={styles.text}>지역별 선별진료소</Text>
+          <Card
+            containerStyle={{
+              borderColor: "#00462a",
+              borderWidth: 2,
+              borderRadius: 20,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginLeft: 30,
+                marginRight: 80,
+              }}
+            >
+              <Icon name="map-outline" size={50}></Icon>
+              <Card.Title style={{ fontSize: 30, paddingTop: 8 }}>
+                지역별 선별진료소
+              </Card.Title>
+            </View>
+            <Card.Divider />
+            <Text style={{ fontSize: 18, textAlign: "center" }}>
+              원하는 지역의 선별진료소를 찾아보세요
+            </Text>
+          </Card>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.menu}
-          onPress={() => navigation.navigate("inspect")}
+          style={{ flex: 1 }}
+          onPress={() => navigation.navigate("QR")}
         >
-          <Icon name="qr-code-outline" size={50}></Icon>
-          <Text style={styles.text}>나의 QR</Text>
+          <Card
+            containerStyle={{
+              borderColor: "#00462a",
+              borderWidth: 2,
+              borderRadius: 20,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginLeft: 30,
+                marginRight: 80,
+              }}
+            >
+              <Icon name="qr-code-outline" size={50}></Icon>
+              <Card.Title style={{ fontSize: 30, paddingTop: 8 }}>
+                나의 QR
+              </Card.Title>
+            </View>
+            <Card.Divider />
+            <Text style={{ fontSize: 18, textAlign: "center" }}>
+              나의 검사 예약시간을 확인하세요
+            </Text>
+          </Card>
         </TouchableOpacity>
-      </View>
-      <View style={styles.footer}>
-        <Text style={styles.footer}>Enonymous</Text>
       </View>
     </View>
   );
@@ -70,12 +172,12 @@ const styles = StyleSheet.create({
   },
   header: {
     color: "white",
-    fontSize: constants.width > 370 ? 30 : 25,
+    // fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     fontWeight: "bold",
     height: "50%",
     // height: constants.height > 800 ? "80%" : "50%",
-    margin: constants.height > 800 ? "15%" : "9%",
+    // margin: constants.height > 800 ? "15%" : "9%",
 
     justifyContent: "center",
     alignItems: "center",
@@ -94,14 +196,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    color: "gray",
-    fontSize: constants.width > 370 ? 30 : 18,
-    marginTop: constants.height > 800 ? "2%" : "0.3%",
+    // color: "gray",
+    // fontSize: constants.width > 370 ? 30 : 18,
+    // marginTop: constants.height > 800 ? "2%" : "0.3%",
   },
   footer: {
     flex: 0.7,
     color: "white",
-    fontSize: constants.width > 370 ? 30 : 25,
+    // fontSize: constants.width > 370 ? 30 : 25,
     letterSpacing: 3,
     justifyContent: "center",
     alignItems: "center",
