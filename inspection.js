@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Input } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import QrGenerator from "./qrGenerator";
@@ -14,7 +14,7 @@ export default function inspection() {
               <Text style={styles.title}>이름</Text>
               <TextInput
                 style={styles.input}
-                onChangeText={onChangeNumber}
+                onChangeText={onChangeText}
                 value={number}
                 placeholder="이름"
                 keyboardType="numeric"
