@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import { Header, Card } from "react-native-elements";
 var {vw, vh, vmin, vmax} = require('react-native-viewport-units');
-
+const screenwidth = Dimensions.get('window').width;
 const MainPage = ({ navigation }) => {
   return (
     <View style={styles.body}>
@@ -45,7 +45,12 @@ const MainPage = ({ navigation }) => {
               }}
             >
               <Icon name="analytics-outline" size={50}></Icon>
-              <Card.Title style={{ fontSize: 30, paddingTop: 8 }}>
+              <Card.Title
+                style={{
+                  fontSize: screenwidth > 500 ? 30 : 20,
+                  paddingTop: 8,
+                }}
+              >
                 코로나 정보
               </Card.Title>
             </View>
