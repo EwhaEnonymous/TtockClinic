@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import { Header, Card } from "react-native-elements";
-var {vw} = require('react-native-viewport-units');
+var {vw, vh, vmin, vmax} = require('react-native-viewport-units');
 
 const MainPage = ({ navigation }) => {
   return (

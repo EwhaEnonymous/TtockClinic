@@ -5,6 +5,7 @@ import "react-native-gesture-handler";
 import QrGenerator from "./qrGenerator";
 
 export default function inspection() {
+    const [name, setName] = useState('')
     return(
         <View style={styles.body}>
             <View style={styles.container1}>
@@ -13,11 +14,12 @@ export default function inspection() {
             <View>
               <Text style={styles.title}>이름</Text>
               <TextInput
-                style={styles.input}
-                onChangeText={onChangeText}
-                value={number}
-                placeholder="이름"
-                keyboardType="numeric"
+                value={name}
+                onChange={(event) => {
+                    const {eventCount, target, text} = event.nativeEvent;
+                    setName(text);
+                  }
+                }
               />
             </View>
             <View style={styles.footer}>
