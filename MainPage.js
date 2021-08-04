@@ -24,7 +24,7 @@ const MainPage = ({ navigation }) => {
             color: "#fff",
             letterSpacing: 3,
             fontWeight: "bold",
-            fontSize: screenwidth > 365 ? 20 : 15,
+            fontSize: 20,
           },
         }}
         placement="center"
