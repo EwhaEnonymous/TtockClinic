@@ -1,11 +1,32 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Header, Card } from "react-native-elements";
+
 const after = ({ navigation }) => {
   return (
     <View style={styles.body}>
-      <View style={styles.container1}>
-        <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
-      </View>
+      <Header
+        placement="left"
+        leftComponent={{ icon: "menu", color: "#fff" }}
+        centerComponent={
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: "#fff",
+                letterSpacing: 3,
+                fontWeight: "bold",
+                fontSize: 20,
+              }}
+              onPress={() => navigation.navigate("Main")}
+            >
+              💉똑똑 선별진료소💉
+            </Text>
+          </TouchableOpacity>
+        }
+        placement="center"
+        rightComponent={{ icon: "home", color: "#fff" }}
+        backgroundColor={"#00462a"}
+      ></Header>
       <View style={styles.container2}>
         <Text style={styles.finish}>작성 완료되었습니다.</Text>
       </View>
@@ -35,9 +56,6 @@ const after = ({ navigation }) => {
           {"\n"}QR 인식기에 나의 QR을 인식하고
           {"\n"}자신의 차례가 올 때까지 기다리세요
         </Text>
-      </View>
-      <View style={styles.footer}>
-        <Text style={styles.footer}>Enonymous</Text>
       </View>
     </View>
   );
@@ -140,15 +158,6 @@ const styles = StyleSheet.create({
   text2: {
     color: "white",
     fontSize: 30,
-  },
-  footer: {
-    flex: 0.6,
-    color: "white",
-    fontSize: 30,
-    letterSpacing: 3,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#00462a",
   },
 });
 

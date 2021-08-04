@@ -2,13 +2,32 @@ import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import "react-native-gesture-handler";
 import constants from "./constants";
-
-export default function patientInfo() {
+import { Header, Card } from "react-native-elements";
+const patientInfo = ({ navigation }) => {
   return (
     <View style={styles.body}>
-      <View style={styles.container1}>
-        <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
-      </View>
+      <Header
+        placement="left"
+        leftComponent={{ icon: "menu", color: "#fff" }}
+        centerComponent={
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: "#fff",
+                letterSpacing: 3,
+                fontWeight: "bold",
+                fontSize: 20,
+              }}
+              onPress={() => navigation.navigate("Main")}
+            >
+              💉똑똑 선별진료소💉
+            </Text>
+          </TouchableOpacity>
+        }
+        placement="center"
+        rightComponent={{ icon: "home", color: "#fff" }}
+        backgroundColor={"#00462a"}
+      ></Header>
       <View style={styles.container2}>
         <View style={styles.up0}>
           <Text style={styles.up0text}>전일대비 +000명</Text>
@@ -67,13 +86,9 @@ export default function patientInfo() {
           <Text style={styles.graph}>위 버튼 누르면 그래프 바뀜</Text>
         </View>
       </View>
-
-      <View style={styles.footer}>
-        <Text style={styles.footer}>Enonymous</Text>
-      </View>
     </View>
   );
-}
+};
 const styles = StyleSheet.create({
   body: {
     flex: 1,
@@ -93,18 +108,6 @@ const styles = StyleSheet.create({
     marginBottom: "2%",
   },
 
-  header: {
-    color: "white",
-    fontSize: constants.width > 370 ? 30 : 25,
-    letterSpacing: 3,
-    fontWeight: "bold",
-    height: "50%",
-    // height: constants.height > 800 ? "80%" : "50%",
-    margin: constants.height > 800 ? "15%" : "9%",
-
-    justifyContent: "center",
-    alignItems: "center",
-  },
   up0: {
     width: "90%",
     justifyContent: "center",
@@ -209,3 +212,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#00462a",
   },
 });
+export default patientInfo;

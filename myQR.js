@@ -1,14 +1,36 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
+import { Header, Card } from "react-native-elements";
+import "react-native-gesture-handler";
+
 import QrGenerator from "./qrGenerator";
-export default function myQR() {
+const myQR = ({ navigation }) => {
   return (
     <View style={styles.body}>
-      <View style={styles.container1}>
-        <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
-      </View>
+      <Header
+        placement="left"
+        leftComponent={{ icon: "menu", color: "#fff" }}
+        centerComponent={
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: "#fff",
+                letterSpacing: 3,
+                fontWeight: "bold",
+                fontSize: 20,
+              }}
+              onPress={() => navigation.navigate("Main")}
+            >
+              💉똑똑 선별진료소💉
+            </Text>
+          </TouchableOpacity>
+        }
+        placement="center"
+        rightComponent={{ icon: "home", color: "#fff" }}
+        backgroundColor={"#00462a"}
+      ></Header>
       <View style={styles.containertitle}>
         <Text style={styles.title}>예약 정보</Text>
       </View>
@@ -24,12 +46,9 @@ export default function myQR() {
         {/* <Icon name="qr-code-outline" size={300}></Icon> */}
         <QrGenerator />
       </View>
-      <View style={styles.footer}>
-        <Text style={styles.footer}>Enonymous</Text>
-      </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   body: {
@@ -81,23 +100,5 @@ const styles = StyleSheet.create({
     padding: 2,
     paddingLeft: 7,
   },
-  header: {
-    color: "white",
-    fontSize: 25,
-    letterSpacing: 3,
-    fontWeight: "bold",
-    height: 50,
-    margin: 30,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  footer: {
-    flex: 1,
-    color: "white",
-    fontSize: 30,
-    letterSpacing: 3,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#00462a",
-  },
 });
+export default myQR;

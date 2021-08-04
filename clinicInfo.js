@@ -3,13 +3,33 @@ import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import constants from "./constants";
+import { Header, Card } from "react-native-elements";
 
 const clinicInfo = ({ navigation }) => {
   return (
     <View style={styles.body}>
-      <View style={styles.container1}>
-        <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
-      </View>
+      <Header
+        placement="left"
+        leftComponent={{ icon: "menu", color: "#fff" }}
+        centerComponent={
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: "#fff",
+                letterSpacing: 3,
+                fontWeight: "bold",
+                fontSize: 20,
+              }}
+              onPress={() => navigation.navigate("Main")}
+            >
+              💉똑똑 선별진료소💉
+            </Text>
+          </TouchableOpacity>
+        }
+        placement="center"
+        rightComponent={{ icon: "home", color: "#fff" }}
+        backgroundColor={"#00462a"}
+      ></Header>
       <View style={styles.container2}>
         <View style={styles.picCntr}>
           <Icon name="image-outline" size={150}></Icon>
@@ -49,9 +69,6 @@ const clinicInfo = ({ navigation }) => {
           <Text style={styles.text2}>다음 화면으로 넘어감</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.footer}>
-        <Text style={styles.footer}>Enonymous</Text>
-      </View>
     </View>
   );
 };
@@ -78,18 +95,7 @@ const styles = StyleSheet.create({
     width: "98%",
     alignItems: "center",
   },
-  header: {
-    color: "white",
-    fontSize: constants.width > 370 ? 30 : 25,
-    letterSpacing: 3,
-    fontWeight: "bold",
-    height: "50%",
-    // height: constants.height > 800 ? "80%" : "50%",
-    margin: constants.height > 800 ? "15%" : "9%",
 
-    justifyContent: "center",
-    alignItems: "center",
-  },
   clinicInfo: {
     flex: 1,
     alignItems: "center",
@@ -166,15 +172,6 @@ const styles = StyleSheet.create({
     height: "10%",
     justifyContent: "center",
     alignItems: "center",
-  },
-  footer: {
-    flex: 0.7,
-    color: "white",
-    fontSize: constants.width > 370 ? 30 : 25,
-    letterSpacing: 3,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#00462a",
   },
 });
 export default clinicInfo;
