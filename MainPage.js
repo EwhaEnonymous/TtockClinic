@@ -1,10 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import { Header, Card } from "react-native-elements";
-var {vw, vh, vmin, vmax} = require('react-native-viewport-units');
-const screenwidth = Dimensions.get('window').width;
+const screenwidth = Dimensions.get("window").width;
 const MainPage = ({ navigation }) => {
   return (
     <View style={styles.body}>
@@ -81,7 +86,7 @@ const MainPage = ({ navigation }) => {
               }}
             >
               <Icon name="navigate-outline" size={40}></Icon>
-              <Card.Title style={{ fontSize: 10*vw, paddingTop: 8 }}>
+              <Card.Title style={{ fontSize: 10 * vw, paddingTop: 8 }}>
                 가까운 선별진료소
               </Card.Title>
             </View>
