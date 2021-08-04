@@ -1,13 +1,24 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Input } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import QrGenerator from "./qrGenerator";
-export default function checklist() {
+
+export default function inspection() {
     return(
         <View style={styles.body}>
             <View style={styles.container1}>
                 <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
+            </View>
+            <View>
+              <Text style={styles.title}>이름</Text>
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangeNumber}
+                value={number}
+                placeholder="이름"
+                keyboardType="numeric"
+              />
             </View>
             <View style={styles.footer}>
                 <Text style={styles.footer}>Enonymous</Text>
@@ -28,43 +39,13 @@ const styles = StyleSheet.create({
       marginTop: 0,
       height: 5,
     },
-    containertitle: {
-      flex: 0.7,
-      fontSize: 25,
-      alignItems: "center",
-      marginTop: 5,
-    },
-    container2: {
-      flex: 3,
-      fontSize: 50,
-      backgroundColor: "white",
-      alignItems: "flex-start",
-      borderWidth: 2,
-      borderRadius: 15,
-      marginLeft: 10,
-      marginRight: 10,
-      height: 30,
-      justifyContent: "center",
-    },
-    container3: {
-      flex: 6,
-      alignItems: "center",
-      borderWidth: 2,
-      borderRadius: 15,
-      margin: 10,
-      marginTop: 0,
-    },
     title: {
       color: "black",
-      fontSize: 25,
-      letterSpacing: 5,
-    },
-    info: {
-      color: "black",
-      fontSize: 20,
-      letterSpacing: 4,
-      padding: 2,
-      paddingLeft: 7,
+      fontSize: 10,
+      height: 10,
+      width: 10,
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
     },
     header: {
       color: "white",

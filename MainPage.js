@@ -2,6 +2,7 @@ import React from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import QR from "./myQR";
+import inspect from "./inspection";
 import "react-native-gesture-handler";
 import constants from "./constants";
 
@@ -35,7 +36,7 @@ const MainPage = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menu}
-          onPress={() => navigation.navigate("QR")}
+          onPress={() => navigation.navigate("inspect")}
         >
           <Icon name="qr-code-outline" size={50}></Icon>
           <Text style={styles.text}>나의 QR</Text>
