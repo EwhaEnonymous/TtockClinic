@@ -108,18 +108,6 @@ const styles = StyleSheet.create({
     marginBottom: "2%",
   },
 
-  header: {
-    color: "white",
-    fontSize: constants.width > 370 ? 30 : 25,
-    letterSpacing: 3,
-    fontWeight: "bold",
-    height: "50%",
-    // height: constants.height > 800 ? "80%" : "50%",
-    margin: constants.height > 800 ? "15%" : "9%",
-
-    justifyContent: "center",
-    alignItems: "center",
-  },
   up0: {
     width: "90%",
     justifyContent: "center",

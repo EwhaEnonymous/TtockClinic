@@ -100,15 +100,5 @@ const styles = StyleSheet.create({
     padding: 2,
     paddingLeft: 7,
   },
-  header: {
-    color: "white",
-    fontSize: 25,
-    letterSpacing: 3,
-    fontWeight: "bold",
-    height: 50,
-    margin: 30,
-    justifyContent: "center",
-    alignItems: "center",
-  },
 });
 export default myQR;

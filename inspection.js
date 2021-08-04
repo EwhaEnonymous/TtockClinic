@@ -64,14 +64,4 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
   },
-  header: {
-    color: "white",
-    fontSize: 25,
-    letterSpacing: 3,
-    fontWeight: "bold",
-    height: 50,
-    margin: 30,
-    justifyContent: "center",
-    alignItems: "center",
-  },
 });

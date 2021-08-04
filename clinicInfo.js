@@ -95,18 +95,7 @@ const styles = StyleSheet.create({
     width: "98%",
     alignItems: "center",
   },
-  header: {
-    color: "white",
-    fontSize: constants.width > 370 ? 30 : 25,
-    letterSpacing: 3,
-    fontWeight: "bold",
-    height: "50%",
-    // height: constants.height > 800 ? "80%" : "50%",
-    margin: constants.height > 800 ? "15%" : "9%",
 
-    justifyContent: "center",
-    alignItems: "center",
-  },
   clinicInfo: {
     flex: 1,
     alignItems: "center",
