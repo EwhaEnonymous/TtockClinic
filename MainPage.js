@@ -18,20 +18,25 @@ const MainPage = ({ navigation }) => {
       <Header
         placement="left"
         leftComponent={{ icon: "menu", color: "#fff" }}
-        centerComponent={{
-          text: "💉똑똑 선별진료소💉",
-          style: {
-            color: "#fff",
-            letterSpacing: 3,
-            fontWeight: "bold",
-            fontSize: screenwidth > 365 ? 20 : 15,
-          },
-        }}
+        centerComponent={
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: "#fff",
+                letterSpacing: 3,
+                fontWeight: "bold",
+                fontSize: 20,
+              }}
+              onPress={() => navigation.navigate("Main")}
+            >
+              💉똑똑 선별진료소💉
+            </Text>
+          </TouchableOpacity>
+        }
         placement="center"
         rightComponent={{ icon: "home", color: "#fff" }}
         backgroundColor={"#00462a"}
-        onPress={() => navigation.navigate("Main")}
-      />
+      ></Header>
       <View style={{ flex: 1, marginTop: "8%", marginBottom: "8%" }}>
         <TouchableOpacity
           style={{ flex: 1 }}
@@ -241,15 +246,6 @@ const styles = StyleSheet.create({
     // color: "gray",
     // fontSize: constants.width > 370 ? 30 : 18,
     // marginTop: constants.height > 800 ? "2%" : "0.3%",
-  },
-  footer: {
-    flex: 0.7,
-    color: "white",
-    // fontSize: constants.width > 370 ? 30 : 25,
-    letterSpacing: 3,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#00462a",
   },
 });
 export default MainPage;

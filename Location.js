@@ -5,12 +5,33 @@ import Icon2 from "react-native-vector-icons/AntDesign";
 import "react-native-gesture-handler";
 import constants from "./constants";
 import Dropdown from "./Dropdown";
+import { Header, Card } from "react-native-elements";
+
 const Location = ({ navigation }) => {
   return (
     <View style={styles.body}>
-      <View style={styles.container1}>
-        <Text style={styles.header}>💉똑똑 선별진료소💉</Text>
-      </View>
+      <Header
+        placement="left"
+        leftComponent={{ icon: "menu", color: "#fff" }}
+        centerComponent={
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: "#fff",
+                letterSpacing: 3,
+                fontWeight: "bold",
+                fontSize: 20,
+              }}
+              onPress={() => navigation.navigate("Main")}
+            >
+              💉똑똑 선별진료소💉
+            </Text>
+          </TouchableOpacity>
+        }
+        placement="center"
+        rightComponent={{ icon: "home", color: "#fff" }}
+        backgroundColor={"#00462a"}
+      ></Header>
       <View style={styles.container2}>
         <View style={{ marginTop: 30 }}>
           <Icon name="hospital-o" size={60}></Icon>
@@ -31,9 +52,6 @@ const Location = ({ navigation }) => {
             </Text>
           </View>
         </TouchableOpacity>
-      </View>
-      <View style={styles.footer}>
-        <Text style={styles.footer}>Enonymous</Text>
       </View>
     </View>
   );
@@ -96,16 +114,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontWeight: "bold",
     letterSpacing: 3,
-  },
-
-  footer: {
-    flex: 0.7,
-    color: "white",
-    fontSize: constants.width > 370 ? 30 : 25,
-    letterSpacing: 3,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#00462a",
   },
 });
 export default Location;
