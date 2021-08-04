@@ -86,7 +86,7 @@ const MainPage = ({ navigation }) => {
               }}
             >
               <Icon name="navigate-outline" size={40}></Icon>
-              <Card.Title style={{ fontSize: 10 * vw, paddingTop: 8 }}>
+              <Card.Title style={{  fontSize: screenwidth > 500 ? 30 : 20, paddingTop: 8 }}>
                 가까운 선별진료소
               </Card.Title>
             </View>
@@ -117,7 +117,7 @@ const MainPage = ({ navigation }) => {
               }}
             >
               <Icon name="map-outline" size={50}></Icon>
-              <Card.Title style={{ fontSize: 30, paddingTop: 8 }}>
+              <Card.Title style={{ fontSize: screenwidth > 500 ? 30 : 20, paddingTop: 8 }}>
                 지역별 선별진료소
               </Card.Title>
             </View>
@@ -148,7 +148,7 @@ const MainPage = ({ navigation }) => {
               }}
             >
               <Icon name="qr-code-outline" size={50}></Icon>
-              <Card.Title style={{ fontSize: 30, paddingTop: 8 }}>
+              <Card.Title style={{ fontSize: screenwidth > 500 ? 30 : 20, paddingTop: 8 }}>
                 나의 QR
               </Card.Title>
             </View>
