@@ -10,6 +10,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import { Header, Card } from "react-native-elements";
 const screenwidth = Dimensions.get("window").width;
+const screenheight = Dimensions.get("window").height;
+
 const MainPage = ({ navigation }) => {
   return (
     <View style={styles.body}>
@@ -28,7 +30,7 @@ const MainPage = ({ navigation }) => {
         rightComponent={{ icon: "home", color: "#fff" }}
         backgroundColor={"#00462a"}
       />
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginTop: "8%", marginBottom: "8%" }}>
         <TouchableOpacity
           style={{ flex: 1 }}
           onPress={() => navigation.navigate("Patient")}
@@ -52,7 +54,7 @@ const MainPage = ({ navigation }) => {
               <Icon name="analytics-outline" size={50}></Icon>
               <Card.Title
                 style={{
-                  fontSize: screenwidth > 500 ? 30 : 20,
+                  fontSize: screenwidth > 365 ? 30 : 20,
                   paddingTop: 8,
                 }}
               >
@@ -60,7 +62,12 @@ const MainPage = ({ navigation }) => {
               </Card.Title>
             </View>
             <Card.Divider />
-            <Text style={{ fontSize: 18, textAlign: "center" }}>
+            <Text
+              style={{
+                fontSize: screenwidth > 365 ? 20 : 15,
+                textAlign: "center",
+              }}
+            >
               오늘의 코로나 확진자 정보를 알아보세요
             </Text>
           </Card>
@@ -85,14 +92,21 @@ const MainPage = ({ navigation }) => {
                 marginRight: 80,
               }}
             >
-              <Icon name="navigate-outline" size={40}></Icon>
-              <Card.Title style={{  fontSize: screenwidth > 500 ? 30 : 20, paddingTop: 8 }}>
+              <Icon name="navigate-outline" size={30}></Icon>
+              <Card.Title
+                style={{ fontSize: screenwidth > 365 ? 30 : 20, paddingTop: 8 }}
+              >
                 가까운 선별진료소
               </Card.Title>
             </View>
             <Card.Divider />
-            <Text style={{ fontSize: 18, textAlign: "center" }}>
-              현위치에서 가장 가까운 선별진료소를 찾아보세요
+            <Text
+              style={{
+                fontSize: screenwidth > 365 ? 20 : 15,
+                textAlign: "center",
+              }}
+            >
+              가장 가까운 선별진료소를 찾아보세요
             </Text>
           </Card>
         </TouchableOpacity>
@@ -117,12 +131,19 @@ const MainPage = ({ navigation }) => {
               }}
             >
               <Icon name="map-outline" size={50}></Icon>
-              <Card.Title style={{ fontSize: screenwidth > 500 ? 30 : 20, paddingTop: 8 }}>
+              <Card.Title
+                style={{ fontSize: screenwidth > 365 ? 30 : 20, paddingTop: 8 }}
+              >
                 지역별 선별진료소
               </Card.Title>
             </View>
             <Card.Divider />
-            <Text style={{ fontSize: 18, textAlign: "center" }}>
+            <Text
+              style={{
+                fontSize: screenwidth > 365 ? 20 : 15,
+                textAlign: "center",
+              }}
+            >
               원하는 지역의 선별진료소를 찾아보세요
             </Text>
           </Card>
@@ -148,12 +169,19 @@ const MainPage = ({ navigation }) => {
               }}
             >
               <Icon name="qr-code-outline" size={50}></Icon>
-              <Card.Title style={{ fontSize: screenwidth > 500 ? 30 : 20, paddingTop: 8 }}>
+              <Card.Title
+                style={{ fontSize: screenwidth > 365 ? 30 : 20, paddingTop: 8 }}
+              >
                 나의 QR
               </Card.Title>
             </View>
             <Card.Divider />
-            <Text style={{ fontSize: 18, textAlign: "center" }}>
+            <Text
+              style={{
+                fontSize: screenwidth > 365 ? 20 : 15,
+                textAlign: "center",
+              }}
+            >
               나의 검사 예약시간을 확인하세요
             </Text>
           </Card>
