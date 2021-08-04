@@ -1,8 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-// import MainPage from "./MainPage";
-=======
->>>>>>> 2475efb52bb523d87253a25513712618c9a5351e
 import MainPage from "./MainPage";
 import QR from "./myQR";
 import CurLoc from "./currentLocation";
