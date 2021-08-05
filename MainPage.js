@@ -21,12 +21,7 @@ const MainPage = ({ navigation }) => {
         centerComponent={
           <TouchableOpacity>
             <Text
-              style={{
-                color: "#fff",
-                letterSpacing: 3,
-                fontWeight: "bold",
-                fontSize: 20,
-              }}
+              style={styles.headerText}
               onPress={() => navigation.navigate("Main")}
             >
               💉똑똑 선별진료소💉
@@ -42,39 +37,13 @@ const MainPage = ({ navigation }) => {
           style={{ flex: 1 }}
           onPress={() => navigation.navigate("Patient")}
         >
-          <Card
-            containerStyle={{
-              borderColor: "#00462a",
-              borderWidth: 2,
-              borderRadius: 20,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginLeft: 30,
-                marginRight: 80,
-              }}
-            >
+          <Card containerStyle={styles.cardContainer}>
+            <View style={styles.cardView}>
               <Icon name="analytics-outline" size={50}></Icon>
-              <Card.Title
-                style={{
-                  fontSize: screenwidth > 365 ? 30 : 20,
-                  paddingTop: 8,
-                }}
-              >
-                코로나 정보
-              </Card.Title>
+              <Card.Title style={styles.cardTitle}>코로나 정보</Card.Title>
             </View>
             <Card.Divider />
-            <Text
-              style={{
-                fontSize: screenwidth > 365 ? 20 : 15,
-                textAlign: "center",
-              }}
-            >
+            <Text style={styles.cardDescription}>
               오늘의 코로나 확진자 정보를 알아보세요
             </Text>
           </Card>
@@ -83,36 +52,15 @@ const MainPage = ({ navigation }) => {
           style={{ flex: 1 }}
           onPress={() => navigation.navigate("CurLoc")}
         >
-          <Card
-            containerStyle={{
-              borderColor: "#00462a",
-              borderWidth: 2,
-              borderRadius: 20,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginLeft: 30,
-                marginRight: 80,
-              }}
-            >
+          <Card containerStyle={styles.cardContainer}>
+            <View style={styles.cardView}>
               <Icon name="navigate-outline" size={30}></Icon>
-              <Card.Title
-                style={{ fontSize: screenwidth > 365 ? 30 : 20, paddingTop: 8 }}
-              >
+              <Card.Title style={styles.cardTitle}>
                 가까운 선별진료소
               </Card.Title>
             </View>
             <Card.Divider />
-            <Text
-              style={{
-                fontSize: screenwidth > 365 ? 20 : 15,
-                textAlign: "center",
-              }}
-            >
+            <Text style={styles.cardDescription}>
               가장 가까운 선별진료소를 찾아보세요
             </Text>
           </Card>
@@ -121,36 +69,15 @@ const MainPage = ({ navigation }) => {
           style={{ flex: 1 }}
           onPress={() => navigation.navigate("Location")}
         >
-          <Card
-            containerStyle={{
-              borderColor: "#00462a",
-              borderWidth: 2,
-              borderRadius: 20,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginLeft: 30,
-                marginRight: 80,
-              }}
-            >
+          <Card containerStyle={styles.cardContainer}>
+            <View style={styles.cardView}>
               <Icon name="map-outline" size={50}></Icon>
-              <Card.Title
-                style={{ fontSize: screenwidth > 365 ? 30 : 20, paddingTop: 8 }}
-              >
+              <Card.Title style={styles.cardTitle}>
                 지역별 선별진료소
               </Card.Title>
             </View>
             <Card.Divider />
-            <Text
-              style={{
-                fontSize: screenwidth > 365 ? 20 : 15,
-                textAlign: "center",
-              }}
-            >
+            <Text style={styles.cardDescription}>
               원하는 지역의 선별진료소를 찾아보세요
             </Text>
           </Card>
@@ -159,36 +86,13 @@ const MainPage = ({ navigation }) => {
           style={{ flex: 1 }}
           onPress={() => navigation.navigate("QR")}
         >
-          <Card
-            containerStyle={{
-              borderColor: "#00462a",
-              borderWidth: 2,
-              borderRadius: 20,
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginLeft: 30,
-                marginRight: 80,
-              }}
-            >
+          <Card containerStyle={styles.cardContainer}>
+            <View style={styles.cardView}>
               <Icon name="qr-code-outline" size={50}></Icon>
-              <Card.Title
-                style={{ fontSize: screenwidth > 365 ? 30 : 20, paddingTop: 8 }}
-              >
-                나의 QR
-              </Card.Title>
+              <Card.Title style={styles.cardTitle}>나의 QR</Card.Title>
             </View>
             <Card.Divider />
-            <Text
-              style={{
-                fontSize: screenwidth > 365 ? 20 : 15,
-                textAlign: "center",
-              }}
-            >
+            <Text style={styles.cardDescription}>
               나의 검사 예약시간을 확인하세요
             </Text>
           </Card>
@@ -202,38 +106,31 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
-  container1: {
-    flex: 1,
-    backgroundColor: "#00462a",
-    alignItems: "center",
-    // height: constants.height * 0.5,
+  headerText: {
+    color: "#fff",
+    letterSpacing: 3,
+    fontWeight: "bold",
+    fontSize: 20,
   },
-  container2: {
-    flex: 6,
-    alignItems: "center",
-    marginTop: "2%",
-    marginBottom: "2%",
-
-    // marginTop: constants.height > 800 ? "2%" : "2%",
-    // marginBottom: constants.height > 800 ? "2%" : "2%",
-  },
-  menu: {
-    flex: 1,
-    backgroundColor: "white",
-    // margin: constants.height > 800 ? 10 : 5,
-    margin: "2%",
-    borderWidth: 2,
-    borderRadius: 15,
-    width: "90%",
+  cardContainer: {
     borderColor: "#00462a",
-    // height: "20%",
-    justifyContent: "center",
-    alignItems: "center",
+    borderWidth: 2,
+    borderRadius: 20,
   },
-  text: {
-    // color: "gray",
-    // fontSize: constants.width > 370 ? 30 : 18,
-    // marginTop: constants.height > 800 ? "2%" : "0.3%",
+  cardView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginLeft: 30,
+    marginRight: 80,
+  },
+  cardTitle: {
+    fontSize: screenwidth > 365 ? 30 : 20,
+    paddingTop: 8,
+  },
+  cardDescription: {
+    fontSize: screenwidth > 365 ? 20 : 15,
+    textAlign: "center",
   },
 });
 export default MainPage;

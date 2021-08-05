@@ -1,9 +1,26 @@
 import React from "react";
-import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
-import constants from "./constants";
-import { Header, Card } from "react-native-elements";
+// import constants from "./constants";
+import { Header, Card, ListItem, Avatar } from "react-native-elements";
+const list = [
+  {
+    name: "1번 진료소",
+    address: "서울특별시 강남구 삼성2동 선릉로 668",
+    waitTime: "00분",
+  },
+  {
+    name: "2번 진료소",
+    address: "서울특별시 강남구 삼성2동 선릉로 668",
+    waitTime: "00분",
+  },
+  {
+    name: "3번 진료소",
+    address: "서울특별시 강남구 삼성2동 선릉로 668",
+    waitTime: "00분",
+  },
+];
 
 const clinicInfo = ({ navigation }) => {
   return (
@@ -14,12 +31,7 @@ const clinicInfo = ({ navigation }) => {
         centerComponent={
           <TouchableOpacity>
             <Text
-              style={{
-                color: "#fff",
-                letterSpacing: 3,
-                fontWeight: "bold",
-                fontSize: 20,
-              }}
+              style={styles.headerText}
               onPress={() => navigation.navigate("Main")}
             >
               💉똑똑 선별진료소💉
@@ -30,7 +42,55 @@ const clinicInfo = ({ navigation }) => {
         rightComponent={{ icon: "home", color: "#fff" }}
         backgroundColor={"#00462a"}
       ></Header>
-      <View style={styles.container2}>
+      <View style={styles.container}>
+        <View style={styles.clinicInfo}>
+          <View style={styles.container1}>
+            <Card.Title style={styles.title}>
+              <Icon name="chevron-forward-circle-outline" size={30}></Icon>{" "}
+              선별진료소 정보
+            </Card.Title>
+            <Text style={styles.mainDescription}>
+              현위치에서 가까운 선별진료소의 정보입니다.
+              {"\n"}자세한 정보를 보려면 선별진료소를 선택하세요.
+            </Text>
+          </View>
+          {/* <Card> */}
+
+          {/* </Card> */}
+        </View>
+        <View style={styles.container2}>
+          {/* <Card containerStyle={styles.card}> */}
+          {/* <Card.Title style={styles.title}>선별진료소 이름</Card.Title> */}
+
+          <View>
+            <Card.Divider></Card.Divider>
+          </View>
+          <View style={styles.list}>
+            {list.map((l, i) => (
+              <TouchableOpacity style={styles.listContent}>
+                <ListItem key={i} bottomDivider>
+                  <Avatar source={{ uri: l.address }} />
+                  <ListItem.Content>
+                    <ListItem.Title>{l.name}</ListItem.Title>
+                    <ListItem.Subtitle>{l.address}</ListItem.Subtitle>
+                    <ListItem.Subtitle>{l.waitTime}</ListItem.Subtitle>
+                  </ListItem.Content>
+                </ListItem>
+              </TouchableOpacity>
+            ))}
+            {/* </Card> */}
+          </View>
+        </View>
+        <View style={styles.container3}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("Clinic")}
+          >
+            <Text style={styles.buttonText}>다음 화면으로 넘어감</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      {/* <View style={styles.container2}>
         <View style={styles.picCntr}>
           <Icon name="image-outline" size={150}></Icon>
         </View>
@@ -38,7 +98,6 @@ const clinicInfo = ({ navigation }) => {
           <Text style={styles.clinicName}>강남구 보건소</Text>
           <View style={styles.infoTextWrap}>
             <Text style={styles.infoText}>
-              {/* 추후에 주소는 따로 칸 만들어서 구현해도 좋을것 같음 */}
               <Text style={{ fontWeight: "800" }}>주소{"\n"}</Text>서울특별시
               강남구 삼성2동 선릉로 668{"\n"}
               <Text style={{ fontWeight: "800" }}>영업시간</Text>
@@ -68,7 +127,7 @@ const clinicInfo = ({ navigation }) => {
         >
           <Text style={styles.text2}>다음 화면으로 넘어감</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -77,101 +136,59 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
-  container1: {
+  headerText: {
+    color: "#fff",
+    letterSpacing: 3,
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  container: {
     flex: 1,
-    backgroundColor: "#00462a",
-    alignItems: "center",
-    marginTop: 0,
-    height: 5,
+    marginTop: "5%",
+    marginBottom: "5%",
+  },
+  clinicInfo: {
+    flex: 0.2,
+    paddingBottom: "5%",
+  },
+  container1: {
+    alignItems: "flex-start",
+    marginLeft: "5%",
+  },
+  title: {
+    fontSize: 30,
+    color: "#00462a",
+    fontWeight: "bold",
   },
   container2: {
-    flex: 6,
-    alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10,
+    flex: 1.3,
+    margin: 0,
+    marginLeft: "5%",
+    marginRight: "5%",
   },
-  picCntr: {
-    flex: 0.7,
-    width: "98%",
-    alignItems: "center",
+  list: { borderWidth: 1, borderColor: "#00462a" },
+  listContent: {
+    margin: "0.5%",
+    backgroundColor: "blue",
   },
-
-  clinicInfo: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 10,
-    paddingBottom: 25,
-    width: "98%",
-  },
-  infoTextWrap: {
-    width: "98%",
-    padding: 10,
-    borderWidth: 2,
-    borderRadius: 5,
-    borderColor: "#00462a",
-  },
-  clinicName: {
-    color: "black",
-    fontSize: 40,
-    fontWeight: "900",
-    margin: 5,
-  },
-  infoText: {
-    color: "black",
-    fontSize: 24,
-  },
-  waitInfo: {
-    flex: 1,
-    color: "black",
-    justifyContent: "flex-start",
-    padding: 10,
-    borderWidth: 2,
-    borderRadius: 5,
-    width: "96%",
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#00462a",
-  },
-  waitTitle: {
-    fontSize: 30,
-    fontWeight: "700",
-  },
-  waitText: {
-    fontSize: 28,
-    fontWeight: "700",
-    color: "red",
-    marginBottom: 10,
+  // card: { borderColor: "#00462a", borderWidth: 2, borderRadius: 20 },
+  container3: {
+    flex: 0.2,
     justifyContent: "center",
     alignItems: "center",
   },
-  waitTextLast: {
-    fontSize: 28,
-    fontWeight: "700",
-    color: "red",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    color: "gray",
-    fontSize: 30,
-  },
-  text2: {
-    color: "white",
-    fontSize: 30,
-  },
-  menu: {
-    marginTop: 50,
-    fontSize: 30,
+  button: {
     borderColor: "#00462a",
     backgroundColor: "#00462a",
-    margin: 10,
     borderWidth: 2,
-    borderRadius: 15,
-    width: "70%",
-    height: "10%",
+    borderRadius: 10,
+    height: "80%",
+    width: "80%",
     justifyContent: "center",
     alignItems: "center",
+  },
+  buttonText: {
+    color: "white",
   },
 });
 export default clinicInfo;

@@ -308,7 +308,7 @@ function Dropdown() {
   const placeholderText = "선택하세요";
   return (
     <>
-      <Text style={styles.title}>시/도</Text>
+      {/* <Text style={styles.title}>시/도</Text> */}
       <RNPickerSelect
         placeholder={{ label: placeholderText }}
         onValueChange={(Sido) => setSido(Sido)}
@@ -316,7 +316,7 @@ function Dropdown() {
         onOpen={() => {
           Keyboard.dismiss();
         }}
-        style={pickerStyle, {inputAndroid: {color: 'black'} }}
+        style={pickerStyle}
       />
       {console.log("sido", Sido)}
       {Sido === "seoul" ? (
@@ -329,12 +329,15 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={
+              ({ inputiOS: { pickerStyle } },
+              { inputAndroid: { color: "black" } })
+            }
           />
         </>
       ) : Sido === "gyeonggi" ? (
         <>
-          <Text style={styles.title}>시/군/구</Text>
+          {/* <Text style={styles.title}>시/군/구</Text> */}
           <RNPickerSelect
             placeholder={{ label: placeholderText }}
             onValueChange={(Gyeonggi) => setGyeonggi(Gyeonggi)}
@@ -342,7 +345,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "incheon" ? (
@@ -355,7 +358,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "busan" ? (
@@ -368,7 +371,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "gwangju" ? (
@@ -381,7 +384,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "ulsan" ? (
@@ -394,7 +397,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "gangwon" ? (
@@ -407,7 +410,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "jeju" ? (
@@ -420,7 +423,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "daejeon" ? (
@@ -433,7 +436,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "daegu" ? (
@@ -446,7 +449,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "choongbuk" ? (
@@ -459,7 +462,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "choongnam" ? (
@@ -472,7 +475,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "jeonbuk" ? (
@@ -485,7 +488,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "jeonbuk" ? (
@@ -498,7 +501,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "jeonnam" ? (
@@ -511,7 +514,10 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={
+              ({ inputiOS: { pickerStyle } },
+              { inputAndroid: { color: "black" } })
+            }
           />
         </>
       ) : Sido === "gyeongbuk" ? (
@@ -524,7 +530,10 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={
+              ({ inputiOS: { pickerStyle } },
+              { inputAndroid: { color: "black" } })
+            }
           />
         </>
       ) : Sido === "gyeongnam" ? (
@@ -537,7 +546,7 @@ function Dropdown() {
             onOpen={() => {
               Keyboard.dismiss();
             }}
-            style={pickerStyle, {inputAndroid: {color: 'black'} }}
+            style={(pickerStyle, { inputAndroid: { color: "black" } })}
           />
         </>
       ) : Sido === "sejong" ? (
@@ -568,7 +577,7 @@ const pickerStyle = {
     borderRadius: "5px",
     margin: 12,
   },
-  inputAndroid: {
+  inputAnd6roid: {
     height: 60,
     fontSize: constants.width > 370 ? 25 : 20,
     paddingLeft: 30,

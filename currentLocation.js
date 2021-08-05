@@ -49,12 +49,7 @@ function currentLocation({ navigation }) {
         centerComponent={
           <TouchableOpacity>
             <Text
-              style={{
-                color: "#fff",
-                letterSpacing: 3,
-                fontWeight: "bold",
-                fontSize: 20,
-              }}
+              style={styles.headerText}
               onPress={() => navigation.navigate("Main")}
             >
               💉똑똑 선별진료소💉
@@ -66,7 +61,7 @@ function currentLocation({ navigation }) {
         backgroundColor={"#00462a"}
       ></Header>
       {/* 임시 */}
-      <View style={styles.container2}>
+      <View style={styles.container}>
         <Text>{text}</Text>
         {location && (
           <MapView
@@ -109,10 +104,10 @@ function currentLocation({ navigation }) {
         )}
 
         <TouchableOpacity
-          style={styles.menu}
+          style={styles.button}
           onPress={() => navigation.navigate("Clinic")}
         >
-          <Text style={styles.text2}>다음 화면으로 넘어감</Text>
+          <Text style={styles.buttonText}>다음 화면으로 넘어감</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -123,58 +118,43 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
-  container1: {
-    flex: 1,
-    backgroundColor: "#00462a",
-    alignItems: "center",
-    marginTop: 0,
-    height: 5,
+  headerText: {
+    color: "#fff",
+    letterSpacing: 3,
+    fontWeight: "bold",
+    fontSize: 20,
   },
-  container2: {
+  container: {
     flex: 6,
     alignItems: "center",
     marginTop: "2%",
     marginBottom: "2%",
   },
-  header: {
-    color: "white",
-    fontSize: constants.width > 370 ? 30 : 25,
-    letterSpacing: 3,
-    fontWeight: "bold",
-    height: "50%",
-    // height: constants.height > 800 ? "80%" : "50%",
-    margin: constants.height > 800 ? "15%" : "9%",
-
-    justifyContent: "center",
-    alignItems: "center",
-  },
   map: {
-    flex: 1,
+    flex: 0.7,
     width: "100%",
     borderColor: "black",
     borderWidth: 2,
     backgroundColor: "red",
   },
-  text: {
-    color: "gray",
-    fontSize: constants.width > 370 ? 30 : 18,
-  },
-  text2: {
-    color: "white",
-    fontSize: constants.width > 370 ? 30 : 18,
-  },
-  menu: {
+  button: {
+    flex: 1,
     marginTop: 50,
     fontSize: constants.width > 370 ? 30 : 18,
     borderColor: "#00462a",
     backgroundColor: "#00462a",
-    fontSize: constants.width > 370 ? 10 : 5,
     borderWidth: 2,
-    borderRadius: 15,
+    borderRadius: 10,
     width: "70%",
     height: "10%",
     justifyContent: "center",
     alignItems: "center",
+    position: "absolute",
+    top: "70%",
+  },
+  buttonText: {
+    color: "white",
+    fontSize: constants.width > 370 ? 30 : 18,
   },
 });
 export default currentLocation;
