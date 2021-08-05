@@ -6,7 +6,7 @@ import Icon3 from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import constants from "./constants";
 import Dropdown from "./Dropdown";
-import { Header, Card, Button } from "react-native-elements";
+import { Header, Card } from "react-native-elements";
 import { Dimensions } from "react-native";
 
 const Location = ({ navigation }) => {
@@ -44,21 +44,13 @@ const Location = ({ navigation }) => {
         </View>
         <View style={styles.container2}>
           <Card.Divider></Card.Divider>
-          <Card containerStyle={styles.card}>
-            <Card.Title style={styles.title}>시/도</Card.Title>
-            <Dropdown />
-          </Card>
-          <Card.Divider></Card.Divider>
-          <Card containerStyle={styles.card}>
-            <Card.Title style={styles.title}>시/군/구</Card.Title>
-            <Dropdown />
-          </Card>
+          <Dropdown />
           <Card.Divider></Card.Divider>
         </View>
 
         <View style={styles.container3}>
           <Text style={styles.mainDescription}>
-            00시 00구의 선별진료소 찾기
+            {Dropdown.Sido}시 {Dropdown.Sigungu}의 선별진료소 찾기
           </Text>
           <TouchableOpacity
             style={styles.button}
