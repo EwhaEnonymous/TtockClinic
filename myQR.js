@@ -65,22 +65,6 @@ const myQR = ({ navigation }) => {
             <QrGenerator />
           </Card>
         </View>
-        {/* <View style={styles.containertitle}>
-          <Card></Card>
-          <Text style={styles.title}>예약 정보</Text>
-        </View>
-        <View style={styles.container2}>
-          <Text style={styles.info}>날짜| 2021-06-26</Text>
-          <Text style={styles.info}>시간| 14:07</Text>
-          <Text style={styles.info}>선별진료소| 서대문구 보건소</Text>
-        </View>
-        <View style={styles.containertitle}>
-          <Text style={styles.title}>나의 QR</Text>
-        </View>
-        <View style={styles.container3}>
-          <Icon name="qr-code-outline" size={300}></Icon>
-          <QrGenerator />
-        </View> */}
       </View>
     </View>
   );

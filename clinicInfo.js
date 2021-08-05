@@ -90,44 +90,6 @@ const clinicInfo = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      {/* <View style={styles.container2}>
-        <View style={styles.picCntr}>
-          <Icon name="image-outline" size={150}></Icon>
-        </View>
-        <View style={styles.clinicInfo}>
-          <Text style={styles.clinicName}>강남구 보건소</Text>
-          <View style={styles.infoTextWrap}>
-            <Text style={styles.infoText}>
-              <Text style={{ fontWeight: "800" }}>주소{"\n"}</Text>서울특별시
-              강남구 삼성2동 선릉로 668{"\n"}
-              <Text style={{ fontWeight: "800" }}>영업시간</Text>
-              {"\t"} 00시 ~ 00시
-              {"\n"}
-              <Text style={{ fontWeight: "800" }}>영업종료</Text>
-              {"\t"} 18시
-              {"\n"}
-              <Text style={{ fontWeight: "800" }}>연락처</Text>
-              {"\t\t"} 02-3423-7200
-            </Text>
-          </View>
-        </View>
-        <View style={styles.waitInfo}>
-          <Text style={styles.waitTitle}>대기자 수</Text>
-          <Text style={styles.waitText}>00명</Text>
-          <Text style={styles.waitTitle}>예상 대기 시간</Text>
-          <Text style={styles.waitText}>00분</Text>
-          <Text style={styles.waitTitle}>시간대별 방문 인원</Text>
-          <Text style={styles.waitTextLast}>00명</Text>
-        </View>
-      </View>
-      <View>
-        <TouchableOpacity
-          style={styles.menu}
-          onPress={() => navigation.navigate("After")}
-        >
-          <Text style={styles.text2}>다음 화면으로 넘어감</Text>
-        </TouchableOpacity>
-      </View> */}
     </View>
   );
 };
