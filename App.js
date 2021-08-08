@@ -6,7 +6,7 @@ import Clinic from "./clinicInfo";
 import Patient from "./patientInfo";
 import Location from "./Location";
 import After from "./after";
-import inspect from "./inspection";
+import Inspect from "./inspection";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -55,8 +55,8 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="inspect"
-          component={inspect}
+          name="Inspect"
+          component={Inspect}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
