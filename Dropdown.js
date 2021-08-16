@@ -628,7 +628,7 @@ const pickerStyle = {
     borderRadius: "5px",
     margin: 12,
   },
-  inputAnd6roid: {
+  inputAndroid: {
     height: 60,
     fontSize: constants.width > 370 ? 25 : 20,
     paddingLeft: 30,
