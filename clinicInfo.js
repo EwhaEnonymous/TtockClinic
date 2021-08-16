@@ -1,27 +1,36 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TouchableHighlight,
+} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 // import constants from "./constants";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
+
 const list = [
   {
-    name: "1번 진료소",
-    address: "서울특별시 강남구 삼성2동 선릉로 668",
-    waitTime: "00분",
+    clinicid: 0,
+    cname: "1번 진료소",
+    loc: "서울특별시 강남구 삼성2동 선릉로 668",
+    waitings: "00명",
   },
   {
-    name: "2번 진료소",
-    address: "서울특별시 강남구 삼성2동 선릉로 668",
-    waitTime: "00분",
+    clinicid: 1,
+    cname: "2번 진료소",
+    loc: "서울특별시 강남구 삼성2동 선릉로 668",
+    waitings: "00명",
   },
   {
-    name: "3번 진료소",
-    address: "서울특별시 강남구 삼성2동 선릉로 668",
-    waitTime: "00분",
+    clinicid: 2,
+    cname: "3번 진료소",
+    loc: "서울특별시 강남구 삼성2동 선릉로 668",
+    waitings: "00명",
   },
 ];
-
 const clinicInfo = ({ navigation }) => {
   return (
     <View style={styles.body}>
@@ -69,10 +78,10 @@ const clinicInfo = ({ navigation }) => {
             {list.map((l, i) => (
               <TouchableOpacity style={styles.listContent}>
                 <ListItem key={i} bottomDivider>
-                  <Avatar source={{ uri: l.address }} />
+                  <Avatar source={{ uri: l.loc }} />
                   <ListItem.Content>
-                    <ListItem.Title>{l.name}</ListItem.Title>
-                    <ListItem.Subtitle>{l.address}</ListItem.Subtitle>
+                    <ListItem.Title>{l.cname}</ListItem.Title>
+                    <ListItem.Subtitle>{l.loc}</ListItem.Subtitle>
                     <ListItem.Subtitle>{l.waitTime}</ListItem.Subtitle>
                   </ListItem.Content>
                 </ListItem>
@@ -84,7 +93,7 @@ const clinicInfo = ({ navigation }) => {
         <View style={styles.container3}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate("Clinic")}
+            onPress={() => navigation.navigate("Interview")}
           >
             <Text style={styles.buttonText}>다음 화면으로 넘어감</Text>
           </TouchableOpacity>

@@ -62,7 +62,12 @@ const Location = ({ navigation }) => {
                 size={30}
                 color="white"
               ></Icon3>
-              <Text style={styles.buttonText}> 선별진료소 찾기</Text>
+              <Text
+                style={styles.buttonText}
+                onPress={() => navigation.navigate("Inspect")}
+              >
+                선별진료소 찾기
+              </Text>
             </Text>
           </TouchableOpacity>
         </View>

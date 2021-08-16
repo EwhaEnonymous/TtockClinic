@@ -1,12 +1,12 @@
 import React from "react";
 import MainPage from "./MainPage";
-import QR from "./myQR";
+import MyQR from "./myQR";
 import CurLoc from "./currentLocation";
 import Clinic from "./clinicInfo";
 import Patient from "./patientInfo";
 import Location from "./Location";
 import After from "./after";
-import Inspect from "./inspection";
+import Interview from "./Interview";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -36,7 +36,7 @@ const App = () => {
         />
         <Stack.Screen
           name="QR"
-          component={QR}
+          component={MyQR}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -55,8 +55,8 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Inspect"
-          component={Inspect}
+          name="Interview"
+          component={Interview}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
