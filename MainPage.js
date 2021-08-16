@@ -35,7 +35,7 @@ const MainPage = ({ navigation }) => {
       <View style={{ flex: 1, marginTop: "8%", marginBottom: "8%" }}>
         <TouchableOpacity
           style={{ flex: 1 }}
-          onPress={() => navigation.navigate("Inspect")}
+          onPress={() => navigation.navigate("Interview")}
         >
           <Card containerStyle={styles.cardContainer}>
             <View style={styles.cardView}>
@@ -121,12 +121,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginLeft: 30,
-    marginRight: 80,
+    paddingLeft: 20,
   },
   cardTitle: {
     fontSize: screenwidth > 365 ? 30 : 20,
     paddingTop: 8,
+    marginRight: 10,
   },
   cardDescription: {
     fontSize: screenwidth > 365 ? 20 : 15,
