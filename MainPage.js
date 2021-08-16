@@ -35,7 +35,7 @@ const MainPage = ({ navigation }) => {
       <View style={{ flex: 1, marginTop: "8%", marginBottom: "8%" }}>
         <TouchableOpacity
           style={{ flex: 1 }}
-          onPress={() => navigation.navigate("Interview")}
+          onPress={() => navigation.navigate("Patient")}
         >
           <Card containerStyle={styles.cardContainer}>
             <View style={styles.cardView}>
