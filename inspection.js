@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import { StyleSheet, Text, View, TextInput, Header, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import QrGenerator from "./qrGenerator";
+import { Header, Card } from "react-native-elements";
 
 const Inspect = ({navigation}) => {
   const [name, setName] = useState('')

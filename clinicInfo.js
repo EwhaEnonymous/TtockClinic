@@ -33,7 +33,8 @@ const list = [
 ];
 const clinicInfo = ({ navigation }) => {
   return (
-    <View style={styles.body}>
+    <View style={styles.body
+    }>
       <Header
         placement="left"
         leftComponent={{ icon: "menu", color: "#fff" }}
