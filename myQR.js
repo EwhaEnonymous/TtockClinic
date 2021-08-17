@@ -30,11 +30,11 @@ const myQR = ({ navigation }) => {
         <View style={styles.reserveInfo}>
           <View style={styles.container1}>
             <Card.Title style={styles.title}>
-              <Icon name="chevron-forward-circle-outline" size={30}></Icon> 예약
+              <Icon name="chevron-forward-circle-outline" size={30}></Icon> 접수
               정보
             </Card.Title>
             <Text style={styles.mainDescription}>
-              원하는 예약정보를 누르면 해당 QR코드가 나타납니다.
+              문진표 작성을 완료한 접수 내역입니다.
             </Text>
           </View>
 
@@ -44,11 +44,6 @@ const myQR = ({ navigation }) => {
             <Text style={styles.description}>선별진료소</Text>
           </Card>
           {/* <ListItem></ListItem> */}
-          <Card containerStyle={styles.card}>
-            <Text style={styles.description}>날짜</Text>
-            <Text style={styles.description}>시간</Text>
-            <Text style={styles.description}>선별진료소</Text>
-          </Card>
         </View>
         <Card.Divider></Card.Divider>
         <View style={styles.qrInfo}>

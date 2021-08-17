@@ -62,6 +62,12 @@ function Interview({ navigation }) {
             onChangeText={(value) => setName(value)}
           />
           <Input
+            label="생년월일"
+            placeholder="14430815"
+            style={styles}
+            onChangeText={(value) => setPhone(value)}
+          />
+          <Input
             label="휴대폰번호"
             placeholder="010-1234-5678"
             style={styles}
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   container1: {
-    flex: 0.2,
+    flex: 0.3,
     alignItems: "flex-start",
     marginTop: "5%",
   },

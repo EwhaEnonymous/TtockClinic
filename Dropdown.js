@@ -365,6 +365,7 @@ function Dropdown() {
     return (
       <>
         <RNPickerSelect
+        useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           value={Sido}
           onValueChange={(Sido) => setSido(Sido)}
@@ -380,7 +381,18 @@ function Dropdown() {
     );
   }
   function Dropdown2() {
-    if (Sido === "seoul") {
+    /*if (Sido.length < 1) {
+      return (
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
+          placeholder={{ label: placeholderText }}
+          onOpen={() => {
+            Keyboard.dismiss();
+          }}
+          style={pickerStyle}
+        />
+      );
+    } else */if (Sido === "seoul") {
       return (
         <RNPickerSelect useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
