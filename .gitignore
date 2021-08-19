@@ -13,3 +13,5 @@ web-build/
 .DS_Store
 
 ttclinic.jks
+
+apikey.js

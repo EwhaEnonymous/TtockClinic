@@ -3,6 +3,7 @@ import MainPage from "./MainPage";
 import MyQR from "./myQR";
 import CurLoc from "./currentLocation";
 import Clinic from "./clinicInfo";
+import ClinicNext from "./clinicInfo_next";
 import Patient from "./patientInfo";
 import Location from "./Location";
 import After from "./after";
@@ -32,6 +33,11 @@ const App = () => {
         <Stack.Screen
           name="Clinic"
           component={Clinic}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ClinicNext"
+          component={ClinicNext}
           options={{ headerShown: false }}
         />
         <Stack.Screen

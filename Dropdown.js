@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RNPickerSelect from "react-native-picker-select";
-import { Keyboard, StyleSheet } from "react-native";
+import { Keyboard, StyleSheet, Text } from "react-native";
 import constants from "./constants";
 import { Card } from "react-native-elements";
 
@@ -365,6 +365,7 @@ function Dropdown() {
     return (
       <>
         <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           value={Sido}
           onValueChange={(Sido) => setSido(Sido)}
@@ -614,6 +615,9 @@ function Dropdown() {
         <Card.Title style={styles.title}>시/군/구</Card.Title>
         {Dropdown2()}
       </Card>
+      {/* <Text style={{ fontSize: 30 }}>
+        {Sido} {Sigungu}
+      </Text> */}
     </>
   );
 }

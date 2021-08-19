@@ -5,10 +5,15 @@ import constants from "./constants";
 import { Header, Card } from "react-native-elements";
 import axios from "axios";
 const patientInfo = ({ navigation }) => {
-  useEffect(() => {
-    window.fetch(`http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson
-    `);
-  });
+  const SERVICE_KEY = "";
+  const url = `/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${SERVICE_KEY}`;
+
+  axios
+    .get(url)
+    .then((response) => console.log(response.data))
+    .catch((response) => {
+      console.log("Error!");
+    });
 
   return (
     <View style={styles.body}>

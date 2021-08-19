@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   container1: {
-    flex: 0.2,
+    flex: 0.3,
     alignItems: "flex-start",
     marginTop: "5%",
   },
