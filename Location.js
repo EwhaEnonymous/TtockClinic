@@ -50,7 +50,7 @@ const Location = ({ navigation }) => {
 
         <View style={styles.container3}>
           <Text style={styles.mainDescription}>
-            {Dropdown.Sido}시 {Dropdown.Sigungu}의 선별진료소 찾기
+            "{Dropdown.Sido}시 {Dropdown.Sigungu}"의 선별진료소 찾기
           </Text>
           <TouchableOpacity
             style={styles.button}
