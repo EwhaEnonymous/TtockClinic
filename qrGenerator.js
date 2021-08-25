@@ -9,6 +9,7 @@ class qrGenerator extends Component {
           value={["1", "2", "3", "4", "hyejin", "5"]} // paper_id, clinic_id
           logoSize={300}
           logoBackgroundColor="transparent"
+          
         />
       </>
     );

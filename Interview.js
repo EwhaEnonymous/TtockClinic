@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import "react-native-gesture-handler";
-import { Header, Input, Card } from "react-native-elements";
+import { Header, Input, Card, ButtonGroup } from "react-native-elements";
 import Icon from "react-native-vector-icons/Ionicons";
 import RadioForm, {
   RadioButton,
@@ -11,15 +11,24 @@ import RadioForm, {
 import constants from "./constants";
 import { Dimensions } from "react-native";
 import axios from "axios";
+import { render } from "react-dom";
 
 function Interview({ navigation }) {
   const [name, setName] = useState("");
+  const [birth, setBirth] = useState(0);
   const [phone, setPhone] = useState(0);
+  // const radioGroupData = [
+  //   { value: "Female", displayValue: "F" },
+  //   { value: "Male", displayValue: "M" },
+  // ];
+  // const defaultSelectedIndex_group_gender = [0];
 
-  var gender = [
-    { label: "남성", value: 0 },
-    { label: "여성", value: 1 },
-  ];
+  // var gender = [
+  //   { label: "남성", value: 0 },
+  //   { label: "여성", value: 1 },
+  // ];
+  const buttons = ['여성', '남성']
+
   axios
     .post("/v1/papers", { loc: "????", name: name, phone: phone })
     .then((response) => console.log(response.data))
@@ -27,6 +36,7 @@ function Interview({ navigation }) {
       console.log("Error!");
     });
 
+  
   return (
     <View style={styles.body}>
       <Header
@@ -72,6 +82,11 @@ function Interview({ navigation }) {
             placeholder="010-1234-5678"
             style={styles}
             onChangeText={(value) => setPhone(value)}
+          />
+          <ButtonGroup
+            buttons={buttons}
+            containerStyle={styles.genderButton}
+            textStyle={styles.genderText}
           />
           <View>{/* 추가적인 정보 들어갈 부분 */}</View>
         </View>
@@ -124,10 +139,26 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     marginTop: "5%",
   },
+  container2: {
+    flex: 1.5,
+    alignItems: "flex-start",
+    marginTop: "5%",
+  },
   mainDescription: {
     fontSize: 18,
     color: "#00462a",
     marginBottom: "10%",
+  },
+  genderText: {
+    fontSize: 18,
+    color: "#00462a",
+  },
+  genderButton: {
+    borderColor: "#00462a",
+    backgroundColor: "white",
+    borderRadius: 8,
+    margin: "0.1%",
+    height: "15%",
   },
   button: {
     fontSize: constants.width > 370 ? 30 : 18,
