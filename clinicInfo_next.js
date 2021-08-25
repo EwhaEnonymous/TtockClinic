@@ -11,27 +11,7 @@ import "react-native-gesture-handler";
 // import constants from "./constants";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
 
-const list = [
-  {
-    clinicid: 0,
-    cname: "1번 진료소",
-    loc: "서울특별시 강남구 삼성2동 선릉로 668",
-    waitings: "00명",
-  },
-  {
-    clinicid: 1,
-    cname: "2번 진료소",
-    loc: "서울특별시 강남구 삼성2동 선릉로 668",
-    waitings: "00명",
-  },
-  {
-    clinicid: 2,
-    cname: "3번 진료소",
-    loc: "서울특별시 강남구 삼성2동 선릉로 668",
-    waitings: "00명",
-  },
-];
-const clinicInfo = ({ navigation }) => {
+const clinicInfo_next = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <Header
@@ -59,40 +39,14 @@ const clinicInfo = ({ navigation }) => {
               선별진료소 정보
             </Card.Title>
             <Text style={styles.mainDescription}>
-              현위치에서 가까운 선별진료소의 정보입니다.
-              {"\n"}자세한 정보를 보려면 선별진료소를 선택하세요.
+              여기 선별진료소 정보 나열되기
             </Text>
           </View>
           {/* <Card> */}
 
           {/* </Card> */}
         </View>
-        <View style={styles.container2}>
-          {/* <Card containerStyle={styles.card}> */}
-          {/* <Card.Title style={styles.title}>선별진료소 이름</Card.Title> */}
 
-          <View>
-            <Card.Divider></Card.Divider>
-          </View>
-          <View style={styles.list}>
-            {list.map((l, i) => (
-              <TouchableOpacity
-                style={styles.listContent}
-                onPress={() => navigation.navigate("ClinicNext")}
-              >
-                <ListItem key={i} bottomDivider>
-                  <Avatar source={{ uri: l.loc }} />
-                  <ListItem.Content>
-                    <ListItem.Title>{l.cname}</ListItem.Title>
-                    <ListItem.Subtitle>{l.loc}</ListItem.Subtitle>
-                    <ListItem.Subtitle>{l.waitTime}</ListItem.Subtitle>
-                  </ListItem.Content>
-                </ListItem>
-              </TouchableOpacity>
-            ))}
-            {/* </Card> */}
-          </View>
-        </View>
         <View style={styles.container3}>
           <TouchableOpacity
             style={styles.button}
@@ -165,4 +119,4 @@ const styles = StyleSheet.create({
     color: "white",
   },
 });
-export default clinicInfo;
+export default clinicInfo_next;

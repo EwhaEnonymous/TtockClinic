@@ -38,7 +38,6 @@ function currentLocation({ navigation }) {
   } else if (location) {
     text = JSON.stringify(location);
     console.log(location.latitude);
-
     console.log(location.longitude);
   }
   return (

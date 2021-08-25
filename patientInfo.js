@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import "react-native-gesture-handler";
 import constants from "./constants";
 import { Header, Card } from "react-native-elements";
+import axios from "axios";
 const patientInfo = ({ navigation }) => {
+  const SERVICE_KEY = "";
+  const url = `/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${SERVICE_KEY}`;
+
+  axios
+    .get(url)
+    .then((response) => console.log(response.data))
+    .catch((response) => {
+      console.log("Error!");
+    });
+
   return (
     <View style={styles.body}>
       <Header

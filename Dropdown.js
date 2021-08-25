@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RNPickerSelect from "react-native-picker-select";
-import { Keyboard, StyleSheet } from "react-native";
+import { Keyboard, StyleSheet, Text } from "react-native";
 import constants from "./constants";
 import { Card } from "react-native-elements";
 
@@ -365,7 +365,7 @@ function Dropdown() {
     return (
       <>
         <RNPickerSelect
-        useNativeAndroidPickerStyle={false}
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           value={Sido}
           onValueChange={(Sido) => setSido(Sido)}
@@ -394,7 +394,8 @@ function Dropdown() {
       );
     } else */if (Sido === "seoul") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[0].sigungu}
@@ -406,7 +407,8 @@ function Dropdown() {
       );
     } else if (Sido === "gyeonggi") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[1].sigungu}
@@ -418,7 +420,8 @@ function Dropdown() {
       );
     } else if (Sido === "incheon") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[2].sigungu}
@@ -430,7 +433,8 @@ function Dropdown() {
       );
     } else if (Sido === "busan") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[3].sigungu}
@@ -442,7 +446,8 @@ function Dropdown() {
       );
     } else if (Sido === "gwangju") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[4].sigungu}
@@ -454,7 +459,8 @@ function Dropdown() {
       );
     } else if (Sido === "ulsan") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[5].sigungu}
@@ -466,7 +472,8 @@ function Dropdown() {
       );
     } else if (Sido === "gangwon") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[6].sigungu}
@@ -478,7 +485,8 @@ function Dropdown() {
       );
     } else if (Sido === "daejeon") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[7].sigungu}
@@ -490,7 +498,8 @@ function Dropdown() {
       );
     } else if (Sido === "daegu") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[8].sigungu}
@@ -502,7 +511,8 @@ function Dropdown() {
       );
     } else if (Sido === "choongbuk") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[9].sigungu}
@@ -514,7 +524,8 @@ function Dropdown() {
       );
     } else if (Sido === "choongnam") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[10].sigungu}
@@ -526,7 +537,8 @@ function Dropdown() {
       );
     } else if (Sido === "jeonbuk") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[11].sigungu}
@@ -538,7 +550,8 @@ function Dropdown() {
       );
     } else if (Sido === "jeonnam") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[12].sigungu}
@@ -550,7 +563,8 @@ function Dropdown() {
       );
     } else if (Sido === "gyeongbuk") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[13].sigungu}
@@ -562,7 +576,8 @@ function Dropdown() {
       );
     } else if (Sido === "gyeongnam") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[14].sigungu}
@@ -574,7 +589,8 @@ function Dropdown() {
       );
     } else if (Sido === "sejong") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[15].sigungu}
@@ -586,7 +602,8 @@ function Dropdown() {
       );
     } else if (Sido === "jeju") {
       return (
-        <RNPickerSelect useNativeAndroidPickerStyle={false}
+        <RNPickerSelect
+          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
           onValueChange={(Sigungu) => setSigungu(Sigungu)}
           items={sigunguArr[16].sigungu}
@@ -609,6 +626,9 @@ function Dropdown() {
         <Card.Title style={styles.title}>시/군/구</Card.Title>
         {Dropdown2()}
       </Card>
+      {/* <Text style={{ fontSize: 30 }}>
+        {Sido} {Sigungu}
+      </Text> */}
     </>
   );
 }
@@ -629,15 +649,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-const pickerStyle = StyleSheet.create( {
+const pickerStyle = StyleSheet.create({
   inputIOS: {
     height: 60,
     fontSize: constants.width > 370 ? 25 : 20,
     paddingLeft: 30,
     color: "black",
     borderColor: "#00462a",
-    //borderWidth: "1.5px",
-    //borderRadius: "5px",
+    borderWidth: 2,
+    borderRadius: 5,
     margin: 12,
   },
   inputAndroid: {
@@ -646,8 +666,8 @@ const pickerStyle = StyleSheet.create( {
     paddingLeft: 30,
     color: "black",
     borderColor: "#00462a",
-    //borderWidth: "1.5px",
-    //borderRadius: "5px",
+    borderWidth: 2,
+    borderRadius: 5,
     margin: 12,
   },
   placeholderColor: { color: "red" },
