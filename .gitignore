@@ -15,3 +15,4 @@ web-build/
 ttclinic.jks
 
 apikey.js
+.env
