@@ -9,7 +9,7 @@ import Dropdown from "./Dropdown";
 import { Header, Card } from "react-native-elements";
 import { Dimensions } from "react-native";
 
-const Location = ({ navigation }) => {
+const Location = ({ navigation }, props) => {
   return (
     <View style={styles.body}>
       <Header
@@ -50,7 +50,7 @@ const Location = ({ navigation }) => {
 
         <View style={styles.container3}>
           <Text style={styles.mainDescription}>
-            "{Dropdown.Sido}시 {Dropdown.Sigungu}"의 선별진료소 찾기
+            {/* {Sido}시 {Sigungu}의 선별진료소 찾기 */}
           </Text>
           <TouchableOpacity
             style={styles.button}
