@@ -18,7 +18,7 @@ function Interview({ navigation }) {
   // const [gen, setGen] = useState("");
   const gender = ['여성', '남성']
   const [values, setValues] = useState({name:"", birth:"", phone:""});
-  const [selectedIndex, setSelectedIndex] = useState([0]);
+  const [selectedIndex, setSelectedIndex] = useState("");
   const onChangeHandler=(event) => {
     const {name, value}=event.target;
     setValues({...values, [name]:value});
@@ -85,12 +85,12 @@ function Interview({ navigation }) {
           <TouchableOpacity>
             <ButtonGroup
               buttons={gender} //여성, 남성
-              // selectedIndex={setSelectedIndex(selectedIndex)}
-              selectedTextStyle = {{backgroundColor:"red"}}
+            selectedIndex={selectedIndex}
+              selectedTextStyle = {{backgroundColor:"#00462a", color:"white"}}
+              selectedButtonStyle = {{backgroundColor: "#00462a"}}
               containerStyle={styles.genderButton} //css
               textStyle={styles.genderText} //텍스트 css
-              // onPress={()=> setColor({ backgroundColor:"Green" })}
-            // setSelectedIndex={selectedIndex}  
+              onPress={(e)=>setSelectedIndex(e.target.value)}
             />
           </TouchableOpacity>
           
