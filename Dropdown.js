@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RNPickerSelect from "react-native-picker-select";
-import { Keyboard, StyleSheet, Text } from "react-native";
+import { Keyboard, StyleSheet } from "react-native";
 import constants from "./constants";
 import { Card } from "react-native-elements";
 
@@ -340,16 +340,8 @@ function Dropdown() {
         { label: "서귀포시", value: "seogwipo" },
       ],
     },
-    {
-      key: 17,
-
-      sido: "Select",
-      sigungu: [{ label: "선택하세요", value: "select" }],
-    },
   ];
   const sidoArr = [
-    { label: "선택하세요", value: "select" },
-
     { label: "서울", value: "seoul" },
     { label: "경기", value: "gyeonggi" },
     { label: "인천", value: "incheon" },
@@ -373,9 +365,8 @@ function Dropdown() {
     return (
       <>
         <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
           placeholder={{ label: placeholderText }}
-          value={"select"}
+          value={Sido}
           onValueChange={(Sido) => setSido(Sido)}
           items={sidoArr}
           onOpen={() => {
@@ -389,18 +380,7 @@ function Dropdown() {
     );
   }
   function Dropdown2() {
-    if (Sido === "select") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "seoul") {
+    if (Sido === "seoul") {
       return (
         <RNPickerSelect
           useNativeAndroidPickerStyle={false}
@@ -634,9 +614,6 @@ function Dropdown() {
         <Card.Title style={styles.title}>시/군/구</Card.Title>
         {Dropdown2()}
       </Card>
-      <Text style={{ fontSize: 30 }}>
-        {Sido.sido} {Sigungu.sigungu}
-      </Text>
     </>
   );
 }

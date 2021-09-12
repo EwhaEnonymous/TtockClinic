@@ -10,8 +10,16 @@ import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 // import constants from "./constants";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
-
+import axios from "axios";
 const clinicInfo_next = ({ navigation }) => {
+  axios
+    .get(
+      `/B551182/pubReliefHospService/getpubReliefHospList?ServiceKey=${KEY}&pageNo=1&numOfRows=10&spclAdmTyCd=A0`
+    )
+    .then((response) => console.log(response.data))
+    .catch((err) => {
+      console.log(err);
+    });
   return (
     <View style={styles.body}>
       <Header
