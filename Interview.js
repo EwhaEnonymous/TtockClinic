@@ -14,27 +14,25 @@ import axios from "axios";
 import { render } from "react-dom";
 
 function Interview({ navigation }) {
-  const [name, setName] = useState("");
-  const [birth, setBirth] = useState(0);
-  const [phone, setPhone] = useState(0);
-  // const radioGroupData = [
-  //   { value: "Female", displayValue: "F" },
-  //   { value: "Male", displayValue: "M" },
-  // ];
-  // const defaultSelectedIndex_group_gender = [0];
+  // const [name, setName] = useState("");
+  // const [birth, setBirth] = useState(0);
+  // const [phone, setPhone] = useState("");
+  // const [gen, setGen] = useState("");
+  const gender = ['여성', '남성']
+  const [values, setValues] = useState({name:"", birth:"", phone:""});
+  
+  const onChangeHandler=(event) => {
+const {name, value}=event.target;
+setValues({...values, [name]:value});
+console.log(values)
+  }
 
-  // var gender = [
-  //   { label: "남성", value: 0 },
-  //   { label: "여성", value: 1 },
-  // ];
-  const buttons = ['여성', '남성']
-
-  axios
-    .post("/v1/papers", { loc: "????", name: name, phone: phone })
-    .then((response) => console.log(response.data))
-    .catch((response) => {
-      console.log("Error!");
-    });
+  // axios
+  //   .post("/v1/papers", { loc: "????", name: name, phone: phone })
+  //   .then((response) => console.log(response.data))
+  //   .catch((response) => {
+  //     console.log("Error!");
+  //   });
 
   
   return (
@@ -69,25 +67,30 @@ function Interview({ navigation }) {
             label="이름"
             placeholder="홍길동"
             style={styles}
-            onChangeText={(value) => setName(value)}
+            onChange={onChangeHandler}
+            value={values.name}
           />
           <Input
             label="생년월일"
             placeholder="14430815"
             style={styles}
-            onChangeText={(value) => setPhone(value)}
+            onChange={onChangeHandler}
+            value={values.birth}
           />
           <Input
             label="휴대폰번호"
             placeholder="010-1234-5678"
             style={styles}
-            onChangeText={(value) => setPhone(value)}
+            onChange={onChangeHandler}
+            value={values.phone}
           />
           <ButtonGroup
-            buttons={buttons}
-            containerStyle={styles.genderButton}
-            textStyle={styles.genderText}
-          />
+            buttons={gender} //여성, 남성
+            containerStyle={styles.genderButton} //css
+            textStyle={styles.genderText} //텍스트 css
+            // onPress={}
+            // setSelectedIndex={selectedIndex}  
+                    />
           <View>{/* 추가적인 정보 들어갈 부분 */}</View>
         </View>
         <TouchableOpacity
@@ -159,6 +162,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     margin: "0.1%",
     height: "15%",
+    outline: 0,
   },
   button: {
     fontSize: constants.width > 370 ? 30 : 18,
