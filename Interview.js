@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity,Dimensions } from "react-native";
 import "react-native-gesture-handler";
 import { Header, Input, Card, ButtonGroup } from "react-native-elements";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -9,9 +9,7 @@ import RadioForm, {
   RadioButtonLabel,
 } from "react-native-simple-radio-button";
 import constants from "./constants";
-import { Dimensions } from "react-native";
 import axios from "axios";
-import { render } from "react-dom";
 
 function Interview({ navigation }) {
   // const [name, setName] = useState("");
@@ -20,11 +18,11 @@ function Interview({ navigation }) {
   // const [gen, setGen] = useState("");
   const gender = ['여성', '남성']
   const [values, setValues] = useState({name:"", birth:"", phone:""});
-  
+  const [selectedIndex, setSelectedIndex] = useState([0]);
   const onChangeHandler=(event) => {
-const {name, value}=event.target;
-setValues({...values, [name]:value});
-console.log(values)
+    const {name, value}=event.target;
+    setValues({...values, [name]:value});
+    console.log(values)
   }
 
   // axios
@@ -84,13 +82,18 @@ console.log(values)
             onChange={onChangeHandler}
             value={values.phone}
           />
-          <ButtonGroup
-            buttons={gender} //여성, 남성
-            containerStyle={styles.genderButton} //css
-            textStyle={styles.genderText} //텍스트 css
-            // onPress={}
+          <TouchableOpacity>
+            <ButtonGroup
+              buttons={gender} //여성, 남성
+              // selectedIndex={setSelectedIndex(selectedIndex)}
+              selectedTextStyle = {{backgroundColor:"red"}}
+              containerStyle={styles.genderButton} //css
+              textStyle={styles.genderText} //텍스트 css
+              // onPress={()=> setColor({ backgroundColor:"Green" })}
             // setSelectedIndex={selectedIndex}  
-                    />
+            />
+          </TouchableOpacity>
+          
           <View>{/* 추가적인 정보 들어갈 부분 */}</View>
         </View>
         <TouchableOpacity
@@ -161,8 +164,10 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 8,
     margin: "0.1%",
-    height: "15%",
-    outline: 0,
+    height: "50px",
+    width: "300px",
+    justifyContent: "center",
+    alignContent: "center",
   },
   button: {
     fontSize: constants.width > 370 ? 30 : 18,
