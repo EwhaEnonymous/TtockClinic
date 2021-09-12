@@ -12,18 +12,17 @@ import constants from "./constants";
 import axios from "axios";
 
 function Interview({ navigation }) {
-  // const [name, setName] = useState("");
-  // const [birth, setBirth] = useState(0);
-  // const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [birth, setBirth] = useState(0);
+  const [phone, setPhone] = useState("");
   // const [gen, setGen] = useState("");
   const gender = ['여성', '남성']
-  const [values, setValues] = useState({name:"", birth:"", phone:""});
+  //const [values, setValues] = useState({name:"", birth:"", phone:""});
   const [selectedIndex, setSelectedIndex] = useState("");
-  const onChangeHandler=(event) => {
-    const {name, value}=event.target;
-    setValues({...values, [name]:value});
-    console.log(values)
-  }
+  
+const handleSubmit=(e)=>{
+  console.log(name, birth, phone)
+}
 
   // axios
   //   .post("/v1/papers", { loc: "????", name: name, phone: phone })
@@ -61,39 +60,38 @@ function Interview({ navigation }) {
           <Text style={styles.mainDescription}>문진표를 작성하여 주세요.</Text>
         </View>
         <View style={styles.container2}>
+          <form onSubmit={handleSubmit}>
           <Input
             label="이름"
             placeholder="홍길동"
             style={styles}
-            onChange={onChangeHandler}
-            value={values.name}
+            onChange={(e)=>{setName(e.target.value)}}
           />
           <Input
             label="생년월일"
             placeholder="14430815"
             style={styles}
-            onChange={onChangeHandler}
-            value={values.birth}
+            onChange={(e)=>{console.log(e)}}
           />
           <Input
             label="휴대폰번호"
             placeholder="010-1234-5678"
             style={styles}
-            onChange={onChangeHandler}
-            value={values.phone}
+            onChange={(e)=>{setPhone(e)}}
           />
           <TouchableOpacity>
             <ButtonGroup
               buttons={gender} //여성, 남성
-            selectedIndex={selectedIndex}
+              selectedIndex={selectedIndex}
               selectedTextStyle = {{backgroundColor:"#00462a", color:"white"}}
               selectedButtonStyle = {{backgroundColor: "#00462a"}}
               containerStyle={styles.genderButton} //css
               textStyle={styles.genderText} //텍스트 css
-              onPress={(e)=>setSelectedIndex(e.target.value)}
+              onPress={(e)=>setSelectedIndex(e)}
             />
           </TouchableOpacity>
-          
+          <button type="submit">submit</button>
+          </form>
           <View>{/* 추가적인 정보 들어갈 부분 */}</View>
         </View>
         <TouchableOpacity
