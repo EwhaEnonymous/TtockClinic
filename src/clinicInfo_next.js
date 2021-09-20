@@ -15,6 +15,11 @@ const clinicInfo_next = ({ navigation }) => {
   axios
     .get("https://www.ttockclinic.com/v1/clinic-url")
     .then((response) => console.log(response));
+  axios
+    .get("https://www.ttockclinic.com/v1/clinics/waitings", {
+      params: { longitude: "11", latitude: "22" },
+    })
+    .then((response) => console.log(response));
   return (
     <View style={styles.body}>
       <Header

@@ -1,37 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
   TouchableHighlight,
+  ScrollView,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 // import constants from "./constants";
+import axios from "axios";
+import constants from "./constants";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
-
-const list = [
-  {
-    clinicid: 0,
-    cname: "1번 진료소",
-    loc: "서울특별시 강남구 삼성2동 선릉로 668",
-    waitings: "00명",
-  },
-  {
-    clinicid: 1,
-    cname: "2번 진료소",
-    loc: "서울특별시 강남구 삼성2동 선릉로 668",
-    waitings: "00명",
-  },
-  {
-    clinicid: 2,
-    cname: "3번 진료소",
-    loc: "서울특별시 강남구 삼성2동 선릉로 668",
-    waitings: "00명",
-  },
-];
+// var list = [];
+var clinicNameArr = [];
+var sidoNameArr = [];
+var sgguNameArr = [];
 const clinicInfo = ({ navigation }) => {
+  const [clinicNm, setClinicNm] = useState("");
+  const [sidoNm, setSidoNm] = useState("");
+  const [sgguNm, setSgguNm] = useState("");
+  const [list, setList] = useState("");
+  const [tel, setTel] = useState(0);
+  // function GetClinic() {
+  useEffect(() => {
+    axios.get("https://www.ttockclinic.com/v1/clinic-url").then((response) => {
+      const dataList = response.data.response.body.items.item;
+
+      dataList.map((name) =>
+        clinicNameArr.push(
+          <TouchableOpacity
+            style={styles.listContent}
+            onPress={() => navigation.navigate("ClinicNext")}
+          >
+            <ListItem bottomDivider>
+              <Avatar source={{ uri: name.yadmNm }} />
+
+              <ListItem.Content style={{ width: "10%" }}>
+                <>
+                  <ListItem.Title>{name.yadmNm}&nbsp;</ListItem.Title>
+                  <ListItem.Subtitle>
+                    {name.sidoNm} {name.sgguNm}
+                  </ListItem.Subtitle>
+                </>
+                {/* <ListItem.Subtitle></ListItem.Subtitle> */}
+              </ListItem.Content>
+            </ListItem>
+          </TouchableOpacity>
+        )
+      );
+
+      setClinicNm(clinicNameArr);
+      // setSidoNm(sidoNameArr);
+      // setSgguNm(sgguNameArr);
+    });
+    console.log("name", clinicNameArr);
+  });
+  console.log("clinicNm", clinicNm);
+
+  // console.log("1 list", list);
+  // setList(list);
+  // }
+  // GetClinic();
   return (
     <View style={styles.body}>
       <Header
@@ -70,36 +101,38 @@ const clinicInfo = ({ navigation }) => {
         <View style={styles.container2}>
           {/* <Card containerStyle={styles.card}> */}
           {/* <Card.Title style={styles.title}>선별진료소 이름</Card.Title> */}
-
-          <View>
-            <Card.Divider></Card.Divider>
-          </View>
-          <View style={styles.list}>
-            {list.map((l, i) => (
-              <TouchableOpacity
-                style={styles.listContent}
-                onPress={() => navigation.navigate("ClinicNext")}
-              >
-                <ListItem key={i} bottomDivider>
-                  <Avatar source={{ uri: l.loc }} />
-                  <ListItem.Content>
-                    <ListItem.Title>{l.cname}</ListItem.Title>
-                    <ListItem.Subtitle>{l.loc}</ListItem.Subtitle>
-                    <ListItem.Subtitle>{l.waitTime}</ListItem.Subtitle>
-                  </ListItem.Content>
-                </ListItem>
-              </TouchableOpacity>
-            ))}
-            {/* </Card> */}
-          </View>
+          <ScrollView>
+            <View>
+              <Card.Divider></Card.Divider>
+            </View>
+            <View style={styles.list}>
+              {/* {list.map((l) => ( */}
+              {/* <TouchableOpacity
+              style={styles.listContent}
+              onPress={() => navigation.navigate("ClinicNext")}
+            > */}
+              {/* <ListItem bottomDivider>
+                <Avatar source={{ uri: l.loc }} />
+                <ListItem.Content>
+                  <ListItem.Title> {clinicNm}</ListItem.Title>
+                  <ListItem.Subtitle>{l.sidoNm}</ListItem.Subtitle>
+                  <ListItem.Subtitle>{l.sgguNm}</ListItem.Subtitle>
+                </ListItem.Content>
+              </ListItem> */}
+              <ScrollView>
+                <Text>{clinicNm}</Text>
+              </ScrollView>
+              {/* ))} */}
+            </View>
+          </ScrollView>
         </View>
         <View style={styles.container3}>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("Interview")}
           >
             <Text style={styles.buttonText}>다음 화면으로 넘어감</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </View>
@@ -135,15 +168,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   container2: {
-    flex: 1.3,
+    flex: 1.35,
     margin: 0,
     marginLeft: "5%",
     marginRight: "5%",
   },
-  list: { borderWidth: 1, borderColor: "#00462a" },
   listContent: {
-    margin: "0.5%",
-    backgroundColor: "blue",
+    // margin: "0.05%",
+    flexDirection: "column",
+    width: constants.width * 0.83,
   },
   // card: { borderColor: "#00462a", borderWidth: 2, borderRadius: 20 },
   container3: {
