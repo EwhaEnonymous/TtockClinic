@@ -12,17 +12,9 @@ import "react-native-gesture-handler";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
 import axios from "axios";
 const clinicInfo_next = ({ navigation }) => {
-  // axios
-  //   .get("/v1/clinic-url")
-  //   .then((response) => console.log(response.data))
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  const response = fetch(
-    // "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=x7h3QsoSTvqMkdINB49pnMFwFob%2BGJk5XPJPBNLtTt3GErqxwAHg%2F2Au%2FgUlIA%2FKcjlrK%2BbhRPRJI7AJnGh5Ag%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20200310&endCreateDt=20200315"
-    "v1/clinic-url"
-  );
-  console.log(response);
+  axios
+    .get("https://www.ttockclinic.com/v1/clinic-url")
+    .then((response) => console.log(response));
   return (
     <View style={styles.body}>
       <Header

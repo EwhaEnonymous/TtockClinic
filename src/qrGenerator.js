@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import QRCode from "react-native-qrcode-svg";
 import axios from "axios";
 function qrGenerator() {
-  axios.get("/v1/paper").then((res) => console.log(res));
+  axios
+    .get("https://www.ttockclinic.com/v1/paper")
+    .then((res) => console.log(res));
   return (
     <>
       <QRCode

@@ -22,7 +22,6 @@ function Interview({ navigation }) {
   const [birth, setBirth] = useState(0);
   const [phone, setPhone] = useState("");
   // const [gen, setGen] = useState("");
-<<<<<<< HEAD
   const gender = ["여성", "남성"];
   const [values, setValues] = useState({ name: "", birth: "", phone: "" });
   const [selectedIndex, setSelectedIndex] = useState("");
@@ -31,22 +30,24 @@ function Interview({ navigation }) {
     setValues({ ...values, [name]: value });
     console.log(values);
   };
-=======
-  const gender = ['여성', '남성']
-  //const [values, setValues] = useState({name:"", birth:"", phone:""});
-  const [selectedIndex, setSelectedIndex] = useState("");
-  
-const handleSubmit=(e)=>{
-  console.log(name, birth, phone)
-}
->>>>>>> 81ce0c5578b8359979a83977b9755ce35d4cce91
+  const handleSubmit = (e) => {
+    console.log(name, birth, phone);
 
-  // axios
-  //   .post("/v1/papers", { loc: "????", name: name, phone: phone })
-  //   .then((response) => console.log(response.data))
-  //   .catch((response) => {
-  //     console.log("Error!");
-  //   });
+    axios
+      .post("https://www.ttockclinic.com/v1/papers", {
+        headers: { "Content-type": `application/json` },
+        latitude: "11",
+        longitude: "22",
+        name: "이정우",
+        phone: "010-2323-4343",
+        // name: `${name}`,
+        // phone: `${phone}`,
+      })
+      .then((response) => console.log(response.data))
+      .catch((response) => {
+        console.log("Error!");
+      });
+  };
 
   return (
     <View style={styles.body}>
@@ -77,48 +78,46 @@ const handleSubmit=(e)=>{
         </View>
         <View style={styles.container2}>
           <form onSubmit={handleSubmit}>
-          <Input
-            label="이름"
-            placeholder="홍길동"
-            style={styles}
-            onChange={(e)=>{setName(e.target.value)}}
-          />
-          <Input
-            label="생년월일"
-            placeholder="14430815"
-            style={styles}
-            onChange={(e)=>{console.log(e)}}
-          />
-          <Input
-            label="휴대폰번호"
-            placeholder="010-1234-5678"
-            style={styles}
-            onChange={(e)=>{setPhone(e)}}
-          />
-          <TouchableOpacity>
-            <ButtonGroup
-              buttons={gender} //여성, 남성
-              selectedIndex={selectedIndex}
-<<<<<<< HEAD
-              selectedTextStyle={{ backgroundColor: "#00462a", color: "white" }}
-              selectedButtonStyle={{ backgroundColor: "#00462a" }}
-              containerStyle={styles.genderButton} //css
-              textStyle={styles.genderText} //텍스트 css
-              onPress={(e) => setSelectedIndex(e)}
+            <Input
+              label="이름"
+              placeholder="홍길동"
+              style={styles}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
             />
-          </TouchableOpacity>
-
-=======
-              selectedTextStyle = {{backgroundColor:"#00462a", color:"white"}}
-              selectedButtonStyle = {{backgroundColor: "#00462a"}}
-              containerStyle={styles.genderButton} //css
-              textStyle={styles.genderText} //텍스트 css
-              onPress={(e)=>setSelectedIndex(e)}
+            <Input
+              label="생년월일"
+              placeholder="14430815"
+              style={styles}
+              onChange={(e) => {
+                console.log(e);
+              }}
             />
-          </TouchableOpacity>
-          <button type="submit">submit</button>
+            <Input
+              label="휴대폰번호"
+              placeholder="010-1234-5678"
+              style={styles}
+              onChange={(e) => {
+                setPhone(e);
+              }}
+            />
+            <TouchableOpacity>
+              <ButtonGroup
+                buttons={gender} //여성, 남성
+                selectedIndex={selectedIndex}
+                selectedTextStyle={{
+                  backgroundColor: "#00462a",
+                  color: "white",
+                }}
+                selectedButtonStyle={{ backgroundColor: "#00462a" }}
+                containerStyle={styles.genderButton} //css
+                textStyle={styles.genderText} //텍스트 css
+                onPress={(e) => setSelectedIndex(e)}
+              />
+            </TouchableOpacity>
+            <button type="submit">submit</button>
           </form>
->>>>>>> 81ce0c5578b8359979a83977b9755ce35d4cce91
           <View>{/* 추가적인 정보 들어갈 부분 */}</View>
         </View>
         <TouchableOpacity
