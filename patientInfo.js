@@ -4,17 +4,20 @@ import "react-native-gesture-handler";
 import constants from "./constants";
 import { Header, Card } from "react-native-elements";
 import axios from "axios";
+// const patientInfo = ({ navigation }) => {
+//   axios
+//     .get("v1/covid-url")
+//     .then((response) => console.log(response.data))
+//     .catch((err) => {
+//       console.log("Error!");
+//       console.log(err);
+//     });
 const patientInfo = ({ navigation }) => {
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(API_KEY);
-  const url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${API_KEY}&pageNo=1&numOfRows=10&startCreateDt=20200310&endCreateDt=20200315`;
-  axios
-    .get(url)
-    .then((response) => console.log(response.data))
-    .catch((err) => {
-      console.log("Error!");
-      console.log(err);
-    });
+  const response = fetch(
+    // "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=x7h3QsoSTvqMkdINB49pnMFwFob%2BGJk5XPJPBNLtTt3GErqxwAHg%2F2Au%2FgUlIA%2FKcjlrK%2BbhRPRJI7AJnGh5Ag%3D%3D&pageNo=1&numOfRows=10&startCreateDt=20200310&endCreateDt=20200315"
+    "v1/covid-url"
+  );
+  console.log(response);
 
   return (
     <View style={styles.body}>

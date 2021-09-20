@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import "react-native-gesture-handler";
 import { Header, Input, Card, ButtonGroup } from "react-native-elements";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -16,14 +22,14 @@ function Interview({ navigation }) {
   // const [birth, setBirth] = useState(0);
   // const [phone, setPhone] = useState("");
   // const [gen, setGen] = useState("");
-  const gender = ['여성', '남성']
-  const [values, setValues] = useState({name:"", birth:"", phone:""});
+  const gender = ["여성", "남성"];
+  const [values, setValues] = useState({ name: "", birth: "", phone: "" });
   const [selectedIndex, setSelectedIndex] = useState("");
-  const onChangeHandler=(event) => {
-    const {name, value}=event.target;
-    setValues({...values, [name]:value});
-    console.log(values)
-  }
+  const onChangeHandler = (event) => {
+    const { name, value } = event.target;
+    setValues({ ...values, [name]: value });
+    console.log(values);
+  };
 
   // axios
   //   .post("/v1/papers", { loc: "????", name: name, phone: phone })
@@ -32,7 +38,6 @@ function Interview({ navigation }) {
   //     console.log("Error!");
   //   });
 
-  
   return (
     <View style={styles.body}>
       <Header
@@ -85,15 +90,15 @@ function Interview({ navigation }) {
           <TouchableOpacity>
             <ButtonGroup
               buttons={gender} //여성, 남성
-            selectedIndex={selectedIndex}
-              selectedTextStyle = {{backgroundColor:"#00462a", color:"white"}}
-              selectedButtonStyle = {{backgroundColor: "#00462a"}}
+              selectedIndex={selectedIndex}
+              selectedTextStyle={{ backgroundColor: "#00462a", color: "white" }}
+              selectedButtonStyle={{ backgroundColor: "#00462a" }}
               containerStyle={styles.genderButton} //css
               textStyle={styles.genderText} //텍스트 css
-              onPress={(e)=>setSelectedIndex(e.target.value)}
+              onPress={(e) => setSelectedIndex(e)}
             />
           </TouchableOpacity>
-          
+
           <View>{/* 추가적인 정보 들어갈 부분 */}</View>
         </View>
         <TouchableOpacity

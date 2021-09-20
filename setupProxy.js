@@ -2,11 +2,10 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function (app) {
   app.use(
-    "/",
+    "/v1",
     createProxyMiddleware({
-      //   target: "http://openapi.data.go.kr",
-      target: "http://apis.data.go.kr/",
-      //   changeOrigin: true,
+      target: "https://www.ttockclinic.com/",
+      changeOrigin: true,
     })
   );
 };
