@@ -18,10 +18,11 @@ import constants from "./constants";
 import axios from "axios";
 
 function Interview({ navigation }) {
-  // const [name, setName] = useState("");
-  // const [birth, setBirth] = useState(0);
-  // const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [birth, setBirth] = useState(0);
+  const [phone, setPhone] = useState("");
   // const [gen, setGen] = useState("");
+<<<<<<< HEAD
   const gender = ["여성", "남성"];
   const [values, setValues] = useState({ name: "", birth: "", phone: "" });
   const [selectedIndex, setSelectedIndex] = useState("");
@@ -30,6 +31,15 @@ function Interview({ navigation }) {
     setValues({ ...values, [name]: value });
     console.log(values);
   };
+=======
+  const gender = ['여성', '남성']
+  //const [values, setValues] = useState({name:"", birth:"", phone:""});
+  const [selectedIndex, setSelectedIndex] = useState("");
+  
+const handleSubmit=(e)=>{
+  console.log(name, birth, phone)
+}
+>>>>>>> 81ce0c5578b8359979a83977b9755ce35d4cce91
 
   // axios
   //   .post("/v1/papers", { loc: "????", name: name, phone: phone })
@@ -66,31 +76,30 @@ function Interview({ navigation }) {
           <Text style={styles.mainDescription}>문진표를 작성하여 주세요.</Text>
         </View>
         <View style={styles.container2}>
+          <form onSubmit={handleSubmit}>
           <Input
             label="이름"
             placeholder="홍길동"
             style={styles}
-            onChange={onChangeHandler}
-            value={values.name}
+            onChange={(e)=>{setName(e.target.value)}}
           />
           <Input
             label="생년월일"
             placeholder="14430815"
             style={styles}
-            onChange={onChangeHandler}
-            value={values.birth}
+            onChange={(e)=>{console.log(e)}}
           />
           <Input
             label="휴대폰번호"
             placeholder="010-1234-5678"
             style={styles}
-            onChange={onChangeHandler}
-            value={values.phone}
+            onChange={(e)=>{setPhone(e)}}
           />
           <TouchableOpacity>
             <ButtonGroup
               buttons={gender} //여성, 남성
               selectedIndex={selectedIndex}
+<<<<<<< HEAD
               selectedTextStyle={{ backgroundColor: "#00462a", color: "white" }}
               selectedButtonStyle={{ backgroundColor: "#00462a" }}
               containerStyle={styles.genderButton} //css
@@ -99,6 +108,17 @@ function Interview({ navigation }) {
             />
           </TouchableOpacity>
 
+=======
+              selectedTextStyle = {{backgroundColor:"#00462a", color:"white"}}
+              selectedButtonStyle = {{backgroundColor: "#00462a"}}
+              containerStyle={styles.genderButton} //css
+              textStyle={styles.genderText} //텍스트 css
+              onPress={(e)=>setSelectedIndex(e)}
+            />
+          </TouchableOpacity>
+          <button type="submit">submit</button>
+          </form>
+>>>>>>> 81ce0c5578b8359979a83977b9755ce35d4cce91
           <View>{/* 추가적인 정보 들어갈 부분 */}</View>
         </View>
         <TouchableOpacity
