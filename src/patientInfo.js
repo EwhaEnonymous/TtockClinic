@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import "react-native-gesture-handler";
 import constants from "./constants";
@@ -14,10 +14,35 @@ import axios from "axios";
 //   });
 
 function patientInfo({ navigation }) {
+  const [decideCnt, setDecideCnt] = useState(0);
+  const [clearCnt, setClearCnt] = useState(0);
+  const [examCnt, setExamCnt] = useState(0);
+  const [deathCnt, setDeathCnt] = useState(0);
+//  const [careCnt, setCareCnt] = useState(0);
+//  const [accExamCnt, setAccExamCnt] = useState(0);
+//  const [accExamCompCnt, setAccExamCompCnt] = useState(0);
+//  const [accDefRate, setAccDefRate] = useState(0);
+  const [decideCnt2, setDecideCnt2] = useState(0);
+  const [clearCnt2, setClearCnt2] = useState(0);
+  const [examCnt2, setExamCnt2] = useState(0);
+  const [deathCnt2, setDeathCnt2] = useState(0);
+  
+
+
   axios
     .get("https://www.ttockclinic.com/v1/covid-url")
-    .then((response) => console.log(response));
-
+    .then((response) => {
+      console.log(response.data.response.body.items.item);
+      const connect = response.data.response.body.items.item;
+      setDecideCnt(connect[0].decideCnt);
+      setClearCnt(connect[0].clearCnt);
+      setExamCnt(connect[0].examCnt);
+      setDeathCnt(connect[0].deathCnt);
+      setDecideCnt2(connect[1].decideCnt);
+      setClearCnt2(connect[1].clearCnt);
+      setExamCnt2(connect[1].examCnt);
+      setDeathCnt2(connect[1].deathCnt);
+    });
   return (
     <View style={styles.body}>
       <Header
@@ -44,29 +69,29 @@ function patientInfo({ navigation }) {
       ></Header>
       <View style={styles.container2}>
         <View style={styles.up0}>
-          <Text style={styles.up0text}>전일대비 +000명</Text>
+          <Text style={styles.up0text}>전일대비 +{decideCnt - decideCnt2}</Text>
         </View>
         <View style={styles.container3}>
           <View style={styles.up1}>
             <View style={styles.box1}>
               <Text style={styles.boxtext1}>확진환자</Text>
-              <Text style={styles.boxtext2}>100,000</Text>
-              <Text style={styles.boxtext3}>+200</Text>
+              <Text style={styles.boxtext2}>{decideCnt}</Text>
+              <Text style={styles.boxtext3}>{decideCnt - decideCnt2}</Text>
             </View>
             <View style={styles.box2}>
               <Text style={styles.boxtext1}>격리해제</Text>
-              <Text style={styles.boxtext2}>100,000</Text>
-              <Text style={styles.boxtext3}>+200</Text>
+              <Text style={styles.boxtext2}>{clearCnt}</Text>
+              <Text style={styles.boxtext3}>{clearCnt - clearCnt2}</Text>
             </View>
             <View style={styles.box3}>
               <Text style={styles.boxtext1}>사망자</Text>
-              <Text style={styles.boxtext2}>100,000</Text>
-              <Text style={styles.boxtext3}>+200</Text>
+              <Text style={styles.boxtext2}>{deathCnt}</Text>
+              <Text style={styles.boxtext3}>{deathCnt - deathCnt2}</Text>
             </View>
             <View style={styles.box4}>
               <Text style={styles.boxtext1}>검사진행</Text>
-              <Text style={styles.boxtext2}>100,000</Text>
-              <Text style={styles.boxtext3}>+200</Text>
+              <Text style={styles.boxtext2}>{examCnt}</Text>
+              <Text style={styles.boxtext3}>{examCnt - examCnt2}</Text>
             </View>
           </View>
         </View>
