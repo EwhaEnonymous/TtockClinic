@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Alert, StyleSheet, Text, View, TouchableOpacity, Dimensions } from "react-native";
 import "react-native-gesture-handler";
 import constants from "./constants";
 import { Header, Card } from "react-native-elements";
 import axios from "axios";
+const screenwidth = Dimensions.get("window").width;
+const screenheight = Dimensions.get("window").height;
 // const patientInfo = ({ navigation }) => {
 // axios
 //   .get("v1/covid-url")
@@ -18,6 +20,7 @@ function patientInfo({ navigation }) {
   const [clearCnt, setClearCnt] = useState(0);
   const [examCnt, setExamCnt] = useState(0);
   const [deathCnt, setDeathCnt] = useState(0);
+  const [stateDt, setStateDt ] = useState(0);
 //  const [careCnt, setCareCnt] = useState(0);
 //  const [accExamCnt, setAccExamCnt] = useState(0);
 //  const [accExamCompCnt, setAccExamCompCnt] = useState(0);
@@ -38,11 +41,13 @@ function patientInfo({ navigation }) {
       setClearCnt(connect[0].clearCnt);
       setExamCnt(connect[0].examCnt);
       setDeathCnt(connect[0].deathCnt);
+      setStateDt(connect[0].stateDt);
       setDecideCnt2(connect[1].decideCnt);
       setClearCnt2(connect[1].clearCnt);
       setExamCnt2(connect[1].examCnt);
       setDeathCnt2(connect[1].deathCnt);
     });
+    //stateDt=parseInt(stateDt/10000);
   return (
     <View style={styles.body}>
       <Header
@@ -69,32 +74,50 @@ function patientInfo({ navigation }) {
       ></Header>
       <View style={styles.container2}>
         <View style={styles.up0}>
-          <Text style={styles.up0text}>전일대비 +{decideCnt - decideCnt2}</Text>
+          <Text style={styles.up0text}>Covid-19 감염 현황</Text>
+          {/* <Text>{stateDt}전일대비 +{decideCnt - decideCnt2}</Text> */}
         </View>
-        <View style={styles.container3}>
-          <View style={styles.up1}>
-            <View style={styles.box1}>
-              <Text style={styles.boxtext1}>확진환자</Text>
-              <Text style={styles.boxtext2}>{decideCnt}</Text>
-              <Text style={styles.boxtext3}>{decideCnt - decideCnt2}</Text>
-            </View>
-            <View style={styles.box2}>
-              <Text style={styles.boxtext1}>격리해제</Text>
-              <Text style={styles.boxtext2}>{clearCnt}</Text>
-              <Text style={styles.boxtext3}>{clearCnt - clearCnt2}</Text>
-            </View>
-            <View style={styles.box3}>
-              <Text style={styles.boxtext1}>사망자</Text>
-              <Text style={styles.boxtext2}>{deathCnt}</Text>
-              <Text style={styles.boxtext3}>{deathCnt - deathCnt2}</Text>
-            </View>
-            <View style={styles.box4}>
-              <Text style={styles.boxtext1}>검사진행</Text>
-              <Text style={styles.boxtext2}>{examCnt}</Text>
-              <Text style={styles.boxtext3}>{examCnt - examCnt2}</Text>
-            </View>
-          </View>
-        </View>
+
+            <Card containerStyle={styles.cardContainer}>
+              <View style={styles.cardView}>
+                <Text style={styles.boxtext1}>확진환자</Text>
+                <Card.Title style={styles.cardTitle}>▲{decideCnt - decideCnt2}</Card.Title>
+              </View>
+            <Card.Divider />
+              <Text style={styles.cardDescription}>
+              누적 확진환자 수: {decideCnt}
+              </Text>
+            </Card>
+            <Card containerStyle={styles.cardContainer}>
+              <View style={styles.cardView}>
+                <Text style={styles.boxtext1}>격리해제</Text>
+                <Card.Title style={styles.cardTitle}>▲{clearCnt - clearCnt2}</Card.Title>
+              </View>
+            <Card.Divider />
+              <Text style={styles.cardDescription}>
+              누적 격리해제 수: {clearCnt}
+              </Text>
+            </Card>
+            <Card containerStyle={styles.cardContainer}>
+              <View style={styles.cardView}>
+                <Text style={styles.boxtext1}>검사진행</Text>
+                <Card.Title style={styles.cardTitle}>▲{examCnt - examCnt2}</Card.Title>
+              </View>
+            <Card.Divider />
+              <Text style={styles.cardDescription}>
+              누적 검사진행 수: {examCnt}
+              </Text>
+            </Card>
+            <Card containerStyle={styles.cardContainer}>
+              <View style={styles.cardView}>
+                <Text style={styles.boxtext1}>사망자</Text>
+                <Card.Title style={styles.cardTitle}>▲{deathCnt - deathCnt2}</Card.Title>
+              </View>
+            <Card.Divider />
+              <Text style={styles.cardDescription}>
+              누적 사망자 수: {deathCnt}
+              </Text>
+            </Card>
         <View style={styles.container4}>
           <TouchableOpacity
             style={styles.btn}
@@ -120,9 +143,6 @@ function patientInfo({ navigation }) {
           >
             <Text style={styles.text}>일별 신규 확진자수</Text>
           </TouchableOpacity>
-        </View>
-        <View style={styles.container5}>
-          <Text style={styles.graph}>위 버튼 누르면 그래프 바뀜</Text>
         </View>
       </View>
     </View>
@@ -152,7 +172,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  up0text: { fontSize: constants.width > 370 ? 30 : 18, color: "red" },
+  up0text: { fontSize: constants.width > 370 ? 30 : 18, color: "black", fontWeight: 'bold', },
   container3: {
     flex: 1,
     width: "96%",
@@ -249,6 +269,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#00462a",
+  },
+  cardContainer: {
+    borderColor: "#00462a",
+    borderWidth: 2,
+    borderRadius: 20,
+    width: screenwidth - 25,
+  },
+  cardView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingLeft: 20,
+  },
+  cardTitle: {
+    fontSize: screenwidth > 365 ? 30 : 20,
+    paddingTop: 8,
+    marginRight: 10,
+  },
+  cardDescription: {
+    fontSize: screenwidth > 365 ? 20 : 15,
+    textAlign: "center",
   },
 });
 export default patientInfo;
