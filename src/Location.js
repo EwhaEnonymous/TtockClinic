@@ -64,8 +64,11 @@ const Location = ({ navigation }, props) => {
               ></Icon3>
               <Text
                 style={styles.buttonText}
-                onPress={() => navigation.navigate("Clinic")}
+                onPress={() => {
+                  navigation.navigate("Clinic");
+                }}
               >
+                {" "}
                 선별진료소 찾기
               </Text>
             </Text>
