@@ -20,6 +20,7 @@ function patientInfo({ navigation }) {
   const [clearCnt, setClearCnt] = useState(0);
   const [examCnt, setExamCnt] = useState(0);
   const [deathCnt, setDeathCnt] = useState(0);
+  const [stateMt, setStateMt ] = useState(0);
   const [stateDt, setStateDt ] = useState(0);
 //  const [careCnt, setCareCnt] = useState(0);
 //  const [accExamCnt, setAccExamCnt] = useState(0);
@@ -41,13 +42,13 @@ function patientInfo({ navigation }) {
       setClearCnt(connect[0].clearCnt);
       setExamCnt(connect[0].examCnt);
       setDeathCnt(connect[0].deathCnt);
-      setStateDt(connect[0].stateDt);
+      setStateMt(parseInt((connect[0].stateDt%10000)/100));      
+      setStateDt(connect[0].stateDt%100);
       setDecideCnt2(connect[1].decideCnt);
       setClearCnt2(connect[1].clearCnt);
       setExamCnt2(connect[1].examCnt);
       setDeathCnt2(connect[1].deathCnt);
     });
-    //stateDt=parseInt(stateDt/10000);
   return (
     <View style={styles.body}>
       <Header
@@ -75,9 +76,8 @@ function patientInfo({ navigation }) {
       <View style={styles.container2}>
         <View style={styles.up0}>
           <Text style={styles.up0text}>Covid-19 감염 현황</Text>
-          {/* <Text>{stateDt}전일대비 +{decideCnt - decideCnt2}</Text> */}
+          <Text style={styles.up1text}>{stateMt}.{stateDt} 신규합계 +{decideCnt - decideCnt2}</Text>
         </View>
-
             <Card containerStyle={styles.cardContainer}>
               <View style={styles.cardView}>
                 <Text style={styles.boxtext1}>확진환자</Text>
@@ -118,32 +118,6 @@ function patientInfo({ navigation }) {
               누적 사망자 수: {deathCnt}
               </Text>
             </Card>
-        <View style={styles.container4}>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => Alert.alert("지도")}
-          >
-            <Text style={styles.text}>지도</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => Alert.alert("지역별 표")}
-          >
-            <Text style={styles.text}>지역별 표</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => Alert.alert("누적확진 추이")}
-          >
-            <Text style={styles.text}>누적확진 추이</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => Alert.alert("일별 신규 확진자수")}
-          >
-            <Text style={styles.text}>일별 신규 확진자수</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </View>
   );
@@ -166,70 +140,17 @@ const styles = StyleSheet.create({
     marginTop: "2%",
     marginBottom: "2%",
   },
-
   up0: {
     width: "90%",
     justifyContent: "center",
     alignItems: "center",
   },
   up0text: { fontSize: constants.width > 370 ? 30 : 18, color: "black", fontWeight: 'bold', },
+  up1text: { fontSize: constants.width > 370 ? 20 : 15, color: "black", fontWeight: 'bold', },  
   container3: {
     flex: 1,
     width: "96%",
     alignItems: "center",
-  },
-  up1: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    marginTop: 10,
-  },
-  box1: {
-    flex: 1,
-    alignItems: "center",
-    margin: 2,
-    borderColor: "gray",
-    borderWidth: 2,
-    borderRadius: 4,
-  },
-  box2: {
-    flex: 1,
-    alignItems: "center",
-    margin: 2,
-    borderColor: "gray",
-    borderWidth: 2,
-    borderRadius: 4,
-  },
-  box3: {
-    flex: 1,
-    alignItems: "center",
-    margin: 2,
-    borderColor: "gray",
-    borderWidth: 2,
-    borderRadius: 4,
-  },
-  box4: {
-    flex: 1,
-    alignItems: "center",
-    margin: 2,
-    borderColor: "gray",
-    borderWidth: 2,
-    borderRadius: 4,
-  },
-  boxtext1: {
-    fontSize: 23,
-    fontWeight: "bold",
-    paddingTop: 5,
-    marginBottom: 5,
-  },
-  boxtext2: {
-    fontSize: 20,
-    color: "blue",
-    marginBottom: 5,
-  },
-  boxtext3: {
-    fontSize: 25,
-    color: "red",
-    marginBottom: 5,
   },
   container4: {
     flex: 0.5,
@@ -270,6 +191,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#00462a",
   },
+  boxtext1: {
+    fontSize: 23,
+    fontWeight: "bold",
+    paddingTop: 5,
+    marginBottom: 5,
+  },
   cardContainer: {
     borderColor: "#00462a",
     borderWidth: 2,
@@ -286,6 +213,7 @@ const styles = StyleSheet.create({
     fontSize: screenwidth > 365 ? 30 : 20,
     paddingTop: 8,
     marginRight: 10,
+    color: "crimson"
   },
   cardDescription: {
     fontSize: screenwidth > 365 ? 20 : 15,
