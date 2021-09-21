@@ -1,25 +1,11 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TouchableHighlight,
-} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 // import constants from "./constants";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
 import axios from "axios";
-const clinicInfo_next = ({ navigation }) => {
-  axios
-    .get("https://www.ttockclinic.com/v1/clinic-url")
-    .then((response) => console.log(response));
-  axios
-    .get("https://www.ttockclinic.com/v1/clinics/waitings", {
-      params: { longitude: "11", latitude: "22" },
-    })
-    .then((response) => console.log(response));
+const clinicInfo_next = ({ navigation }, props) => {
   return (
     <View style={styles.body}>
       <Header
