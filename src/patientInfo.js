@@ -6,14 +6,6 @@ import { Header, Card } from "react-native-elements";
 import axios from "axios";
 const screenwidth = Dimensions.get("window").width;
 const screenheight = Dimensions.get("window").height;
-// const patientInfo = ({ navigation }) => {
-// axios
-//   .get("v1/covid-url")
-//   .then((response) => console.log(response.data))
-//   .catch((err) => {
-//     console.log("Error!");
-//     console.log(err);
-//   });
 
 function patientInfo({ navigation }) {
   const [decideCnt, setDecideCnt] = useState(0);
@@ -31,8 +23,6 @@ function patientInfo({ navigation }) {
   const [examCnt2, setExamCnt2] = useState(0);
   const [deathCnt2, setDeathCnt2] = useState(0);
   
-
-
   axios
     .get("https://www.ttockclinic.com/v1/covid-url")
     .then((response) => {

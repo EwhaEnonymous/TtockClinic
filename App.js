@@ -8,6 +8,7 @@ import Patient from "./src/patientInfo";
 import Location from "./src/Location";
 import After from "./src/after";
 import Interview from "./src/Interview";
+import qrCheck from "./src/qrCheck";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -63,6 +64,11 @@ const App = () => {
         <Stack.Screen
           name="Interview"
           component={Interview}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="qrCheck"
+          component={qrCheck}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
