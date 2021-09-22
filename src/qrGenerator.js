@@ -1,10 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import QRCode from "react-native-qrcode-svg";
 import axios from "axios";
 function qrGenerator() {
+  // const [name, setName] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [date, setDate] = useState(0);
+  // const [longitd, setLongitd] = useState(0);
+  // const [latitd, setLatitd] = useState(0);
   axios
     .get("https://www.ttockclinic.com/v1/paper")
-    .then((res) => console.log(res));
+    .then((res) => {
+      console.log(res);
+      console.log("here");
+    });
   return (
     <>
       <QRCode

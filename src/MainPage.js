@@ -84,7 +84,7 @@ const MainPage = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{ flex: 1 }}
-          onPress={() => navigation.navigate("QR")}
+          onPress={() => navigation.navigate("qrCheck")}
         >
           <Card containerStyle={styles.cardContainer}>
             <View style={styles.cardView}>
