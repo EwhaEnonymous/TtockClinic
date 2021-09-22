@@ -63,9 +63,9 @@ function qrCheck ({navigation}) {
             ></Icon>
             <Text
               style={styles.buttonText}
-              onPress={() => navigation.navigate("After")}
+              onPress={() => navigation.navigate("QR")}
             >
-              문진표 작성 완료
+              나의 QR 코드
             </Text>
           </Text>
         </TouchableOpacity>
