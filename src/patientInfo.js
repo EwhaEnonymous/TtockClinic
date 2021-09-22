@@ -13,14 +13,6 @@ import { Header, Card } from "react-native-elements";
 import axios from "axios";
 const screenwidth = Dimensions.get("window").width;
 const screenheight = Dimensions.get("window").height;
-// const patientInfo = ({ navigation }) => {
-// axios
-//   .get("v1/covid-url")
-//   .then((response) => console.log(response.data))
-//   .catch((err) => {
-//     console.log("Error!");
-//     console.log(err);
-//   });
 
 function patientInfo({ navigation }) {
   const [decideCnt, setDecideCnt] = useState(0);
@@ -37,21 +29,23 @@ function patientInfo({ navigation }) {
   const [clearCnt2, setClearCnt2] = useState(0);
   const [examCnt2, setExamCnt2] = useState(0);
   const [deathCnt2, setDeathCnt2] = useState(0);
-
-  axios.get("https://www.ttockclinic.com/v1/covid-url").then((response) => {
-    // console.log(response.data.response.body.items.item);
-    const connect = response.data.response.body.items.item;
-    setDecideCnt(connect[0].decideCnt);
-    setClearCnt(connect[0].clearCnt);
-    setExamCnt(connect[0].examCnt);
-    setDeathCnt(connect[0].deathCnt);
-    setStateMt(parseInt((connect[0].stateDt % 10000) / 100));
-    setStateDt(connect[0].stateDt % 100);
-    setDecideCnt2(connect[1].decideCnt);
-    setClearCnt2(connect[1].clearCnt);
-    setExamCnt2(connect[1].examCnt);
-    setDeathCnt2(connect[1].deathCnt);
-  });
+  
+  axios
+    .get("https://www.ttockclinic.com/v1/covid-url")
+    .then((response) => {
+      console.log(response.data.response.body.items.item);
+      const connect = response.data.response.body.items.item;
+      setDecideCnt(connect[0].decideCnt);
+      setClearCnt(connect[0].clearCnt);
+      setExamCnt(connect[0].examCnt);
+      setDeathCnt(connect[0].deathCnt);
+      setStateMt(parseInt((connect[0].stateDt%10000)/100));      
+      setStateDt(connect[0].stateDt%100);
+      setDecideCnt2(connect[1].decideCnt);
+      setClearCnt2(connect[1].clearCnt);
+      setExamCnt2(connect[1].examCnt);
+      setDeathCnt2(connect[1].deathCnt);
+    });
   return (
     <View style={styles.body}>
       <Header
