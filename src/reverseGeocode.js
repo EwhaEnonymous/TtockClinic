@@ -17,34 +17,50 @@ function ReverseGeocode({ navigation }) {
   const [loc3, setLoc3] = useState("");
   //   const [location, setLocation] = useState("");
 
-  const GetLocation = async () => {
-    const location = await Location.getCurrentPositionAsync();
-    console.log("loc", location);
-    console.log("lat", location.coords.latitude);
-    console.log("lng", location.coords.longitude);
+  const [location, setLocation] = useState(null);
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
 
-    setLat(location.coords.latitude);
-    setLng(location.coords.longitude);
-
-    axios
-      .get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coords.latitude},${location.coords.longitude}&key=${API_KEY}`
-      ) // 위도, 경도 google maps api로 보냄
-      .then((res) => {
-        console.log(res);
-        const result = res.data.results[5].formatted_address.split(" "); // 앞에 대한민국은 뺀다.
-
-        console.log(result);
-        console.log(result[1]);
-        console.log(result[2]);
-        console.log("loc:", loc1, loc2, loc3);
-      })
-
-      .catch((error) => {
-        console.log(error);
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
       });
-  };
 
+      axios
+        .get(
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${LOC.coords.latitude},${LOC.coords.longitude}&key=${API_KEY}`
+        ) // 위도, 경도 google maps api로 보냄
+        .then((res) => {
+          console.log(res);
+          const result = res.data.results[5].formatted_address.split(" "); // 앞에 대한민국은 뺀다.
+
+          console.log(result);
+          console.log(result[1]);
+          console.log(result[2]);
+        })
+
+        .catch((error) => {
+          console.log(error);
+        });
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  // let lat = 0;
+  // let long = 0;
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+    console.log(location.latitude);
+    console.log(location.longitude);
+  }
   //   });
   return (
     <View style={styles.body}>
@@ -65,32 +81,33 @@ function ReverseGeocode({ navigation }) {
         rightComponent={{ icon: "home", color: "#fff" }}
         backgroundColor={"#00462a"}
       ></Header>
-      {/* <View style={styles.container}>
-          {location && (
-            <MapView
-              provider={PROVIDER_GOOGLE}
-              style={styles.map}
-              initialRegion={{
+      <View style={styles.container}>
+        <Text> {text}</Text>
+        {location && (
+          <MapView
+            provider={PROVIDER_GOOGLE}
+            style={styles.map}
+            initialRegion={{
+              latitude: location.latitude,
+              longitude: location.longitude,
+            }}
+          >
+            <MapView.Marker
+              coordinate={{
                 latitude: location.latitude,
                 longitude: location.longitude,
               }}
-            >
-              <MapView.Marker
-                coordinate={{
-                  latitude: location.latitude,
-                  longitude: location.longitude,
-                }}
-              />
-            </MapView>
-          )}
+            />
+          </MapView>
+        )}
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("Clinic")}
         >
           <Text style={styles.buttonText}>다음 화면으로 넘어감</Text>
         </TouchableOpacity>
-      </View> */}
-      <GetLocation />
+      </View>
+      {/* <GetLocation /> */}
     </View>
   );
 }
