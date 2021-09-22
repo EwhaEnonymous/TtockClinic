@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-community/picker": "^1.8.1",
     "@react-native-picker/picker": "1.9.11",
@@ -16,6 +17,7 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "expo": "^41.0.1",
+
     "expo-location": "^12.0.4",
     "expo-permissions": "~12.0.1",
     "expo-status-bar": "~1.0.4",
@@ -29,13 +31,15 @@
     "react-native-camera": "^4.0.1",
     "react-native-dropdown-picker": "^5.1.21",
     "react-native-elements": "^3.4.2",
-    "react-native-geolocation-service": "^5.3.0-beta.1",
+    "react-native-geocoding": "^0.5.0",
+    "react-native-geolocation-service": "^5.3.0-beta.2",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-google-places-autocomplete": "^2.2.0",
-    "react-native-maps": "^0.28.0",
+    "react-native-maps": "0.27.1",
     "react-native-nmap": "0.0.66",
     "react-native-paper": "^4.9.2",
     "react-native-picker-select": "^8.0.4",
+    "react-native-platform-touchable": "^1.1.1",
     "react-native-qrcode-svg": "^6.1.1",
     "react-native-radio-buttons": "^1.0.0",
     "react-native-reanimated": "~2.1.0",
@@ -46,7 +50,8 @@
     "react-native-svg": "^12.1.1",
     "react-native-viewport-units": "0.0.5",
     "react-native-web": "^0.17.1",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "undefined": "@react=native-community/geolocation"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

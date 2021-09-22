@@ -30,7 +30,9 @@ const clinicInfo = ({ navigation }) => {
   // function GetClinic() {
   useEffect(() => {
     axios
-      .get("https://www.mohw.go.kr/react/popup_200128_3.html")
+      .get("https://www.ttockclinic.com/v1/clinics/waitings", {
+        params: { latitude: "11", longitude: "22" },
+      })
       .then((response) => console.log(response));
     axios.get("https://www.ttockclinic.com/v1/clinic-url").then((response) => {
       const dataList = response.data.response.body.items.item;

@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RNPickerSelect from "react-native-picker-select";
 import { Keyboard, StyleSheet } from "react-native";
 import constants from "./constants";
 import { Card } from "react-native-elements";
+import DD1 from "./Dropdown1";
 import clinicInfo from "./clinicInfo";
-
-function Dropdown(props) {
-  const [Sido, setSido] = useState([]);
+function Dropdown2(props) {
   const [Sigungu, setSigungu] = useState([]);
   const placeholderText = "선택하세요";
   const sigunguArr = [
     {
       key: 0,
-      sido: "Seoul",
+      sido: "서울",
       sigungu: [
         { label: "강남구", value: "gangnam" },
         { label: "강동구", value: "gangdong" },
@@ -43,7 +42,7 @@ function Dropdown(props) {
     },
     {
       key: 1,
-      sido: "Gyeonggi",
+      sido: "경기",
       sigungu: [
         { label: "가평군", value: "gapyeong" },
         { label: "고양시", value: "goyang" },
@@ -80,7 +79,7 @@ function Dropdown(props) {
     },
     {
       key: 2,
-      sido: "Incheon",
+      sido: "인천",
       sigungu: [
         { label: "동구", value: "dong" },
         { label: "미추홀구", value: "michuhol" },
@@ -95,7 +94,7 @@ function Dropdown(props) {
     },
     {
       key: 3,
-      sido: "Busan",
+      sido: "부산",
       sigungu: [
         { label: "중구", value: "joong" },
         { label: "서구", value: "seo" },
@@ -117,7 +116,7 @@ function Dropdown(props) {
     },
     {
       key: 4,
-      sido: "Gwangju",
+      sido: "광주",
       sigungu: [
         { label: "광산구", value: "gwangsan" },
         { label: "동구", value: "dong" },
@@ -128,7 +127,7 @@ function Dropdown(props) {
     },
     {
       key: 5,
-      sido: "Ulsan",
+      sido: "울산",
       sigungu: [
         { label: "중구", value: "joong" },
         { label: "남구", value: "nam" },
@@ -139,7 +138,7 @@ function Dropdown(props) {
     },
     {
       key: 6,
-      sido: "Gangwon",
+      sido: "강원",
       sigungu: [
         { label: "춘천시", value: "chooncheon" },
         { label: "원주시", value: "wonjoo" },
@@ -164,7 +163,7 @@ function Dropdown(props) {
 
     {
       key: 7,
-      sido: "Daejeon",
+      sido: "대전",
       sigungu: [
         { label: "동구", value: "dong" },
         { label: "중구", value: "joong" },
@@ -175,7 +174,7 @@ function Dropdown(props) {
     },
     {
       key: 8,
-      sido: "Daegu",
+      sido: "대구",
       sigungu: [
         { label: "북구", value: "book" },
         { label: "동구", value: "dong" },
@@ -189,7 +188,7 @@ function Dropdown(props) {
     },
     {
       key: 9,
-      sido: "Choongbuk",
+      sido: "충청북도",
       sigungu: [
         { label: "청주시", value: "cheonju" },
         { label: "충주시", value: "choongju" },
@@ -206,7 +205,7 @@ function Dropdown(props) {
     },
     {
       key: 10,
-      sido: "Choongnam",
+      sido: "충청남도",
       sigungu: [
         { label: "천안시", value: "cheonan" },
         { label: "공주시", value: "gongju" },
@@ -227,7 +226,7 @@ function Dropdown(props) {
     },
     {
       key: 11,
-      sido: "Jeonbuk",
+      sido: "전라북도",
       sigungu: [
         { label: "전주시", value: "jeonju" },
         { label: "군산시", value: "gunsan" },
@@ -247,7 +246,7 @@ function Dropdown(props) {
     },
     {
       key: 12,
-      sido: "Jeonnam",
+      sido: "전라남도",
       sigungu: [
         { label: "목포시", value: "mokpo" },
         { label: "여수시", value: "yeosoo" },
@@ -275,7 +274,7 @@ function Dropdown(props) {
     },
     {
       key: 13,
-      sido: "Gyeongbuk",
+      sido: "경상북도",
       sigungu: [
         { label: "포항시", value: "pohang" },
         { label: "경주시", value: "gyeongju" },
@@ -304,7 +303,7 @@ function Dropdown(props) {
     },
     {
       key: 14,
-      sido: "Gyeongnam",
+      sido: "경상남도",
       sigungu: [
         { label: "창원시", value: "changwon" },
         { label: "김해시", value: "gimhae" },
@@ -329,313 +328,98 @@ function Dropdown(props) {
     {
       key: 15,
 
-      sido: "Sejong",
+      sido: "세종",
       sigungu: [{ label: "세종", value: "sejong" }],
     },
     {
       key: 16,
 
-      sido: "Jeju",
+      sido: "제주",
       sigungu: [
         { label: "제주시", value: "jeju" },
         { label: "서귀포시", value: "seogwipo" },
       ],
     },
   ];
-  const sidoArr = [
-    { label: "서울", value: "seoul" },
-    { label: "경기", value: "gyeonggi" },
-    { label: "인천", value: "incheon" },
-    { label: "부산", value: "busan" },
-    { label: "광주", value: "gwangju" },
-    { label: "울산", value: "ulsan" },
-    { label: "강원", value: "gangwon" },
-    { label: "제주", value: "jeju" },
-    { label: "세종", value: "sejong" },
-    { label: "대전", value: "daejeon" },
-    { label: "대구", value: "daegu" },
-    { label: "충청북도", value: "choongbuk" },
-    { label: "충청남도", value: "choongnam" },
-    { label: "전라북도", value: "jeonbuk" },
-    { label: "전라남도", value: "jeonnam" },
-    { label: "경상북도", value: "gyeongbuk" },
-    { label: "경상남도", value: "gyeongnam" },
-  ]; //시도 data
+  const [arr, setArr] = useState([]);
 
-  function Dropdown1() {
-    return (
-      <>
-        <RNPickerSelect
-          placeholder={{ label: placeholderText }}
-          value={Sido}
-          onValueChange={(Sido) => setSido(Sido)}
-          items={sidoArr}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          key={Sido}
-          style={pickerStyle}
-        />
-        {console.log(Sido)}
-      </>
-    );
-  }
-
-  function Dropdown2() {
-    if (Sido === "seoul") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[0].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "gyeonggi") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[1].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "incheon") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[2].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "busan") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[3].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "gwangju") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[4].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "ulsan") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[5].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "gangwon") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[6].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "daejeon") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[7].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "daegu") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[8].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "choongbuk") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[9].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "choongnam") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[10].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "jeonbuk") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[11].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "jeonnam") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[12].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "gyeongbuk") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[13].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "gyeongnam") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[14].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "sejong") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[15].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
-    } else if (Sido === "jeju") {
-      return (
-        <RNPickerSelect
-          useNativeAndroidPickerStyle={false}
-          placeholder={{ label: placeholderText }}
-          onValueChange={(Sigungu) => setSigungu(Sigungu)}
-          items={sigunguArr[16].sigungu}
-          onOpen={() => {
-            Keyboard.dismiss();
-          }}
-          style={pickerStyle}
-        />
-      );
+  useEffect(() => {
+    if (props.data === "서울") {
+      setArr(sigunguArr[0].sigungu);
+      console.log("서울", arr);
+    } else if (props.data === "경기") {
+      setArr(sigunguArr[1].sigungu);
+      console.log("경기", arr);
+    } else if (props.data === "인천") {
+      setArr(sigunguArr[2].sigungu);
+      console.log("인천", arr);
+    } else if (props.data === "부산") {
+      setArr(sigunguArr[3].sigungu);
+      console.log("부산", arr);
+    } else if (props.data === "광주") {
+      setArr(sigunguArr[4].sigungu);
+      console.log("광주", arr);
+    } else if (props.data === "울산") {
+      setArr(sigunguArr[5].sigungu);
+      console.log("울산", arr);
+    } else if (props.data === "강원") {
+      setArr(sigunguArr[6].sigungu);
+      console.log("강원", arr);
+    } else if (props.data === "대전") {
+      setArr(sigunguArr[7].sigungu);
+      console.log("대전", arr);
+    } else if (props.data === "대구") {
+      setArr(sigunguArr[8].sigungu);
+      console.log("대구", arr);
+    } else if (props.data === "충청북도") {
+      setArr(sigunguArr[9].sigungu);
+      console.log("충청북도", arr);
+    } else if (props.data === "충청남도") {
+      setArr(sigunguArr[10].sigungu);
+      console.log("충청남도", arr);
+    } else if (props.data === "전라북도") {
+      setArr(sigunguArr[11].sigungu);
+      console.log("전라북도", arr);
+    } else if (props.data === "전라남도") {
+      setArr(sigunguArr[12].sigungu);
+      console.log("전라남도", arr);
+    } else if (props.data === "경상북도") {
+      setArr(sigunguArr[13].sigungu);
+      console.log("경상북도", arr);
+    } else if (props.data === "경상남도") {
+      setArr(sigunguArr[14].sigungu);
+      console.log("경상남도", arr);
+    } else if (props.data === "세종") {
+      setArr(sigunguArr[15].sigungu);
+      console.log("세종", arr);
+    } else if (props.data === "제주") {
+      setArr(sigunguArr[16].sigungu);
+      console.log("제주", arr);
+    } else {
+      console.log("err");
     }
-  }
+  }, [props.data]);
+
   return (
     <>
-      <Card containerStyle={styles.card}>
-        <Card.Title style={styles.title}>시/도</Card.Title>
-        {Dropdown1()}
-      </Card>
-      <Card.Divider></Card.Divider>
-      <Card containerStyle={styles.card}>
-        <Card.Title style={styles.title}>시/군/구</Card.Title>
-        {Dropdown2()}
-      </Card>
+      <RNPickerSelect
+        // useNativeAndroidPickerStyle={false}
+        placeholder={{ label: placeholderText }}
+        onValueChange={(Sigungu) => {
+          setSigungu(Sigungu);
+          console.log("시군구:", Sigungu);
+        }}
+        items={arr}
+        onOpen={() => {
+          Keyboard.dismiss();
+        }}
+        style={pickerStyle}
+      />
+      <clinicInfo sd={props.data} sgg={Sigungu} />
     </>
   );
 }
 
-const styles = StyleSheet.create({
-  card: {
-    marginLeft: "-5%",
-    marginRight: "-5%",
-    marginBottom: "5%",
-    marginTop: "5%",
-    borderWidth: 0,
-    shadowColor: "rgba(0,0,0, 0.0)", //ios 그림자 없애기
-    elevation: 0, //안드로이드 그림자 없애기
-  },
-  title: {
-    fontSize: 30,
-    color: "#00462a",
-    fontWeight: "bold",
-  },
-});
 const pickerStyle = StyleSheet.create({
   inputIOS: {
     height: 60,
@@ -651,7 +435,7 @@ const pickerStyle = StyleSheet.create({
     height: 60,
     fontSize: constants.width > 370 ? 25 : 20,
     paddingLeft: 30,
-    color: "black",
+    color: "red",
     borderColor: "#00462a",
     borderWidth: 2,
     borderRadius: 5,
@@ -659,4 +443,4 @@ const pickerStyle = StyleSheet.create({
   },
   placeholderColor: { color: "red" },
 });
-export default Dropdown;
+export default Dropdown2;
