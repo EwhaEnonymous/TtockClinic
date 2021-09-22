@@ -49,7 +49,7 @@ const App = () => {
         />
         <Stack.Screen
           name="CurLoc"
-          component={RevGeo}
+          component={CurLoc}
           options={{ headerShown: false }}
         />
         <Stack.Screen

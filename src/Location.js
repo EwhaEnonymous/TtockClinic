@@ -5,7 +5,8 @@ import Icon2 from "react-native-vector-icons/AntDesign";
 import Icon3 from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 import constants from "./constants";
-import Dropdown from "./Dropdown";
+import Dropdown from "./Dropdown0";
+
 import { Header, Card } from "react-native-elements";
 import { Dimensions } from "react-native";
 
