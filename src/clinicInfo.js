@@ -13,7 +13,9 @@ import "react-native-gesture-handler";
 import axios from "axios";
 import constants from "./constants";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
-// var list = [];
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
+
 var clinicNameArr = [];
 var sidoNameArr = [];
 var sgguNameArr = [];
@@ -23,16 +25,25 @@ const clinicInfo = ({ navigation }) => {
   const [sgguNm, setSgguNm] = useState("");
   const [list, setList] = useState("");
   const [tel, setTel] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState("");
+
   // function GetClinic() {
   useEffect(() => {
+    axios
+      .get("https://www.mohw.go.kr/react/popup_200128_3.html")
+      .then((response) => console.log(response));
     axios.get("https://www.ttockclinic.com/v1/clinic-url").then((response) => {
       const dataList = response.data.response.body.items.item;
-
+      console.log(dataList);
       dataList.map((name) =>
         clinicNameArr.push(
           <TouchableOpacity
             style={styles.listContent}
-            onPress={() => navigation.navigate("ClinicNext")}
+            value={selectedIndex}
+            onPress={(e) => {
+              setSelectedIndex($(e.target).text());
+              navigation.navigate("Interview");
+            }}
           >
             <ListItem bottomDivider>
               <Avatar source={{ uri: name.yadmNm }} />
@@ -44,7 +55,8 @@ const clinicInfo = ({ navigation }) => {
                     {name.sidoNm} {name.sgguNm}
                   </ListItem.Subtitle>
                 </>
-                {/* <ListItem.Subtitle></ListItem.Subtitle> */}
+                <ListItem.Subtitle>{name.hospTyTpCd}</ListItem.Subtitle>
+                <ListItem.Subtitle>{name.telno}</ListItem.Subtitle>
               </ListItem.Content>
             </ListItem>
           </TouchableOpacity>
@@ -55,7 +67,6 @@ const clinicInfo = ({ navigation }) => {
       // setSidoNm(sidoNameArr);
       // setSgguNm(sgguNameArr);
     });
-    console.log("name", clinicNameArr);
   });
   console.log("clinicNm", clinicNm);
 
@@ -106,19 +117,6 @@ const clinicInfo = ({ navigation }) => {
               <Card.Divider></Card.Divider>
             </View>
             <View style={styles.list}>
-              {/* {list.map((l) => ( */}
-              {/* <TouchableOpacity
-              style={styles.listContent}
-              onPress={() => navigation.navigate("ClinicNext")}
-            > */}
-              {/* <ListItem bottomDivider>
-                <Avatar source={{ uri: l.loc }} />
-                <ListItem.Content>
-                  <ListItem.Title> {clinicNm}</ListItem.Title>
-                  <ListItem.Subtitle>{l.sidoNm}</ListItem.Subtitle>
-                  <ListItem.Subtitle>{l.sgguNm}</ListItem.Subtitle>
-                </ListItem.Content>
-              </ListItem> */}
               <ScrollView>
                 <Text>{clinicNm}</Text>
               </ScrollView>
@@ -126,14 +124,7 @@ const clinicInfo = ({ navigation }) => {
             </View>
           </ScrollView>
         </View>
-        <View style={styles.container3}>
-          {/* <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("Interview")}
-          >
-            <Text style={styles.buttonText}>다음 화면으로 넘어감</Text>
-          </TouchableOpacity> */}
-        </View>
+        <View style={styles.container3}></View>
       </View>
     </View>
   );
