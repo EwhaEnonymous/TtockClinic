@@ -13,69 +13,54 @@ import "react-native-gesture-handler";
 import axios from "axios";
 import constants from "./constants";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
-import jQuery from "jquery";
-window.$ = window.jQuery = jQuery;
-
+// import jQuery from "jquery";
+// window.$ = window.jQuery = jQuery;
+import Dropdown from "./Dropdown";
 var clinicNameArr = [];
-var sidoNameArr = [];
-var sgguNameArr = [];
-const clinicInfo = ({ navigation }) => {
-  const [clinicNm, setClinicNm] = useState("");
-  const [sidoNm, setSidoNm] = useState("");
-  const [sgguNm, setSgguNm] = useState("");
-  const [list, setList] = useState("");
-  const [tel, setTel] = useState(0);
-  const [selectedIndex, setSelectedIndex] = useState("");
 
-  // function GetClinic() {
+const clinicInfo = ({ navigation }, props) => {
+  const [clinicNm, setClinicNm] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState("");
   useEffect(() => {
     axios
-      .get("https://www.ttockclinic.com/v1/clinics/waitings", {
-        params: { latitude: "11", longitude: "22" },
+      .get("https://www.ttockclinic.com/v1/clinics", {
+        params: { addr1: "경기도", addr2: "수원시" },
       })
-      .then((response) => console.log(response));
-    axios.get("https://www.ttockclinic.com/v1/clinic-url").then((response) => {
-      const dataList = response.data.response.body.items.item;
-      console.log(dataList);
-      dataList.map((name) =>
-        clinicNameArr.push(
-          <TouchableOpacity
-            style={styles.listContent}
-            value={selectedIndex}
-            onPress={(e) => {
-              setSelectedIndex($(e.target).text());
-              navigation.navigate("Interview");
-            }}
-          >
-            <ListItem bottomDivider>
-              <Avatar source={{ uri: name.yadmNm }} />
+      .then((response) => {
+        const dataList = response.data;
+        console.log(dataList);
+        dataList.map((name) =>
+          clinicNameArr.push(
+            <TouchableOpacity
+              style={styles.listContent}
+              value={selectedIndex}
+              onPress={(e) => {
+                setSelectedIndex($(e.target).text());
+                navigation.navigate("Interview");
+              }}
+            >
+              <ListItem bottomDivider>
+                <Avatar source={{ uri: name.name }} />
 
-              <ListItem.Content style={{ width: "10%" }}>
-                <>
-                  <ListItem.Title>{name.yadmNm}&nbsp;</ListItem.Title>
-                  <ListItem.Subtitle>
-                    {name.sidoNm} {name.sgguNm}
-                  </ListItem.Subtitle>
-                </>
-                <ListItem.Subtitle>{name.hospTyTpCd}</ListItem.Subtitle>
-                <ListItem.Subtitle>{name.telno}</ListItem.Subtitle>
-              </ListItem.Content>
-            </ListItem>
-          </TouchableOpacity>
-        )
-      );
+                <ListItem.Content style={{ width: "10%" }}>
+                  <>
+                    <ListItem.Title>{name.name}&nbsp;</ListItem.Title>
+                    <ListItem.Subtitle>{name.address} </ListItem.Subtitle>
+                    <ListItem.Subtitle>
+                      대기 인원 : {name.waitings} 명
+                    </ListItem.Subtitle>
+                  </>
+                </ListItem.Content>
+              </ListItem>
+            </TouchableOpacity>
+          )
+        );
 
-      setClinicNm(clinicNameArr);
-      // setSidoNm(sidoNameArr);
-      // setSgguNm(sgguNameArr);
-    });
+        setClinicNm(clinicNameArr);
+      });
   });
   console.log("clinicNm", clinicNm);
 
-  // console.log("1 list", list);
-  // setList(list);
-  // }
-  // GetClinic();
   return (
     <View style={styles.body}>
       <Header
