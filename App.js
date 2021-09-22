@@ -2,11 +2,13 @@ import React from "react";
 import MainPage from "./src/MainPage";
 import MyQR from "./src/myQR";
 import CurLoc from "./src/currentLocation";
+import RevGeo from "./src/reverseGeocode";
 import Clinic from "./src/clinicInfo";
 import ClinicNext from "./src/clinicInfo_next";
 import Patient from "./src/patientInfo";
 import Location from "./src/Location";
 import After from "./src/after";
+import Geocode from "./src/geocode";
 import Interview from "./src/Interview";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
@@ -47,7 +49,7 @@ const App = () => {
         />
         <Stack.Screen
           name="CurLoc"
-          component={CurLoc}
+          component={RevGeo}
           options={{ headerShown: false }}
         />
         <Stack.Screen
