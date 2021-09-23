@@ -16,17 +16,23 @@ import { Header, Card, ListItem, Avatar } from "react-native-elements";
 // import jQuery from "jquery";
 // window.$ = window.jQuery = jQuery;
 import Dropdown from "./Dropdown";
+
 var clinicNameArr = [];
 
-const clinicInfo = ({ navigation }, props) => {
+const clinicInfo = ({ navigation, route }) => {
   const [clinicNm, setClinicNm] = useState("");
   const [selectedIndex, setSelectedIndex] = useState("");
+  console.log(route.params.sd, route.params.sgg);
   useEffect(() => {
     axios
       .get("https://www.ttockclinic.com/v1/clinics", {
-        params: { addr1: "경기도", addr2: "수원시" },
+        params: {
+          addr1: `${route.params.sd}`,
+          addr2: `${route.params.sgg}`,
+        },
       })
       .then((response) => {
+        console.log(response);
         const dataList = response.data;
         console.log(dataList);
         dataList.map((name) =>
@@ -34,10 +40,12 @@ const clinicInfo = ({ navigation }, props) => {
             <TouchableOpacity
               style={styles.listContent}
               value={selectedIndex}
-              onPress={(e) => {
-                setSelectedIndex($(e.target).text());
-                navigation.navigate("Interview");
-              }}
+              // onPress={(e) => {
+              //   // setSelectedIndex(e.target.text());
+
+              //   navigation.navigate("Interview");
+              // }}
+              onPress={() => navigation.navigate("Interview", { id: name.id })}
             >
               <ListItem bottomDivider>
                 <Avatar source={{ uri: name.name }} />
@@ -59,7 +67,7 @@ const clinicInfo = ({ navigation }, props) => {
         setClinicNm(clinicNameArr);
       });
   });
-  console.log("clinicNm", clinicNm);
+  // console.log("clinicNm", clinicNm);
 
   return (
     <View style={styles.body}>
