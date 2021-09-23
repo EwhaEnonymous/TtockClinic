@@ -9,8 +9,20 @@ import axios from "axios";
 
 function qrCheck ({navigation}) {
     const [phone, setPhone] = useState("");
+    //const onChangeHandler = (event) => {
+    //  setPhone(event.target);
+     // console.log(phone);
+    //};
     const handleSubmit = (e) => {
-        console.log(phone);
+        axios
+            .get('https://www.ttockclinic.com/v1/paper', {phone : phone})
+            .then(function (response){
+                console.log(response)
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+            console.log(phone);
       };
     return(
         <View style={styles.body}>
@@ -36,22 +48,49 @@ function qrCheck ({navigation}) {
             <Card.Title style={styles.title}>
             <Icon name="chevron-forward-circle-outline" size={30}></Icon> QR 코드 확인하기
           </Card.Title>
-          <Text style={styles.mainDescription}>핸드폰 번호를 입력해주세요.</Text>
+          <Text style={styles.mainDescription}>휴대폰번호를 입력해주세요.</Text>
         </View>
-        <View style={styles.container2}>
+        {/* <View style={styles.container2}> */}
             <form onSubmit={handleSubmit}>
+                <View style={styles.container2}>
             <Input
               label="휴대폰번호"
               placeholder="010-1234-5678"
               style={styles}
               onChange={(e) => {
-                setPhone(e);
+                //onChangeHandler(e);
+                setPhone(e.target.value);
+                console.log(phone);
               }}
             />
-            <button type="submit">submit</button>
+            </View>
+            <View style={styles.container3}>
+            <TouchableOpacity
+                style = {styles.submit}
+            >
+            <button
+                type="submit"
+                //style = {styles.submit} //왜 submit은 style 적용이 안될까?
+                >
+                <Text>
+                    <Icon
+                        name="chevron-forward-circle-outline"
+                        size={30}
+                        color="white"
+                    ></Icon>
+                    <Text
+                        style={styles.buttonText}
+                        onPress={() => navigation.navigate("QR")}
+                    >
+                    나의 QR 코드
+                    </Text>
+                </Text>
+            </button>
+            </TouchableOpacity>
+            </View>
           </form>
-        </View>
-        <TouchableOpacity
+        {/* </View> */}
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("Clinic")}
         >
@@ -68,7 +107,7 @@ function qrCheck ({navigation}) {
               나의 QR 코드
             </Text>
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
     );
@@ -101,16 +140,20 @@ const styles = StyleSheet.create({
       marginTop: "5%",
     },
     container2: {
-      flex: 1.5,
-      alignItems: "flex-start",
+      flex: 3,
       marginTop: "5%",
+    },
+    container3: {
+        flex: 1.5,
+        alignItems: "flex-end",
+        marginBottom: "5%",
     },
     mainDescription: {
       fontSize: 18,
       color: "#00462a",
       marginBottom: "10%",
     },
-    button: {
+    submit: {
       fontSize: constants.width > 370 ? 30 : 18,
       borderColor: "#00462a",
       backgroundColor: "#00462a",

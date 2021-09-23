@@ -16,6 +16,9 @@ import RadioForm, {
 } from "react-native-simple-radio-button";
 import constants from "./constants";
 import axios from "axios";
+// import RNMultiSelect, {
+//   IMultiSelectDataTypes,
+// } from "@freakycoder/react-native-multiple-select";
 
 function Interview({ navigation }) {
   const [name, setName] = useState("");
@@ -25,6 +28,7 @@ function Interview({ navigation }) {
   const gender = ["여성", "남성"];
   const [values, setValues] = useState({ name: "", birth: "", phone: "" });
   const [selectedIndex, setSelectedIndex] = useState("");
+  
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
@@ -91,7 +95,7 @@ function Interview({ navigation }) {
               placeholder="14430815"
               style={styles}
               onChange={(e) => {
-                console.log(e);
+                console.log(e.target.value);
               }}
             />
             <Input
@@ -99,7 +103,7 @@ function Interview({ navigation }) {
               placeholder="010-1234-5678"
               style={styles}
               onChange={(e) => {
-                setPhone(e);
+                setPhone(e.target.value);
               }}
             />
             <TouchableOpacity>
@@ -116,13 +120,15 @@ function Interview({ navigation }) {
                 onPress={(e) => setSelectedIndex(e)}
               />
             </TouchableOpacity>
-            <button type="submit">submit</button>
+            <button type="submit"
+            onPress={(e) => onChangeHandler(e)}
+            >submit</button>
           </form>
           <View>{/* 추가적인 정보 들어갈 부분 */}</View>
         </View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Clinic")}
+          onPress={() => navigation.navigate("After")}
         >
           <Text>
             <Icon
@@ -132,7 +138,7 @@ function Interview({ navigation }) {
             ></Icon>
             <Text
               style={styles.buttonText}
-              onPress={() => navigation.navigate("After")}
+              // onPress={() => navigation.navigate("After")}
             >
               문진표 작성 완료
             </Text>
