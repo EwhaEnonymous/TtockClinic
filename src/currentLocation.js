@@ -4,41 +4,30 @@ import "react-native-gesture-handler";
 import { PROVIDER_GOOGLE } from "react-native-maps";
 import MapView from "react-native-maps";
 import constants from "./constants";
-import { Header } from "react-native-elements";
+import { Header, Card } from "react-native-elements";
 // import Geocode from ".geocode";
-
+import Icon3 from "react-native-vector-icons/Ionicons";
+import API_KEY from "./apikey";
 import * as Location from "expo-location";
-
+import axios from "axios";
+import ReverseGeocode from "./reverseGeocode";
 function currentLocation({ navigation }) {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [location, setLocation] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [loc1, setLoc1] = useState(null);
+  const [loc2, setLoc2] = useState(null);
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
 
+  const geoLocation = async () => {
+    const location = await Location.getCurrentPositionAsync();
+    console.log(location);
+    setLat(location.coords.latitude);
+    setLng(location.coords.longitude);
+  };
   useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      });
-    })();
-  }, []);
-
-  let text = "Waiting..";
-  // let lat = 0;
-  // let long = 0;
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-    console.log(location.latitude);
-    console.log(location.longitude);
-  }
+    geoLocation();
+  });
   return (
     <View style={styles.body}>
       <Header
@@ -58,34 +47,44 @@ function currentLocation({ navigation }) {
         rightComponent={{ icon: "home", color: "#fff" }}
         backgroundColor={"#00462a"}
       ></Header>
-      {/* 임시 */}
       <View style={styles.container}>
-        <Text>{text}</Text>
-        {location && (
-          <MapView
-            provider={PROVIDER_GOOGLE}
-            style={styles.map}
-            initialRegion={{
-              latitude: location.latitude,
-              longitude: location.longitude,
-              latitudeDelta: 0.05,
-              longitudeDelta: 0.0421,
+        <View style={styles.container1}>
+          <Card.Title style={styles.title}>
+            <Icon3 name="chevron-forward-circle-outline" size={30}></Icon3>{" "}
+            현위치
+          </Card.Title>
+        </View>
+        {/* <Text>{(lat, lng)}</Text> */}
+        <MapView
+          provider={PROVIDER_GOOGLE}
+          style={{ flex: 1 }}
+          initialRegion={{
+            latitude: `${lat}`,
+            longitude: `${lng}`,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        >
+          <MapView.Marker
+            coordinate={{
+              latitude: lat,
+              longitude: lng,
             }}
-          >
-            <MapView.Marker
-              coordinate={{
-                latitude: location.latitude,
-                longitude: location.longitude,
-              }}
-            />
-          </MapView>
-        )}
+          />
+        </MapView>
 
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("Clinic")}
         >
-          <Text style={styles.buttonText}>다음 화면으로 넘어감</Text>
+          <Text style={styles.buttonText}>
+            <Icon3
+              name="chevron-forward-circle-outline"
+              size={30}
+              color="white"
+            ></Icon3>{" "}
+            가까운 선별진료소 찾기
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 6,
-    alignItems: "center",
+    // alignItems: "center",
     marginTop: "2%",
     marginBottom: "2%",
   },
@@ -115,6 +114,30 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: "red",
   },
+  container1: {
+    flex: 0.1,
+    marginTop: "5%",
+    marginLeft: "5%",
+    alignItems: "flex-start",
+  },
+  title: {
+    fontSize: 30,
+    color: "#00462a",
+    fontWeight: "bold",
+  },
+  mainDescription: {
+    fontSize: 18,
+    color: "#00462a",
+  },
+  card: {
+    marginLeft: "-5%",
+    marginRight: "-5%",
+    marginBottom: "5%",
+    marginTop: "5%",
+    borderWidth: 0,
+    shadowColor: "rgba(0,0,0, 0.0)", //ios 그림자 없애기
+    elevation: 0, //안드로이드 그림자 없애기
+  },
   button: {
     flex: 1,
     marginTop: 50,
@@ -123,12 +146,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#00462a",
     borderWidth: 2,
     borderRadius: 10,
-    width: "70%",
+    width: "78%",
     height: "10%",
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    top: "70%",
+    top: "78%",
+    left: "11%",
   },
   buttonText: {
     color: "white",
