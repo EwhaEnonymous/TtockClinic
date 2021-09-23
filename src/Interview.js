@@ -9,6 +9,7 @@ import {
 import "react-native-gesture-handler";
 import { Header, Input, Card, ButtonGroup } from "react-native-elements";
 import Icon from "react-native-vector-icons/Ionicons";
+
 import RadioForm, {
   RadioButton,
   RadioButtonInput,
@@ -16,23 +17,23 @@ import RadioForm, {
 } from "react-native-simple-radio-button";
 import constants from "./constants";
 import axios from "axios";
+import { TextInput } from "react-native-gesture-handler";
 // import RNMultiSelect, {
 //   IMultiSelectDataTypes,
 // } from "@freakycoder/react-native-multiple-select";
 
-function Interview({ navigation }) {
-  const [name, setName] = useState("");
-  const [birth, setBirth] = useState(0);
-  const [phone, setPhone] = useState("");
+function Interview({ navigation, route }) {
+  // const [name, setName] = useState("");
+  // const [birth, setBirth] = useState(0);
+  // const [phone, setPhone] = useState("");
   // const [gen, setGen] = useState("");
   const gender = ["여성", "남성"];
   const [values, setValues] = useState({ name: "", birth: "", phone: "" });
   const [selectedIndex, setSelectedIndex] = useState("");
-  
-  const onChangeHandler = (event) => {
+
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
-    console.log(values);
   };
   const handleSubmit = (e) => {
     console.log(name, birth, phone);
@@ -40,10 +41,9 @@ function Interview({ navigation }) {
     axios
       .post("https://www.ttockclinic.com/v1/papers", {
         headers: { "Content-type": `application/json` },
-        latitude: "11",
-        longitude: "22",
-        name: "이정우",
-        phone: "010-2323-4343",
+        clinicId: `${route.params.id}`,
+        name: `${values.name}`,
+        phone: `${values.phone}`,
         // name: `${name}`,
         // phone: `${phone}`,
       })
@@ -52,7 +52,7 @@ function Interview({ navigation }) {
         console.log("Error!");
       });
   };
-
+  console.log("VAL", values);
   return (
     <View style={styles.body}>
       <Header
@@ -82,30 +82,36 @@ function Interview({ navigation }) {
         </View>
         <View style={styles.container2}>
           <form onSubmit={handleSubmit}>
-            <Input
-              label="이름"
-              placeholder="홍길동"
-              style={styles}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-            <Input
-              label="생년월일"
-              placeholder="14430815"
-              style={styles}
-              onChange={(e) => {
-                console.log(e.target.value);
-              }}
-            />
-            <Input
-              label="휴대폰번호"
-              placeholder="010-1234-5678"
-              style={styles}
-              onChange={(e) => {
-                setPhone(e.target.value);
-              }}
-            />
+            <label>
+              이름
+              <input
+                type="text"
+                name="name"
+                placeholder="홍길동"
+                value={values.name}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              생년월일
+              <input
+                type="number"
+                name="birth"
+                placeholder="14430815"
+                value={values.birth}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              전화번호
+              <input
+                type="string"
+                name="phone"
+                placeholder="010-1234-5678"
+                value={values.phone}
+                onChange={handleChange}
+              />
+            </label>
             <TouchableOpacity>
               <ButtonGroup
                 buttons={gender} //여성, 남성
@@ -119,31 +125,29 @@ function Interview({ navigation }) {
                 textStyle={styles.genderText} //텍스트 css
                 onPress={(e) => setSelectedIndex(e)}
               />
-            </TouchableOpacity>
-            <button type="submit"
-            onPress={(e) => onChangeHandler(e)}
-            >submit</button>
-          </form>
-          <View>{/* 추가적인 정보 들어갈 부분 */}</View>
-        </View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("After")}
-        >
-          <Text>
-            <Icon
-              name="chevron-forward-circle-outline"
-              size={30}
-              color="white"
-            ></Icon>
-            <Text
-              style={styles.buttonText}
-              // onPress={() => navigation.navigate("After")}
+            </TouchableOpacity>{" "}
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate("After")}
             >
-              문진표 작성 완료
-            </Text>
-          </Text>
-        </TouchableOpacity>
+              <Text>
+                <Icon
+                  name="chevron-forward-circle-outline"
+                  size={30}
+                  color="white"
+                ></Icon>
+                <Text
+                  type="submit"
+                  style={styles.buttonText}
+                  onPress={() => navigation.navigate("After")}
+                >
+                  문진표 작성 완료
+                  {/* <input type="submit" value="" /> */}
+                </Text>
+              </Text>
+            </TouchableOpacity>
+          </form>
+        </View>
       </View>
     </View>
   );
