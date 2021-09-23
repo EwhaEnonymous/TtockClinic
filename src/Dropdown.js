@@ -3,8 +3,9 @@ import RNPickerSelect from "react-native-picker-select";
 import { Keyboard, StyleSheet } from "react-native";
 import constants from "./constants";
 import { Card } from "react-native-elements";
+import clinicInfo from "./clinicInfo";
 
-function Dropdown() {
+function Dropdown(props) {
   const [Sido, setSido] = useState([]);
   const [Sigungu, setSigungu] = useState([]);
   const placeholderText = "선택하세요";
@@ -379,6 +380,7 @@ function Dropdown() {
       </>
     );
   }
+
   function Dropdown2() {
     if (Sido === "seoul") {
       return (
