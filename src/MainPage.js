@@ -15,9 +15,9 @@ const screenheight = Dimensions.get("window").height;
 const MainPage = ({ navigation }) => {
   return (
     <View style={styles.body}>
+      {/* Header Bar */}
       <Header
         placement="left"
-        leftComponent={{ icon: "menu", color: "#fff" }}
         centerComponent={
           <TouchableOpacity>
             <Text
@@ -29,10 +29,17 @@ const MainPage = ({ navigation }) => {
           </TouchableOpacity>
         }
         placement="center"
-        rightComponent={{ icon: "home", color: "#fff" }}
+        rightComponent={
+          <TouchableOpacity onPress={() => navigation.navigate("qrCheck")}>
+            <Text style={styles.menuText}>My</Text>
+          </TouchableOpacity>
+        }
         backgroundColor={"#00462a"}
       ></Header>
-      <View style={{ flex: 1, marginTop: "8%", marginBottom: "8%" }}>
+
+      {/* Container 1 */}
+      <View style={styles.container}>
+        {/* 코로나 정보 */}
         <TouchableOpacity
           style={{ flex: 1 }}
           onPress={() => navigation.navigate("Patient")}
@@ -48,13 +55,14 @@ const MainPage = ({ navigation }) => {
             </Text>
           </Card>
         </TouchableOpacity>
+        {/* 가까운 선별진료소 */}
         <TouchableOpacity
           style={{ flex: 1 }}
           onPress={() => navigation.navigate("CurLoc")}
         >
           <Card containerStyle={styles.cardContainer}>
             <View style={styles.cardView}>
-              <Icon name="navigate-outline" size={30}></Icon>
+              <Icon name="navigate-outline" size={40}></Icon>
               <Card.Title style={styles.cardTitle}>
                 가까운 선별진료소
               </Card.Title>
@@ -65,6 +73,7 @@ const MainPage = ({ navigation }) => {
             </Text>
           </Card>
         </TouchableOpacity>
+        {/* 지역별 선별진료소 */}
         <TouchableOpacity
           style={{ flex: 1 }}
           onPress={() => navigation.navigate("Location")}
@@ -82,6 +91,7 @@ const MainPage = ({ navigation }) => {
             </Text>
           </Card>
         </TouchableOpacity>
+        {/* 나의 QR */}
         <TouchableOpacity
           style={{ flex: 1 }}
           onPress={() => navigation.navigate("qrCheck")}
@@ -89,11 +99,11 @@ const MainPage = ({ navigation }) => {
           <Card containerStyle={styles.cardContainer}>
             <View style={styles.cardView}>
               <Icon name="qr-code-outline" size={50}></Icon>
-              <Card.Title style={styles.cardTitle}>나의 QR</Card.Title>
+              <Card.Title style={styles.cardTitle}>나의 접수 정보</Card.Title>
             </View>
             <Card.Divider />
             <Text style={styles.cardDescription}>
-              나의 검사 예약시간을 확인하세요
+              나의 접수 내역을 확인하세요
             </Text>
           </Card>
         </TouchableOpacity>
@@ -112,6 +122,17 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
+  menuText: {
+    color: "#fff",
+    fontSize: 20,
+    marginRight: "5%",
+  },
+  container: {
+    flex: 1,
+    marginTop: "8%",
+    marginBottom: "8%",
+  },
+
   cardContainer: {
     borderColor: "#00462a",
     borderWidth: 2,
@@ -124,12 +145,12 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   cardTitle: {
-    fontSize: screenwidth > 365 ? 30 : 20,
+    fontSize: 30,
     paddingTop: 8,
     marginRight: 10,
   },
   cardDescription: {
-    fontSize: screenwidth > 365 ? 20 : 15,
+    fontSize: 20,
     textAlign: "center",
   },
 });

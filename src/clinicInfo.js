@@ -9,19 +9,17 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
-// import constants from "./constants";
-import axios from "axios";
 import constants from "./constants";
+import axios from "axios";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
-// import jQuery from "jquery";
-// window.$ = window.jQuery = jQuery;
-import Dropdown from "./Dropdown";
+import { Dimensions } from "react-native";
 
 var clinicNameArr = [];
 
 const clinicInfo = ({ navigation, route }) => {
   const [clinicNm, setClinicNm] = useState("");
-  const [selectedIndex, setSelectedIndex] = useState("");
+  const [infoArr, setInforArr] = useState([]);
+  const [msg, setMsg] = useState("");
   console.log(route.params.sd, route.params.sgg);
   useEffect(() => {
     axios
@@ -35,45 +33,50 @@ const clinicInfo = ({ navigation, route }) => {
         console.log(response);
         const dataList = response.data;
         console.log(dataList);
-        dataList.map((name) =>
-          clinicNameArr.push(
-            <TouchableOpacity
-              style={styles.listContent}
-              value={selectedIndex}
-              // onPress={(e) => {
-              //   // setSelectedIndex(e.target.text());
-
-              //   navigation.navigate("Interview");
-              // }}
-              onPress={() => navigation.navigate("Interview", { id: name.id })}
-            >
-              <ListItem bottomDivider>
-                <Avatar source={{ uri: name.name }} />
-
-                <ListItem.Content style={{ width: "10%" }}>
-                  <>
-                    <ListItem.Title>{name.name}&nbsp;</ListItem.Title>
-                    <ListItem.Subtitle>{name.address} </ListItem.Subtitle>
-                    <ListItem.Subtitle>
+        if (dataList.length === 0) {
+          setMsg("해당 지역에 선별 진료소가 없습니다.");
+        } else {
+          dataList.map((name, i) => {
+            clinicNameArr.push(
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("ClinicNext", {
+                    id: name.id,
+                  });
+                }}
+                style={styles.touch}
+              >
+                <ListItem containerStyle={styles.listItem}>
+                  <ListItem.Content
+                    style={{ borderWidth: 2, borderColor: "#00462a" }}
+                  >
+                    {/* <Avatar source={{ uri: name.name }} /> */}
+                    <ListItem.Title style={styles.listTitle}>
+                      {name.name}&nbsp;
+                    </ListItem.Title>
+                    <ListItem.Subtitle style={styles.listSub}>
+                      {name.address}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle style={styles.listSub2}>
                       대기 인원 : {name.waitings} 명
                     </ListItem.Subtitle>
-                  </>
-                </ListItem.Content>
-              </ListItem>
-            </TouchableOpacity>
-          )
-        );
+                    {/* </View> */}
+                  </ListItem.Content>
+                </ListItem>
+              </TouchableOpacity>
+            );
+          });
 
-        setClinicNm(clinicNameArr);
+          setClinicNm(clinicNameArr);
+        }
       });
   });
-  // console.log("clinicNm", clinicNm);
 
   return (
     <View style={styles.body}>
+      {/* Header Bar */}
       <Header
         placement="left"
-        leftComponent={{ icon: "menu", color: "#fff" }}
         centerComponent={
           <TouchableOpacity>
             <Text
@@ -85,38 +88,27 @@ const clinicInfo = ({ navigation, route }) => {
           </TouchableOpacity>
         }
         placement="center"
-        rightComponent={{ icon: "home", color: "#fff" }}
+        rightComponent={
+          <TouchableOpacity onPress={() => navigation.navigate("qrCheck")}>
+            <Text style={styles.menuText}>My</Text>
+          </TouchableOpacity>
+        }
         backgroundColor={"#00462a"}
       ></Header>
       <View style={styles.container}>
-        <View style={styles.clinicInfo}>
-          <View style={styles.container1}>
-            <Card.Title style={styles.title}>
-              <Icon name="chevron-forward-circle-outline" size={30}></Icon>{" "}
-              선별진료소 정보
-            </Card.Title>
-            <Text style={styles.mainDescription}>
-              현위치에서 가까운 선별진료소의 정보입니다.
-              {"\n"}자세한 정보를 보려면 선별진료소를 선택하세요.
-            </Text>
-          </View>
-          {/* <Card> */}
-
-          {/* </Card> */}
+        <View style={styles.container1}>
+          <Card.Title style={styles.title}>
+            <Icon name="chevron-forward-circle-outline" size={30}></Icon>{" "}
+            선별진료소 정보
+          </Card.Title>
+          <Text style={styles.mainDescription}>
+            선택한 지역의 선별진료소의 정보입니다.
+            {"\n"}자세한 정보를 보려면 선별진료소를 선택하세요.
+          </Text>
         </View>
         <View style={styles.container2}>
-          {/* <Card containerStyle={styles.card}> */}
-          {/* <Card.Title style={styles.title}>선별진료소 이름</Card.Title> */}
           <ScrollView>
-            <View>
-              <Card.Divider></Card.Divider>
-            </View>
-            <View style={styles.list}>
-              <ScrollView>
-                <Text>{clinicNm}</Text>
-              </ScrollView>
-              {/* ))} */}
-            </View>
+            <Text style={{ alignContent: "center" }}>{clinicNm}</Text>
           </ScrollView>
         </View>
         <View style={styles.container3}></View>
@@ -135,53 +127,110 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
+  menuText: {
+    color: "#fff",
+    fontSize: 20,
+    marginRight: "5%",
+  },
   container: {
     flex: 1,
-    marginTop: "5%",
-    marginBottom: "5%",
-  },
-  clinicInfo: {
-    flex: 0.2,
-    paddingBottom: "5%",
-  },
-  container1: {
-    alignItems: "flex-start",
-    marginLeft: "5%",
+    margin: "5%",
   },
   title: {
     fontSize: 30,
     color: "#00462a",
     fontWeight: "bold",
   },
+  container1: {
+    flex: 0.15,
+    alignItems: "flex-start",
+    marginTop: "5%",
+  },
   container2: {
-    flex: 1.35,
-    margin: 0,
-    marginLeft: "5%",
-    marginRight: "5%",
+    flex: 0.8,
+    borderColor: "black",
+    borderRadius: 2,
+    alignContent: "center",
+    justifyContent: "center",
+    width: "100%",
+  },
+  container3: {
+    flex: 0.05,
+    alignItems: "center",
+    width: "100%",
+  },
+  touch: {
+    width: constants.width * 0.99,
+    paddingLeft: "-5%",
+    paddingRight: "2%",
   },
   listContent: {
-    // margin: "0.05%",
+    marginTop: "-7%",
     flexDirection: "column",
-    width: constants.width * 0.83,
+    width: "100%",
   },
-  // card: { borderColor: "#00462a", borderWidth: 2, borderRadius: 20 },
-  container3: {
-    flex: 0.2,
-    justifyContent: "center",
-    alignItems: "center",
+  listItem: {
+    width: "100%",
+    alignContent: "center",
+    marginLeft: "-4%",
   },
-  button: {
+  listTitle: {
+    color: "white",
+    lineHeight: 30,
+    width: "100%",
+    paddingLeft: "5%",
+    paddingTop: "2%",
+    paddingBottom: "2%",
+    fontSize: 20,
+    fontWeight: "bold",
     borderColor: "#00462a",
     backgroundColor: "#00462a",
-    borderWidth: 2,
-    borderRadius: 10,
-    height: "80%",
-    width: "80%",
-    justifyContent: "center",
-    alignItems: "center",
   },
-  buttonText: {
-    color: "white",
+  listSub: {
+    lineHeight: 20,
+    width: "100%",
+    paddingLeft: "3%",
+    paddingRight: "3%",
+    paddingTop: "4%",
+    fontSize: 18,
+    borderRadius: 4,
+  },
+  listSub2: {
+    lineHeight: 20,
+    width: "100%",
+    paddingLeft: "4%",
+    paddingTop: "2%",
+    paddingBottom: "2%",
+    fontSize: 18,
+    borderRadius: 4,
+  },
+  noResult: {
+    fontSize: 25,
+    color: "#00462a",
+    fontWeight: "bold",
+    // marginTop: "20%",
+    textAlign: "center",
+  },
+  scroll: {
+    width: "103%",
+  },
+  card: {
+    // marginLeft: "-5%",
+    // marginRight: "-5%",
+    marginTop: "5%",
+    paddingTop: "5%",
+    paddingBottom: "5%",
+    alignItems: "center",
+    shadowColor: "rgba(0,0,0, 0.0)", //ios 그림자 없애기
+    elevation: 0, //안드로이드 그림자 없애기
+    // borderColor: "#00462a",
+    // borderWidth: 2,
+    // justifyContent: "center",
+    // borderRadius: 10,
+  },
+  mainDescription: {
+    fontSize: 18,
+    color: "#00462a",
   },
 });
 export default clinicInfo;

@@ -17,6 +17,7 @@ import axios from "axios";
 function qrCheck({ navigation }) {
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [msg, setMsg] = useState("");
   //const onChangeHandler = (event) => {
   //  setPhone(event.target);
   // console.log(phone);
@@ -31,16 +32,16 @@ function qrCheck({ navigation }) {
         console.log(response);
       })
       .catch(function (error) {
-        console.log(error);
+        setMsg("접수 내역이 없습니다.");
       });
   };
 
   // };
   return (
     <View style={styles.body}>
+      {/* Header Bar */}
       <Header
         placement="left"
-        leftComponent={{ icon: "menu", color: "#fff" }}
         centerComponent={
           <TouchableOpacity>
             <Text
@@ -52,7 +53,11 @@ function qrCheck({ navigation }) {
           </TouchableOpacity>
         }
         placement="center"
-        rightComponent={{ icon: "home", color: "#fff" }}
+        rightComponent={
+          <TouchableOpacity onPress={() => navigation.navigate("qrCheck")}>
+            <Text style={styles.menuText}>My</Text>
+          </TouchableOpacity>
+        }
         backgroundColor={"#00462a"}
       ></Header>
       <View style={styles.container}>
@@ -63,71 +68,47 @@ function qrCheck({ navigation }) {
           </Card.Title>
           <Text style={styles.mainDescription}>휴대폰번호를 입력해주세요.</Text>
         </View>
-        {/* <View style={styles.container2}> */}
-        {/* <form onSubmit={handleSubmit}> */}
+
         <View style={styles.container2}>
+          <Card.Title style={styles.title}>이름</Card.Title>
           <TextInput
             label="이름"
-            style={styles}
+            placeholder="김똑똑"
+            style={styles.box}
             onChange={(e) => {
-              //onChangeHandler(e);
               setName(e.target.value);
               console.log(phone);
             }}
           />
+          <Text>{"\n"}</Text>
+          <Card.Divider />
+          <Card.Title style={styles.title}>휴대폰번호</Card.Title>
           <TextInput
             label="휴대폰번호"
             placeholder="010-1234-5678"
-            style={styles}
+            style={styles.box}
             onChange={(e) => {
-              //onChangeHandler(e);
               setPhone(e.target.value);
               console.log(phone);
             }}
           />
+          <Text style={styles.title}>{msg}</Text>
         </View>
         <View style={styles.container3}>
           <TouchableOpacity style={styles.submit} onPress={getData}>
-            {/* <button
-                type="submit"
-                //style = {styles.submit} //왜 submit은 style 적용이 안될까?
-              > */}
-            <Text>
-              <Icon
-                name="chevron-forward-circle-outline"
-                size={30}
-                color="white"
-              ></Icon>
+            <Icon name="chevron-forward-circle-outline" size={30} color="white">
+              {" "}
               <Text
                 style={styles.buttonText}
-                // onPress={() => navigation.navigate("QR")}
+                onPress={() =>
+                  navigation.navigate("QR", { name: name, phone: phone })
+                }
               >
-                나의 QR 코드
+                {""}접수 내역 조회하기
               </Text>
-            </Text>
-            {/* </button> */}
+            </Icon>
           </TouchableOpacity>
         </View>
-        {/* </form> */}
-        {/* </View> */}
-        {/* <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Clinic")}
-        >
-          <Text>
-            <Icon
-              name="chevron-forward-circle-outline"
-              size={30}
-              color="white"
-            ></Icon>
-            <Text
-              style={styles.buttonText}
-              onPress={() => navigation.navigate("QR")}
-            >
-              나의 QR 코드
-            </Text>
-          </Text>
-        </TouchableOpacity> */}
       </View>
     </View>
   );
@@ -137,36 +118,42 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
-
   headerText: {
     color: "#fff",
     letterSpacing: 3,
     fontWeight: "bold",
     fontSize: 20,
   },
+  menuText: {
+    color: "#fff",
+    fontSize: 20,
+    marginRight: "5%",
+  },
   container: {
     flex: 1,
     margin: "5%",
-    // backgroundColor: "red",
   },
   title: {
     fontSize: 30,
     color: "#00462a",
     fontWeight: "bold",
+    textAlign: "left",
   },
   container1: {
-    flex: 0.3,
+    flex: 0.15,
     alignItems: "flex-start",
     marginTop: "5%",
   },
   container2: {
-    flex: 3,
-    marginTop: "5%",
+    flex: 0.5,
+    borderColor: "black",
+    borderRadius: 2,
+    alignContent: "center",
+    justifyContent: "center",
   },
   container3: {
-    flex: 1.5,
-    alignItems: "flex-end",
-    marginBottom: "5%",
+    flex: 0.5,
+    alignItems: "center",
   },
   mainDescription: {
     fontSize: 18,
@@ -183,15 +170,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    height: Dimensions.get("window").height * 0.08,
+    height: "20%",
+  },
+  box: {
+    borderColor: "#00462a",
+    height: "15%",
+    borderWidth: 2,
+    borderRadius: 10,
+    padding: 10,
+    fontSize: 20,
   },
   buttonText: {
-    fontSize: constants.width > 370 ? 30 : 24,
+    fontSize: 25,
     alignItems: "center",
     color: "white",
     justifyContent: "center",
     fontWeight: "bold",
-    letterSpacing: 3,
   },
 });
 export default qrCheck;
