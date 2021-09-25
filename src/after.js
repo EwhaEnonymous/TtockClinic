@@ -1,13 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Header, Card } from "react-native-elements";
-
+import Icon from "react-native-vector-icons/Ionicons";
+import constants from "./constants";
 const after = ({ navigation }) => {
   return (
     <View style={styles.body}>
+      {/* Header Bar */}
       <Header
         placement="left"
-        leftComponent={{ icon: "menu", color: "#fff" }}
         centerComponent={
           <TouchableOpacity>
             <Text
@@ -19,33 +20,47 @@ const after = ({ navigation }) => {
           </TouchableOpacity>
         }
         placement="center"
-        rightComponent={{ icon: "home", color: "#fff" }}
+        rightComponent={
+          <TouchableOpacity onPress={() => navigation.navigate("qrCheck")}>
+            <Text style={styles.menuText}>My</Text>
+          </TouchableOpacity>
+        }
         backgroundColor={"#00462a"}
       ></Header>
       <View style={styles.container}>
         <View style={styles.container1}>
-          <View style={styles.finished}>
-            <Card containerStyle={styles.card}>
-              <Card.Title style={styles.title}>
-                문진표 작성이 완료되었습니다.
-              </Card.Title>
-            </Card>
-            <Card containerStyle={styles.desCard}>
-              <Card.Title style={styles.desTitle}>
-                &lt; 안내 사항 &gt;
-              </Card.Title>
-              <Text style={styles.mainDescription}>
-                선별진료소에 도착하면
-                {"\n"}QR 인식기에 나의 QR을 인식하고
-                {"\n"}자신의 차례가 올 때까지 기다리세요
-              </Text>
-            </Card>
-          </View>
+          <Card.Title style={styles.title}>
+            <Icon name="chevron-forward-circle-outline" size={30}></Icon> 문진표
+            접수 완료
+          </Card.Title>
+          <Text style={styles.mainDescription}>
+            문진표 접수가 완료되었습니다.
+          </Text>
         </View>
         <View style={styles.container2}>
+          <Card containerStyle={styles.desCard}>
+            <Card.Title style={styles.desTitle}>안내 사항</Card.Title>
+            <Text style={styles.mainDescription}>
+              {"\n"}
+              선별진료소에 도착하면
+              {"\n"}QR 인식기에 나의 QR을 인식하고
+              {"\n"}자신의 차례가 올 때까지 기다리세요
+            </Text>
+            <Text style={styles.mainDescription}>
+              접수 정보는 메인 페이지에서 {"\n"}
+              <Text
+                style={{ fontSize: 30, fontWeight: "bold", color: "#00462a" }}
+              >
+                나의 접수 정보
+              </Text>
+              를 누르면 {"\n"}조회할 수 있습니다.
+            </Text>
+          </Card>
+        </View>
+        <View style={styles.container3}>
           <View style={styles.menu}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("QR")}
+              onPress={() => navigation.navigate("qrCheck")}
               style={styles.menu}
             >
               <Card containerStyle={styles.menu1}>
@@ -80,35 +95,50 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
+  menuText: {
+    color: "#fff",
+    fontSize: 20,
+    marginRight: "5%",
+  },
   container: {
     flex: 1,
-    marginTop: "5%",
-    marginBottom: "5%",
+    margin: "5%",
   },
+
   container1: {
-    flex: 1,
-    alignItems: "center",
+    flex: 0.15,
+    alignItems: "flex-start",
+    marginTop: "5%",
   },
   container2: {
     flex: 0.5,
-    alignItems: "flex-start",
-    // backgroundColor: "green",
+    borderColor: "black",
+    borderRadius: 2,
+    alignContent: "center",
+    justifyContent: "center",
+  },
+  container3: {
+    flex: 0.2,
+    alignItems: "center",
+  },
+  mainDescription: {
+    fontSize: 20,
+    color: "#00462a",
+    marginBottom: "10%",
   },
   card: {
-    flex: 1,
+    flex: 3,
     borderColor: "#00462a",
     justifyContent: "center",
     alignItems: "center",
     // borderWidth: 2,
     // borderRadius: 20,
   },
-  finished: { justifyContent: "center" },
   title: {
-    justifyContent: "center",
     fontSize: 30,
     color: "#00462a",
     fontWeight: "bold",
-    borderColor: "#00462a",
+    textAlign: "left",
   },
 
   desCard: {
@@ -121,23 +151,27 @@ const styles = StyleSheet.create({
   },
   desTitle: {
     fontSize: 30,
-    color: "#00462a",
+    paddingTop: "5%",
+    paddingBottom: "5%",
+    color: "white",
     fontWeight: "bold",
+    backgroundColor: "#00462a",
   },
-  mainDescription: {
+  mainDescription2: {
     paddingTop: "10%",
     fontSize: 18,
     color: "#00462a",
+    textAlign: "center",
   },
 
   menu: {
     flexDirection: "row",
-    margin: 0,
-    flex: 0.8,
+    alignItems: "center",
+
     borderColor: "#00462a",
   },
   menu1: {
-    flex: 1,
+    // flex: 1,
     justifyContent: "center",
     borderColor: "#00462a",
     borderWidth: 2,
@@ -145,104 +179,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#00462a",
   },
   menuText: {
-    fontSize: 30,
+    paddingTop: "4%",
+    fontSize: 25,
     color: "white",
     lineHeight: 40,
   },
-
-  // container1: {
-  //   flex: 0.7,
-  //   backgroundColor: "#00462a",
-  //   alignItems: "center",
-  //   marginTop: 0,
-  //   height: 5,
-  // },
-  // container2: {
-  //   flex: 1,
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // },
-  // container3: {
-  //   flex: 1.5,
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   flexDirection: "row",
-  // },
-  // container31: {
-  //   backgroundColor: "white",
-  //   width: "50%",
-  // },
-  // container4: {
-  //   flex: 2,
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   borderWidth: 2,
-  //   borderRadius: 15,
-  //   margin: 10,
-  // },
-  // finish: {
-  //   fontSize: 25,
-  //   fontWeight: "bold",
-  // },
-  // guide: {
-  //   fontSize: 15,
-  //   margin: 15,
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   textAlign: "center",
-  // },
-  // checkQR: {
-  //   flex: 1,
-  //   margin: 10,
-  //   borderWidth: 2,
-  //   borderRadius: 15,
-  //   width: "90%",
-  //   borderColor: "#00462a",
-  //   height: "20%",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-  // home: {
-  //   flex: 1,
-  //   margin: 10,
-  //   borderWidth: 2,
-  //   borderRadius: 15,
-  //   width: "90%",
-  //   borderColor: "#00462a",
-  //   height: "20%",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-  // but: {
-  //   fontSize: 25,
-  // },
-  // header: {
-  //   color: "white",
-  //   fontSize: 25,
-  //   letterSpacing: 3,
-  //   fontWeight: "bold",
-  //   height: 50,
-  //   margin: 30,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-  // menu: {
-  //   marginTop: 50,
-  //   fontSize: 30,
-  //   borderColor: "#00462a",
-  //   backgroundColor: "#00462a",
-  //   margin: 10,
-  //   borderWidth: 2,
-  //   borderRadius: 15,
-  //   width: "70%",
-  //   height: "10%",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-  // text2: {
-  //   color: "white",
-  //   fontSize: 30,
-  // },
 });
 
 export default after;

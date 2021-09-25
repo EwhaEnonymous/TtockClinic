@@ -6,10 +6,18 @@ import MapView from "react-native-maps";
 import constants from "./constants";
 import { Header, Card } from "react-native-elements";
 import Geocode from "react-geocode";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+} from "react-google-maps";
+import { compose, withProps } from "recompose";
 import Icon3 from "react-native-vector-icons/Ionicons";
 import API_KEY from "./apikey";
 import * as Location from "expo-location";
 import axios from "axios";
+import { Map, GoogleApiWrapper } from "google-maps-react";
 import ReverseGeocode from "./reverseGeocode";
 var clinicArr = [];
 var coordArr = [];
@@ -18,15 +26,20 @@ function currentLocation({ navigation }) {
   const [errorMsg, setErrorMsg] = useState("");
   const [loc1, setLoc1] = useState(null);
   const [loc2, setLoc2] = useState(null);
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
   const [reslat, setReslat] = useState(0);
   const [reslng, setReslng] = useState(0);
-
+  const [coords, setCoords] = useState(null);
+  const [clinicList, setClinicList] = useState([]);
+  const [coordList, setCoordList] = useState([]);
   Geocode.setApiKey(API_KEY);
-
   useEffect(() => {
+    // console.log("00");
+
     (async () => {
+      // console.log("11");
+
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         setErrorMsg("Permission to access location was denied");
@@ -40,23 +53,23 @@ function currentLocation({ navigation }) {
       });
     })();
   }, []);
-
-  // const location = Location.getCurrentPositionAsync();
-  // const location = Location.getCurrentPositionAsync();
-
-  const geoLocation = () => {
-    setLat(location.coords.latitude);
-    setLng(location.coords.longitude);
-    // await getAddress();
-  };
-
+  useEffect(() => {
+    // console.log("22");
+    getAddress();
+    // getClinic();
+    getLatLngFromAddress(clinicList);
+    // console.log("44");
+  });
   //현위치 주소 받기
   const getAddress = async () => {
     try {
+      // console.log("33");
+
       let res = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${API_KEY}`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.latitude},${location.longitude}&key=${API_KEY}`
       );
       // console.log(res.data.results[0].formatted_address);
+      // console.log("RES", res);
       const result = res.data.results[0].formatted_address.split(" ");
       console.log(result[1] + " " + result[2]);
       setLoc1(result[1]);
@@ -69,65 +82,74 @@ function currentLocation({ navigation }) {
   //현위치 기반 선별진료소 받고 clinicArr에 push하기
   const getClinic = async () => {
     try {
-      let response = await axios.get("https://www.ttockclinic.com/v1/clinics", {
+      // console.log("55");
+
+      let response = axios.get("https://www.ttockclinic.com/v1/clinics", {
         params: { addr1: loc1, addr2: loc2 },
       });
 
       response.data.map((item) => clinicArr.push(item));
-      await getLatLngFromAddress(clinicArr.map((item) => item.address));
+      setClinicList(clinicArr);
+      clinicList.map((item) => getLatLngFromAddress(item.address));
+
+      // getLatLngFromAddress(clinicList.map((item) => item.address));
     } catch (error) {
       console.log(error);
     }
+    // console.log("ccl", clinicList);
   };
   //주소를 좌표로 변환
-  const getLatLngFromAddress = async (address) => {
-    Geocode.fromAddress(address).then(
-      (response) => {
-        console.log(response);
-        response.results.map((item) => coordArr.push(item.geometry.location));
-        // const { lati, longi } = response.results[0].geometry.location;
-        console.log("좌표", coordArr);
-      },
-      (error) => {
-        console.log(error);
-      }
+  const getLatLngFromAddress = (clinicList) => {
+    // console.log("66");
+    var addressArr = [];
+    clinicList.map((item) => {
+      addressArr.push(item.address);
+    });
+    Geocode.fromAddress(addressArr).then((response) => {
+      console.log(response);
+    });
+    //   response.results.map((item) => coordArr.push(item.geometry.location));
+    //   setCoordList(coordArr);
+    // })
+    // .then(() => {
+    //   coordList.map((item) => {
+    //     setLat(item.lat);
+    //     setLng(item.lng);
+    //   });
+    // });
+  };
+
+  const MyMap = () => {
+    return (
+      // location && (
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: location.latitude,
+          longitude: location.longitude,
+          latitudeDelta: 0.05,
+          longitudeDelta: 0.0421,
+        }}
+      >
+        <MapView.Marker
+          coordinate={{
+            latitude: location.latitude,
+            longitude: location.longitude,
+          }}
+        />
+        {/* <MapView.Marker
+            coordinate={{
+              latitude: coordList[0].lat,
+              longitude: coordList[0].lng,
+            }}
+          /> */}
+        {/* {coordList.map((item) => (
+            <Marker position={{ lat: item.lat, lng: item.lng }} />
+          ))} */}
+      </MapView>
+      // )
     );
   };
-  console.log(coordArr);
-  // const ShowOnMap = () => {
-  //   return (
-  //     <MapView
-  //       showsUserLocation={true}
-  //       provider={PROVIDER_GOOGLE}
-  //       style={styles.map}
-  //       initialRegion={{
-  //         latitude: lat,
-  //         longitude: lng,
-  //         latitudeDelta: 0.05,
-  //         longitudeDelta: 0.0421,
-  //         // latitude: Location.geocodeAsync(latitude),
-  //         // longitude: location.longitude,
-  //         // latitudeDelta: 0.05,
-  //         // longitudeDelta: 0.0421,
-  //       }}
-  //     >
-  //       <MapView.Marker
-  //         coordinate={{
-  //           latitude: lat,
-  //           longitude: lng,
-  //         }}
-  //       />
-  //       {/* <ShowOnMap /> */}
-  //     </MapView>
-  //   );
-  // };
-
-  useEffect(() => {
-    // geoLocation();
-
-    getAddress();
-    clinicArr.map((item) => console.log(getLatLngFromAddress(item.address)));
-  });
 
   return (
     <>
@@ -156,29 +178,7 @@ function currentLocation({ navigation }) {
               <Text>현위치</Text>
             </Card.Title>
           </View>
-          <Text>주소</Text>
-          {location && (
-            <MapView
-              style={styles.map}
-              initialRegion={{
-                latitude: location.latitude,
-                longitude: location.longitude,
-                latitudeDelta: 0.05,
-                longitudeDelta: 0.0421,
-                // latitude: Location.geocodeAsync(latitude),
-                // longitude: location.longitude,
-                // latitudeDelta: 0.05,
-                // longitudeDelta: 0.0421,
-              }}
-            >
-              <MapView.Marker
-                coordinate={{
-                  latitude: location.latitude,
-                  longitude: location.longitude,
-                }}
-              />
-            </MapView>
-          )}
+          <MyMap />
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("Clinic")}

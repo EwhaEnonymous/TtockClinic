@@ -2,13 +2,15 @@ import React from "react";
 import MainPage from "./src/MainPage";
 import MyQR from "./src/myQR";
 import CurLoc from "./src/currentLocation";
+import CurLoc2 from "./src/currentLocation2";
+import HeaderBar from "./src/header";
 import RevGeo from "./src/reverseGeocode";
 import Clinic from "./src/clinicInfo";
 import ClinicNext from "./src/clinicInfo_next";
 import Patient from "./src/patientInfo";
 import Location from "./src/Location";
 import After from "./src/after";
-import Geocode from "./src/geocode";
+
 import Interview from "./src/Interview";
 import qrCheck from "./src/qrCheck";
 import "react-native-gesture-handler";
@@ -26,6 +28,11 @@ const App = () => {
         <Stack.Screen
           name="Main"
           component={MainPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="HeaderBar"
+          component={HeaderBar}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -50,7 +57,7 @@ const App = () => {
         />
         <Stack.Screen
           name="CurLoc"
-          component={CurLoc}
+          component={CurLoc2}
           options={{ headerShown: false }}
         />
         <Stack.Screen
