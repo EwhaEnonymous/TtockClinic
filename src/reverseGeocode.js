@@ -9,40 +9,28 @@ import MapView from "react-native-maps";
 import "react-native-gesture-handler";
 import { PROVIDER_GOOGLE } from "react-native-maps";
 
-function ReverseGeocode({ navigation }) {
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
+function ReverseGeocode(props) {
+  // const [lat, setLat] = useState(0);
+  // const [lng, setLng] = useState(0);
   const [loc1, setLoc1] = useState("");
   const [loc2, setLoc2] = useState("");
   const [loc3, setLoc3] = useState("");
   //   const [location, setLocation] = useState("");
+  const [errorMsg, setErrorMsg] = useState(null);
 
-  const [location, setLocation] = useState(null);
   useEffect(() => {
     (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      });
-
       axios
         .get(
-          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${LOC.coords.latitude},${LOC.coords.longitude}&key=${API_KEY}`
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${props.lat},${props.lng}&key=${API_KEY}`
         ) // 위도, 경도 google maps api로 보냄
         .then((res) => {
           console.log(res);
-          const result = res.data.results[5].formatted_address.split(" "); // 앞에 대한민국은 뺀다.
-
-          console.log(result);
-          console.log(result[1]);
-          console.log(result[2]);
+          // const result = res.data.results[5].formatted_address.split(" "); // 앞에 대한민국은 뺀다.
+          // console.log("PROPS", props.lat);
+          // console.log(result);
+          // console.log(result[1]);
+          // console.log(result[2]);
         })
 
         .catch((error) => {
@@ -64,26 +52,7 @@ function ReverseGeocode({ navigation }) {
   //   });
   return (
     <View style={styles.body}>
-      <Header
-        placement="left"
-        leftComponent={{ icon: "menu", color: "#fff" }}
-        centerComponent={
-          <TouchableOpacity>
-            <Text
-              style={styles.headerText}
-              onPress={() => navigation.navigate("Main")}
-            >
-              💉똑똑 선별진료소💉
-            </Text>
-          </TouchableOpacity>
-        }
-        placement="center"
-        rightComponent={{ icon: "home", color: "#fff" }}
-        backgroundColor={"#00462a"}
-      ></Header>
-      <View style={styles.container}>
-        <Text> {text}</Text>
-        {location && (
+      {/* {location && (
           <MapView
             provider={PROVIDER_GOOGLE}
             style={styles.map}
@@ -99,15 +68,8 @@ function ReverseGeocode({ navigation }) {
               }}
             />
           </MapView>
-        )}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Clinic")}
-        >
-          <Text style={styles.buttonText}>다음 화면으로 넘어감</Text>
-        </TouchableOpacity>
-      </View>
-      {/* <GetLocation /> */}
+        )} */}
+      {/* <TouchableOpacity */}
     </View>
   );
 }
