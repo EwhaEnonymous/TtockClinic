@@ -1,8 +1,10 @@
 # TtockClinic Front-end
-ttockclinic-app 
+똑똑 클리닉 어플리케이션
 
 ### Project versions
-react-native
+react-native 2.0.1
+expo
+npm 6.14.13
 
 ### Preview
 ![smartmockups_ku15foxj](https://user-images.githubusercontent.com/68368633/134806101-a3ed8191-383a-4604-86e7-5c59270233da.jpg)
