@@ -8,7 +8,9 @@ npm 6.14.13
 
 ### Preview
 ![smartmockups_ku15foxj](https://user-images.githubusercontent.com/68368633/134806101-a3ed8191-383a-4604-86e7-5c59270233da.jpg)
-![smartmockups_ku15hr6u](https://user-images.githubusercontent.com/68368633/134806144-f30935c9-9186-4f77-b73d-54b49d1646d9.jpg)
+![smartmockups_ku16c3nq](https://user-images.githubusercontent.com/68368633/134807391-e3eaa51c-500d-45b8-a71a-0cc261f89e66.jpg)
+![smartmockups_ku16hufu](https://user-images.githubusercontent.com/68368633/134807356-372ca5cc-98ed-464d-8b08-028763d12731.jpg)
+![smartmockups_ku16efl6](https://user-images.githubusercontent.com/68368633/134807374-ebdc1afc-d0cc-4711-a476-35830076ea86.jpg)
 
 #### Maps
 - MapView: react-native-maps
