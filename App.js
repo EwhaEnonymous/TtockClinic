@@ -1,9 +1,10 @@
 import React from "react";
 import MainPage from "./src/MainPage";
 import MyQR from "./src/myQR";
-import CurLoc2 from "./src/currentLocation2";
-import HeaderBar from "./src/header";
+import CurLoc from "./src/currentLoc";
 import Clinic from "./src/clinicInfo";
+import Clinic2 from "./src/clinicInfo2";
+
 import ClinicNext from "./src/clinicInfo_next";
 import Patient from "./src/patientInfo";
 import Location from "./src/Location";
@@ -28,11 +29,6 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="HeaderBar"
-          component={HeaderBar}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
           name="Patient"
           component={Patient}
           options={{ headerShown: false }}
@@ -40,6 +36,11 @@ const App = () => {
         <Stack.Screen
           name="Clinic"
           component={Clinic}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Clinic2"
+          component={Clinic2}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -54,7 +55,12 @@ const App = () => {
         />
         <Stack.Screen
           name="CurLoc"
-          component={CurLoc2}
+          component={CurLoc}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CurLoc2"
+          component={CurLoc}
           options={{ headerShown: false }}
         />
         <Stack.Screen
