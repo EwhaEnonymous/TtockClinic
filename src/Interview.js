@@ -35,7 +35,7 @@ const data = [
 ];
 function Interview({ navigation, route }) {
   const [name, setName] = useState("");
-  const [birth, setBirth] = useState(0);
+  const [birth, setBirth] = useState("");
   const [phone, setPhone] = useState("");
   const [gen, setGen] = useState("");
   const gender = ["여성", "남성"];
