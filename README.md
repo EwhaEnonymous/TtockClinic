@@ -20,11 +20,17 @@ npm 6.14.13
 
 #### Maps
 - MapView: react-native-maps
-  '''
+  ```
   npm install --save react-native-maps
-  '''
+  ```
 - Geocode: react-geocode
+  ```
+  npm install --save react-geocode
+  ```
 - PickerSelect: react-native-picker-select
+  ```
+  npm install react-native-picker-select
+  ```
 
 #### QRcode
 - Qrcode generator: react-native-qrcode-svg
