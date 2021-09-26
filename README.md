@@ -2,8 +2,8 @@
 똑똑 클리닉 어플리케이션
 
 ### Project versions
-react-native 2.0.1
-expo
+react-native 2.0.1\n
+expo\n
 npm 6.14.13
 
 ### Preview
