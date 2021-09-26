@@ -177,42 +177,63 @@ function patientInfo({ navigation }) {
                 </Text> */}
                 <Text styles={{ width: "100%" }}>
                   <Card.Title style={styles.distance2}>●</Card.Title>
-                  <Card.Title style={styles.distance}>4단계{"\n"}</Card.Title>
-                  <Text style={styles.subtitle}> - 수도권 </Text>
+                  <Card.Title style={styles.distance}> 4단계{"\n"}</Card.Title>
+                  <Text style={styles.subtitle}> - 수도권{"\n "} </Text>
                   <Text style={styles.cities}>(서울, 인천, 경기){"\n"}</Text>
-                  <Card.Title style={styles.distance3}>●</Card.Title>
-                  <Card.Title style={styles.distance}>3단계{"\n"}</Card.Title>
-                  <Text style={styles.subtitle}> - 수도권 </Text>
+                  <Card.Title style={styles.distance3}>{"\n"}●</Card.Title>
+                  <Card.Title style={styles.distance}> 3단계{"\n"}</Card.Title>
+                  <Text style={styles.subtitle}> - 수도권{"\n "} </Text>
                   <Text style={styles.cities}>(강화군, 옹진군)</Text>
-                  <Text style={styles.subtitle}>{"\n"} - 충청권 </Text>
-                  <Text style={styles.cities}>(세종, 충북, 충남, 대전)</Text>
-                  <Text style={styles.subtitle}>{"\n"} - 호남권 </Text>
-                  <Text style={styles.cities}>(광주, 전북, 전남)</Text>
-                  <Text style={styles.subtitle}>{"\n"} - 경북권 </Text>
-                  <Text style={styles.cities}>(대구, 경북)</Text>
-                  <Text style={styles.subtitle}>{"\n"} - 경남권 </Text>
-                  <Text style={styles.cities}>(울산, 부산, 경남)</Text>
-                  <Text style={styles.subtitle}>{"\n"} - 강원 </Text>
-                  <Text style={styles.cities}>(춘천시, 원주시, 동해시, 강릉시, 속초시, 인제군)</Text>
-                  <Text style={styles.subtitle}>{"\n"} - 제주 </Text>
-                  <Text style={styles.cities}>(제주){"\n"}</Text>
-                  <Card.Title style={styles.distance4}>●</Card.Title>
-                  <Card.Title style={styles.distance}>2단계{"\n"}</Card.Title>
-                  <Text style={styles.subtitle}> - 호남권 </Text>
-                  <Text style={styles.cities}>
-                    (정읍시, 남원시, 김제시, 완주군(혁신도시 갈산리 제외), 진안군, 무주군, 장수군, 임실군, 순창군, 고창군, 부안군)
+                  <Text style={styles.subtitle}>
+                    {"\n"} - 충청권{"\n "}{" "}
                   </Text>
-                  <Text style={styles.subtitle}>{"\n"} - 경북권 </Text>
+                  <Text style={styles.cities}>(세종, 충북, 충남, 대전)</Text>
+                  <Text style={styles.subtitle}>
+                    {"\n"} - 호남권{"\n "}{" "}
+                  </Text>
+                  <Text style={styles.cities}>(광주, 전북, 전남)</Text>
+                  <Text style={styles.subtitle}>
+                    {"\n"} - 경북권{"\n "}{" "}
+                  </Text>
+                  <Text style={styles.cities}>(대구, 경북)</Text>
+                  <Text style={styles.subtitle}>
+                    {"\n"} - 경남권{"\n "}{" "}
+                  </Text>
+                  <Text style={styles.cities}>(울산, 부산, 경남)</Text>
+                  <Text style={styles.subtitle}>
+                    {"\n"} - 강원{"\n "}{" "}
+                  </Text>
+                  <Text style={styles.cities}>
+                    (춘천시, 원주시, 동해시, 강릉시, 속초시, 인제군)
+                  </Text>
+                  <Text style={styles.subtitle}>
+                    {"\n"} - 제주{"\n "}{" "}
+                  </Text>
+                  <Text style={styles.cities}>(제주){"\n"}</Text>
+                  <Card.Title style={styles.distance4}>{"\n"}●</Card.Title>
+                  <Card.Title style={styles.distance}> 2단계{"\n"}</Card.Title>
+                  <Text style={styles.subtitle}> - 호남권{"\n "} </Text>
+                  <Text style={styles.cities}>
+                    (정읍시, 남원시, 김제시, 완주군(혁신도시 갈산리 제외),
+                    진안군, 무주군, 장수군, 임실군, 순창군, 고창군, 부안군)
+                  </Text>
+                  <Text style={styles.subtitle}>
+                    {"\n"} - 경북권{"\n "}{" "}
+                  </Text>
                   <Text style={styles.cities}>(문경, 상주시)</Text>
-                  <Text style={styles.subtitle}>{"\n"} - 강원 </Text>
+                  <Text style={styles.subtitle}>
+                    {"\n"} - 강원{"\n "}{" "}
+                  </Text>
                   <Text style={styles.cities}>
                     (태백시, 삼척시, 홍천군, 횡성군, 영월군, 평창군, 정선군,
-                    철원군, 화천군, 양구군, 고성군, 양양군){"\n"}</Text>
-                  <Card.Title style={styles.distance5}>●</Card.Title>
-                  <Card.Title style={styles.distance}>1단계{"\n"}</Card.Title>
-                  <Text style={styles.subtitle}> - 경북권 </Text>
+                    철원군, 화천군, 양구군, 고성군, 양양군){"\n"}
+                  </Text>
+                  <Card.Title style={styles.distance5}>{"\n"}●</Card.Title>
+                  <Card.Title style={styles.distance}> 1단계{"\n"}</Card.Title>
+                  <Text style={styles.subtitle}> - 경북권{"\n "} </Text>
                   <Text style={styles.cities}>
-                    (군위군, 의성군, 청송군, 영양군, 영덕군, 청도군, 고령군, 성주군, 예천군, 봉화군, 울릉군, 울진군)
+                    (군위군, 의성군, 청송군, 영양군, 영덕군, 청도군, 고령군,
+                    성주군, 예천군, 봉화군, 울릉군, 울진군)
                   </Text>
                 </Text>
               </View>
@@ -356,6 +377,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     fontWeight: "bold",
+    lineHeight: 30,
   },
   cities: {
     fontSize: 16,
@@ -367,6 +389,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     padding: 5,
     textAlign: "left",
+    paddingBottom: "10%",
   },
   distance1: {
     alignItems: "flex-start",

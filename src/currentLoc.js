@@ -113,7 +113,6 @@ function currentLoc({ navigation }) {
       <View style={styles.body}>
         <Header
           placement="left"
-          leftComponent={{ icon: "menu", color: "#fff" }}
           centerComponent={
             <TouchableOpacity>
               <Text
@@ -125,7 +124,11 @@ function currentLoc({ navigation }) {
             </TouchableOpacity>
           }
           placement="center"
-          rightComponent={{ icon: "home", color: "#fff" }}
+          rightComponent={
+            <TouchableOpacity onPress={() => navigation.navigate("qrCheck")}>
+              <Text style={styles.menuText}>My</Text>
+            </TouchableOpacity>
+          }
           backgroundColor={"#00462a"}
         ></Header>
         <View style={styles.container}>
@@ -197,12 +200,26 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
-  container: {
-    flex: 6,
-    // alignItems: "center",
-    marginTop: "2%",
-    marginBottom: "2%",
+  menuText: {
+    color: "#fff",
+    fontSize: 20,
+    marginRight: "5%",
   },
+  container: {
+    flex: 1,
+    margin: "5%",
+  },
+  //   title: {
+  //     fontSize: 30,
+  //     color: "#00462a",
+  //     fontWeight: "bold",
+
+  //   },
+  //   container1: {
+  //     flex: 0.15,
+  //     alignItems: "flex-start",
+  //     marginTop: "5%",
+  //   },
   map: {
     flex: 0.7,
     width: "100%",
@@ -212,9 +229,8 @@ const styles = StyleSheet.create({
   },
   container1: {
     flex: 0.1,
-    marginTop: "5%",
-    marginLeft: "5%",
     alignItems: "flex-start",
+    marginTop: "5%",
   },
   title: {
     fontSize: 30,
@@ -240,13 +256,12 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     marginTop: 50,
-    fontSize: constants.width > 370 ? 30 : 18,
     borderColor: "#00462a",
     backgroundColor: "#00462a",
     borderWidth: 2,
     borderRadius: 10,
-    width: "78%",
-    height: "10%",
+    width: "80%",
+    height: "8%",
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
@@ -255,7 +270,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
-    fontSize: constants.width > 370 ? 30 : 18,
+    fontSize: 26,
   },
 });
 export default currentLoc;
