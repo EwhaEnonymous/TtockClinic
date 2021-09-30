@@ -21,6 +21,8 @@ const myQR = ({ navigation, route }) => {
   const [openSat, setOpenSat] = useState("");
   const [waitings, setWaitings] = useState(0);
   const [clinicId, setClinicId] = useState(0);
+  const [deleted, setDeleted] = useState("");
+  const [id, setId] = useState(0);
   axios
     .get("https://www.ttockclinic.com/v1/paper", {
       params: {
@@ -37,6 +39,9 @@ const myQR = ({ navigation, route }) => {
       setOpenWeekday(response.data.clinic.weekdayOpeningHours);
       setOpenSat(response.data.clinic.saturdayOpeningHours);
       setWaitings(response.data.clinic.waitings);
+      setId(response.data.id);
+      setDeleted(response.data.deleted);
+      console.log(id);
     })
     .catch(function (error) {
       console.log(error);
@@ -47,10 +52,12 @@ const myQR = ({ navigation, route }) => {
         <QRCode
           size={200} // 로고 사이즈 조절
           value={[
+            `${deleted}`,
+            " ",
+            `${id}`,
+            " ",
             `${route.params.name}`,
-            `${route.params.phone}`,
-            clinicId,
-            date,
+            // `${route.params.phone}`,
           ]} // paper_id, clinic_id
           logoSize={300}
           logoBackgroundColor="transparent"
