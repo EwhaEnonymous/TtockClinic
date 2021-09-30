@@ -54,8 +54,7 @@
     "react-native-viewport-units": "0.0.5",
     "react-native-web": "^0.17.1",
     "react-navigation": "^4.4.4",
-    "react-test-renderer": "16.13.1",
-    "undefined": "@react=native-community/geolocation"
+    "react-test-renderer": "16.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

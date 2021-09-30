@@ -14,9 +14,9 @@ import "react-native-gesture-handler";
 import constants from "./constants";
 import axios from "axios";
 
-function qrCheck({ navigation }) {
-  const [phone, setPhone] = useState("");
-  const [name, setName] = useState("");
+function qrCheck({ navigation, route }) {
+  const [ph, setPh] = useState("");
+  const [nm, setNm] = useState("");
   const [msg, setMsg] = useState("");
   //const onChangeHandler = (event) => {
   //  setPhone(event.target);
@@ -26,12 +26,15 @@ function qrCheck({ navigation }) {
   const getData = () => {
     axios
       .get("https://www.ttockclinic.com/v1/paper", {
-        params: { name: `${name}`, phone: `${phone}` },
+        params: { name: `${nm}`, phone: `${ph}` },
       })
-      .then(function (response) {
-        console.log(response);
+      .then((response) => {
+        {
+          console.log(response);
+          navigation.navigate("QR", { name: `${nm}`, phone: `${ph}` });
+        }
       })
-      .catch(function (error) {
+      .catch((error) => {
         setMsg("접수 내역이 없습니다.");
       });
   };
@@ -75,9 +78,9 @@ function qrCheck({ navigation }) {
             label="이름"
             placeholder="김똑똑"
             style={styles.box}
-            onChange={(e) => {
-              setName(e.target.value);
-              console.log(phone);
+            onChangeText={(e) => {
+              setNm(e);
+              console.log(nm);
             }}
           />
           <Text>{"\n"}</Text>
@@ -87,9 +90,9 @@ function qrCheck({ navigation }) {
             label="휴대폰번호"
             placeholder="010-1234-5678"
             style={styles.box}
-            onChange={(e) => {
-              setPhone(e.target.value);
-              console.log(phone);
+            onChangeText={(e) => {
+              setPh(e);
+              console.log(ph);
             }}
           />
           <Text style={styles.title}>{msg}</Text>
@@ -98,14 +101,7 @@ function qrCheck({ navigation }) {
           <TouchableOpacity style={styles.submit} onPress={getData}>
             <Icon name="chevron-forward-circle-outline" size={30} color="white">
               {" "}
-              <Text
-                style={styles.buttonText}
-                onPress={() =>
-                  navigation.navigate("QR", { name: name, phone: phone })
-                }
-              >
-                {""}접수 내역 조회하기
-              </Text>
+              <Text style={styles.buttonText}>{""}접수 내역 조회하기</Text>
             </Icon>
           </TouchableOpacity>
         </View>
