@@ -138,9 +138,7 @@ function currentLoc({ navigation }) {
               <Text>현위치</Text>
             </Card.Title>
           </View>
-          <Text style={styles.mainDescription}>
-            오늘의 코로나 확진자수를 한눈에 알아보세요
-          </Text>
+          <Text style={styles.mainDescription}>현위치를 확인하세요. </Text>
 
           {location && (
             <MapView

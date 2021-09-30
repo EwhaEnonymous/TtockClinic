@@ -25,6 +25,10 @@ const clinicInfo_next = ({ navigation, route }) => {
       setOpenWeekday(response.data.weekdayOpeningHours);
       setOpenSat(response.data.saturdayOpeningHours);
       setWaitings(response.data.waitings);
+      console.log(clinicId);
+    })
+    .catch((error) => {
+      console.log(error);
     });
   return (
     <View style={styles.body}>
