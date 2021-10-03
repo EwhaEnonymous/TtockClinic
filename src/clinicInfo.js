@@ -14,7 +14,7 @@ import axios from "axios";
 import { Header, Card, ListItem, Avatar } from "react-native-elements";
 import { Dimensions } from "react-native";
 
-var clinicNameArr = [];
+const clinicNameArr = [];
 
 const clinicInfo = ({ navigation, route }) => {
   const [clinicNm, setClinicNm] = useState("");
@@ -107,6 +107,9 @@ const clinicInfo = ({ navigation, route }) => {
           </Text>
         </View>
         <View style={styles.container2}>
+          <Card>
+            <Text>{msg}</Text>
+          </Card>
           <ScrollView>
             <Text style={{ alignContent: "center" }}>{clinicNm}</Text>
           </ScrollView>

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import "react-native-gesture-handler";
 // import constants from "./constants";
@@ -64,22 +70,24 @@ const clinicInfo_next = ({ navigation, route }) => {
             {"\n"}자세한 정보를 보려면 선별진료소를 선택하세요.
           </Text>
           <View style={styles.container2}>
-            <Text>
-              <Card>
-                <Card.Title style={styles.listTitle}>{name}</Card.Title>
-                <Text style={styles.listSub}>주소</Text>
-                <Text style={styles.listDes}>{address}</Text>
-                <Card.Divider />
-                <Text style={styles.listSub}>주중 운영시간</Text>
-                <Text style={styles.listDes}>{openWeekday}</Text>
-                <Card.Divider />
-                <Text style={styles.listSub}>휴일 운영시간</Text>
-                <Text style={styles.listDes}>{openHoliday}</Text>
-                <Card.Divider />
-                <Text style={styles.listSub}>대기 인원</Text>
-                <Text style={styles.listDes}>{waitings}명</Text>
-              </Card>
-            </Text>
+            <ScrollView>
+              <Text>
+                <Card>
+                  <Card.Title style={styles.listTitle}>{name}</Card.Title>
+                  <Text style={styles.listSub}>주소</Text>
+                  <Text style={styles.listDes}>{address}</Text>
+                  <Card.Divider />
+                  <Text style={styles.listSub}>주중 운영시간</Text>
+                  <Text style={styles.listDes}>{openWeekday}</Text>
+                  <Card.Divider />
+                  <Text style={styles.listSub}>휴일 운영시간</Text>
+                  <Text style={styles.listDes}>{openHoliday}</Text>
+                  <Card.Divider />
+                  <Text style={styles.listSub}>대기 인원</Text>
+                  <Text style={styles.listDes}>{waitings}명</Text>
+                </Card>
+              </Text>
+            </ScrollView>
           </View>
         </View>
         <View style={styles.container3}>
