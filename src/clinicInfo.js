@@ -107,9 +107,7 @@ const clinicInfo = ({ navigation, route }) => {
           </Text>
         </View>
         <View style={styles.container2}>
-          <Card>
-            <Text>{msg}</Text>
-          </Card>
+          <Text>{msg}</Text>
           <ScrollView>
             <Text style={{ alignContent: "center" }}>{clinicNm}</Text>
           </ScrollView>
