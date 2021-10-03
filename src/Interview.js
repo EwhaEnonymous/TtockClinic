@@ -128,19 +128,18 @@ function Interview({ navigation, route }) {
         }
         backgroundColor={"#00462a"}
       ></Header>
-      <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.container1}>
-            <Card.Title style={styles.title}>
-              <Icon name="chevron-forward-circle-outline" size={30}></Icon>{" "}
-              문진표 작성하기
-            </Card.Title>
-            <Text style={styles.mainDescription}>
-              문진표를 작성하여 주세요.
-            </Text>
-          </View>
-          <View style={styles.container2}>
-            <Card>
+      {/* <ScrollView> */}
+      <View style={styles.container}>
+        <View style={styles.container1}>
+          <Card.Title style={styles.title}>
+            <Icon name="chevron-forward-circle-outline" size={30}></Icon> 문진표
+            작성하기
+          </Card.Title>
+          <Text style={styles.mainDescription}>문진표를 작성하여 주세요.</Text>
+        </View>
+        <View style={styles.container2}>
+          <Card>
+            <ScrollView>
               <Card.Title style={styles.title}>이름</Card.Title>
               <TextInput
                 style={styles.input}
@@ -196,41 +195,42 @@ function Interview({ navigation, route }) {
                 <Text style={styles.mainDescription2}>
                   발생한 증상을 모두 체크하세요.
                 </Text>
+
                 <View style={{ marginTop: "-5%" }}>
                   {renderFlatList(symptoms)}
                 </View>
               </View>
               <Card.Divider />
-            </Card>
-          </View>
-          <View style={styles.container3}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate("After")}
-            >
-              <Text>
-                <Icon
-                  name="chevron-forward-circle-outline"
-                  size={30}
-                  color="white"
-                ></Icon>
-                <Text
-                  type="submit"
-                  style={styles.buttonText}
-                  onPress={() => {
-                    handleSubmit();
-                    navigation.navigate("After");
-                    console.log(`${name}`, `${phone}`);
-                  }}
-                >
-                  {" "}
-                  문진표 제출하기
-                </Text>
-              </Text>
-            </TouchableOpacity>
-          </View>
+            </ScrollView>
+          </Card>
         </View>
-      </ScrollView>
+        <View style={styles.container3}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("After")}
+          >
+            <Text>
+              <Icon
+                name="chevron-forward-circle-outline"
+                size={30}
+                color="white"
+              ></Icon>
+              <Text
+                type="submit"
+                style={styles.buttonText}
+                onPress={() => {
+                  handleSubmit();
+                  navigation.navigate("After");
+                  console.log(`${name}`, `${phone}`);
+                }}
+              >
+                {" "}
+                문진표 제출하기
+              </Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 }
