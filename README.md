@@ -49,4 +49,4 @@ npm 6.14.13
   ```
   $ npm install react-native-paper
   ```
-
+- Trying
